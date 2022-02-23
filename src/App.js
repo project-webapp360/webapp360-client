@@ -48,12 +48,16 @@ const App = observer(() => {
     }, [])
 
     return (
+        <div>
+            <h1>preh1</h1>
+            <BrowserRouter>
+                <h1>sdfdsfsdfdsfsdf</h1>
+                <Navbar/>
+                <AppRouter/>
+            </BrowserRouter>
+        </div>
 
-    <HashRouter>
-        <h1>sdfdsfsdfdsfsdf</h1>
-        <Navbar/>
-        <AppRouter/>
-    </HashRouter>
+
 
 
     );
