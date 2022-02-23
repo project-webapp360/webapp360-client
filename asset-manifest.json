@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/webapp360-client/static/css/main.d4e10401.css",
+    "main.js": "/webapp360-client/static/js/main.6d2de571.js",
+    "index.html": "/webapp360-client/index.html",
+    "main.d4e10401.css.map": "/webapp360-client/static/css/main.d4e10401.css.map",
+    "main.6d2de571.js.map": "/webapp360-client/static/js/main.6d2de571.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4e10401.css",
+    "static/js/main.6d2de571.js"
+  ]
+}
