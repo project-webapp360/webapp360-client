@@ -7,6 +7,7 @@ import {
     Routes,
     Route,
     Link,
+    HashRouter
 } from "react-router-dom";
 import Main from "./pages/Main";
 import Second from "./pages/Second";
@@ -48,10 +49,10 @@ const App = observer(() => {
 
     return (
 
-    <BrowserRouter>
+    <HashRouter>
         <Navbar/>
         <AppRouter/>
-    </BrowserRouter>
+    </HashRouter>
 
 
     );
