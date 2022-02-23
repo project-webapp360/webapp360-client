@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/webapp360-client/static/css/main.d4e10401.css",
-    "main.js": "/webapp360-client/static/js/main.6d2de571.js",
-    "index.html": "/webapp360-client/index.html",
-    "main.d4e10401.css.map": "/webapp360-client/static/css/main.d4e10401.css.map",
-    "main.6d2de571.js.map": "/webapp360-client/static/js/main.6d2de571.js.map"
+    "main.css": "/static/css/main.d4e10401.css",
+    "main.js": "/static/js/main.d8f5c4ea.js",
+    "index.html": "/index.html",
+    "main.d4e10401.css.map": "/static/css/main.d4e10401.css.map",
+    "main.d8f5c4ea.js.map": "/static/js/main.d8f5c4ea.js.map"
   },
   "entrypoints": [
     "static/css/main.d4e10401.css",
-    "static/js/main.6d2de571.js"
+    "static/js/main.d8f5c4ea.js"
   ]
 }
