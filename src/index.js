@@ -14,7 +14,7 @@ ReactDOM.render(
         number: new NumberCount()
     }}>
         <h1>HEEEEEELLp</h1>
-        {/*<App/>*/}
+        <App/>
     </Context.Provider>,
     document.getElementById('root')
 );
