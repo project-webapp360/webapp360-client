@@ -50,6 +50,7 @@ const App = observer(() => {
     return (
 
     <HashRouter>
+        <h1>sdfdsfsdfdsfsdf</h1>
         <Navbar/>
         <AppRouter/>
     </HashRouter>
