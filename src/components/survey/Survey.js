@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from Yrial";
+import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import "./Survey.css"
 import Modal from "../modal/Modal";
 
