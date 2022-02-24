@@ -1,0 +1,77 @@
+import React, {useState} from 'react';
+import Progressbar from "../../components/progressbar/progressbar";
+import Eventcard from "../../components/eventcard/Eventcard";
+import "./mainpage.css"
+import NavBar from "../../components/с_navBar/NavBar";
+import Modal from "../../components/modal/Modal";
+import AddEvent from "../../components/addEvent/AddEvent";
+
+const Mainpage = () => {
+
+  const [EventCardData, setEventCardData] = useState([
+    {
+    title: "Название",
+    dateStart:"2022-02-23",
+    dateEnd:"Конец",
+    name:'Вася',
+    creator:'Менеджер'
+    },
+    {
+      title: "Название",
+      dateStart:"2022-02-23",
+      dateEnd:"Конец",
+      name:'Вася',
+      creator:'Менеджер'
+    },
+    {
+      title: "Название",
+      dateStart:"2022-02-23",
+      dateEnd:"Конец",
+      name:'Вася',
+      creator:'Менеджер'
+    },
+    {
+      title: "Название",
+      dateStart:"2022-02-23",
+      dateEnd:"Конец",
+      name:'Вася',
+      creator:'Админ'
+    },
+    {
+      title: "Название",
+      dateStart:"2022-02-23",
+      dateEnd:"Конец",
+      name:'Вася',
+      creator:'Менеджер'
+    },])
+  //
+  //
+  //
+  // const changeVisible1 = () => {
+  //   setModal1(true)
+  // }
+  //
+  // const changeVisible2 = () => {
+  //   setModal2(true)
+  // }
+  //
+  // const changeVisible3 = () => {
+  //   setModal3(true)
+  // }
+  //
+  // const createEvent = (newEvent) => {
+  //   setEventCardData([...EventCardData, newEvent] )
+  // }
+
+
+  return (
+    <>
+
+      {/*<NavBar setVisible1={changeVisible1} setVisible2={changeVisible2} setVisible3={changeVisible3}/>*/}
+      <Progressbar/>
+      {EventCardData.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)}
+    </>
+  );
+};
+
+export default Mainpage;

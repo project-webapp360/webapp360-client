@@ -1,0 +1,107 @@
+.eventcard {
+    padding: 10px;
+    margin-bottom:20px ;
+    background: white;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.eventcard__firstString {
+    display: flex;
+    justify-content: space-between;
+}
+.eventcard__testCreator{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+
+    text-align: right;
+    letter-spacing: 0.01em;
+
+    color: #90A0B7;
+}
+.eventcard__title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #323C47;
+}
+
+.eventcard__date-start {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: rgba(76, 88, 98, 0.5);
+}
+
+.eventcard__date-end {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #9D726C;
+}
+
+.eventcard__name {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #707683;
+}
+
+.eventcard__lastString
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.eventcard__button-refuse {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+
+    border: none;
+    margin-right: 20px;
+    background: #8D898B;
+    border-radius: 4px;
+}
+
+.eventcard__button-agree {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+
+    border: none;
+    margin-right: 20px;
+    border-radius: 4px;
+    background: #648CFD;
+}
+
+.eventcard__button-agree:hover {
+    background-color: rgb(61, 107, 255);
+}
+
+.eventcard__button-refuse:hover {
+    background-color: #606060
+}

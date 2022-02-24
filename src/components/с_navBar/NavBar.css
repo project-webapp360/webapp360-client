@@ -1,0 +1,30 @@
+.line {
+    height: 50px;
+    background: grey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.line button {
+    margin-right: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 4px;
+
+
+
+    background: #648CFD;
+    border: none;
+
+}
+
+.line button:hover {
+    background-color: rgb(61, 107, 255);
+}

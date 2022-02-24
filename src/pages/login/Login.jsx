@@ -1,10 +1,13 @@
 import React, {useContext, useState} from 'react';
 import './login.css'
-import {login, registration} from "../../axios/API";
+import {deleteToken, login, registration} from "../../axios/API";
 import {useNavigate} from 'react-router-dom'
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
 import UserService from '../../service/userService'
+import TokenService from "../../service/tokenService";
+
+const tokenService = new TokenService()
 
 
 const Login = observer(() => {
@@ -25,11 +28,24 @@ const Login = observer(() => {
             user.setIsAuth(true)
             // localStorage.setItem('user', JSON.stringify(data))
             // localStorage.setItem('isAuth', "true")
-            navigate("/main")
+            navigate("/mainpage")
         } catch (e) {
             alert(e.response.data.message)
         }
     }
+
+    const logout = async () => {
+        deleteToken(user.user.id)
+        user.setIsAuth(false)
+        user.setUser({})
+        // localStorage.setItem('user', JSON.stringify(''))
+        // localStorage.setItem('isAuth', "false")
+        // localStorage.setItem('token', '')
+        tokenService.unbindToken('accessToken')
+        tokenService.unbindToken('refreshToken')
+        navigate("/login")
+    }
+
 
     return (
         <div>

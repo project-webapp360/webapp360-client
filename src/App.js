@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import DemoList from "./components/lists/DemoList";
+import Mainpage from "./pages/mainpage/mainpage"
 import axios from "axios";
 import './App.css'
 import {
@@ -12,7 +13,7 @@ import {
 import Main from "./pages/Main";
 import Second from "./pages/Second";
 import AppRouter from "./components/navbar/AppRouter";
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/с_navBar/NavBar";
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
 import {getUsers} from "./axios/API";
@@ -51,6 +52,8 @@ const App = observer(() => {
         <div>
             <BrowserRouter>
                 <Navbar/>
+                {/*<AppRouter/>*/}
+                {/*<Mainpage/>*/}
                 <AppRouter/>
             </BrowserRouter>
         </div>
