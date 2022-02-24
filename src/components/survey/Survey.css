@@ -1,11 +1,14 @@
 .survey__main {
     display: flex;
     flex-direction: column;
+
+    z-index: -1;
 }
 
 .survey__modal {
     display: flex;
     flex-direction: column;
+    z-index: 10;
 
     font-family: Poppins;
     font-style: normal;
