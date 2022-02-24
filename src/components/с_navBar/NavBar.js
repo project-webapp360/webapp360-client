@@ -97,24 +97,7 @@ const NavBar = observer(() => {
                 user.isAuth
                     ?
                     <div>
-                        {user.user.role === "USER"
-                        ?
-                        <div className='line'>
-                            <button onClick={logout}>Выйти</button>
-                        </div>
-                        :
-                        <div>
-                            {user.user.role === "MANAGER"
-                            ?
-                            <div className='line'>
-                                <button onClick={logout}>Выйти</button>
-                            </div>
-                            :
-                            <div>
-                                {user.user.role === "ADMIN"
-                                ?
-                                <div>
-                                    <Modal visible={modal1} setVisible={setModal1}>
+                        <Modal visible={modal1} setVisible={setModal1}>
                             <AddEvent visible={modal1} setVisible={setModal1} create={createEvent}/>
                         </Modal>
                         <Modal visible={modal2} setVisible={setModal2}>Modal 2</Modal>
@@ -125,26 +108,12 @@ const NavBar = observer(() => {
                             {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
                             <button onClick={register}>Создать пользователя</button>
                             <button onClick={logout}>Выйти</button>
-
-
                         </div>
-                                </div>
-                                :
-                                <div>
-
-                                </div>
-                                }
-                            </div>
-                            }
-                        </div>
-
-                        }
                     </div>
                     :
                     <div className="line">
-                        <button>Авторизация</button>
+                        <button>Авторизоваться</button>
                     </div>
-
             }
         </div>
 
