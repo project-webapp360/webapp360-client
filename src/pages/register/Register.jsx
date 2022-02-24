@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import './login.css'
-import {deleteToken, getEvents, login, registration} from "../../axios/API";
+import React, {useContext, useState} from 'react';
+import './register.css'
+import {deleteToken, login, registration} from "../../axios/API";
 import {useNavigate} from 'react-router-dom'
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
@@ -10,14 +10,14 @@ import TokenService from "../../service/tokenService";
 const tokenService = new TokenService()
 
 
-const Login = observer(() => {
+const Register = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
 
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [role, setRole] = useState('')
 
     const signIn = async (e) => {
         try {
@@ -27,6 +27,19 @@ const Login = observer(() => {
 
             user.setUser(data)
             user.setIsAuth(true)
+            // localStorage.setItem('user', JSON.stringify(data))
+            // localStorage.setItem('isAuth', "true")
+            navigate("/mainpage")
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+    }
+
+    const singUp = async (e) => {
+        try {
+            e.preventDefault()
+            const data = await registration(email, password, role)
+
             // localStorage.setItem('user', JSON.stringify(data))
             // localStorage.setItem('isAuth', "true")
             navigate("/mainpage")
@@ -53,7 +66,7 @@ const Login = observer(() => {
 
             <div className="super valign-wrapper center ">
                 <div className="row form-border">
-                    <form className="col s12" onSubmit={signIn}>
+                    <form className="col s12" onSubmit={singUp}>
 
                         <div className="row">
                             <div className="input-field col s12">
@@ -69,7 +82,14 @@ const Login = observer(() => {
                             </div>
                         </div>
 
-                        <button className="btn z-depth-0 light-blue lighten-3 waves-effect waves-light">Войти
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <input value={role} onChange={e => setRole(e.target.value)} id={role} name={role} type="text" className="validate"/>
+                                <label htmlFor={role}>Роль</label>
+                            </div>
+                        </div>
+
+                        <button className="btn z-depth-0 light-blue lighten-3 waves-effect waves-light">Создать
                         </button>
                     </form>
 
@@ -80,7 +100,7 @@ const Login = observer(() => {
     );
 });
 
-export default Login;
+export default Register;
 
 
 /*

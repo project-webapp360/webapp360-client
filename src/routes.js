@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import NumberComp from "./pages/number/NumberComp";
 import Quiz from "./pages/Quiz/Quiz";
 import Mainpage from "./pages/mainpage/mainpage";
+import Register from "./pages/register/Register";
 
 export const authRoutes = [
     {
@@ -19,6 +20,10 @@ export const authRoutes = [
         path: '/mainpage',
         Component: Mainpage
     },
+    {
+        path: '/register',
+        Component: Register
+    }
 
 ]
 

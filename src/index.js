@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import User from "./mobx/User";
 import NumberCount from "./mobx/Number";
+import Events from "./mobx/Events";
 
 export const Context = createContext(null)
 
@@ -11,7 +12,8 @@ console.log(process.env.REACT_APP_URL)
 ReactDOM.render(
     <Context.Provider value={{
         user: new User(),
-        number: new NumberCount()
+        number: new NumberCount(),
+        events: new Events()
     }}>
         <App/>
     </Context.Provider>,

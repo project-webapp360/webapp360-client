@@ -7,18 +7,22 @@
 .inputs {
     min-width: 200px;
     margin: 5px 20px 15px 20px;
-    padding: 10px;
+    padding: 15px 25px 15px 25px;
     border: none;
     border-bottom: 2px solid #648CFD;
 
     font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
 }
 
 .input__button {
     margin-top: 20px;
-
-    border: none;
+    padding: 5px 25px 5px 25px;
     border-radius: 4px;
+    border: none;
 
     font-family: Poppins;
     font-style: normal;
@@ -28,6 +32,7 @@
     text-align: center;
     color: #FFFFFF;
     background: #648CFD;
+    cursor: pointer;
 }
 
 .input__button:hover {

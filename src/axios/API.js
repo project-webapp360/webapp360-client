@@ -4,9 +4,9 @@ import TokenService from "../service/tokenService"
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 const tokenService = new TokenService()
 
-export const registration = async (email, password) => {
+export const registration = async (email, password, role) => {
     const {data} = await $host.post('api/register', {
-        email, password, role: 'ADMIN'
+        email, password, role
     })
     // localStorage.setItem('token', data.accessToken)
     tokenService.setToken('accessToken', data.accessToken)
@@ -25,6 +25,28 @@ export const login = async (email, password) => {
     return jwtDecode(data.accessToken)
 }
 
+export const deleteToken = async (id) => {
+    await $host.post('api/token/delete', {
+        id
+    })
+}
+
+
+
+
+export const createEvent = async (title, dateStart, dateEnd, name, creator) => {
+    const {data} = await $host.post('api/event/create', {
+        title, dateStart, dateEnd, name, creator
+    })
+    return data
+}
+
+export const getEvents = async () => {
+    const {data} = await $host.get('api/event/events')
+    return data
+}
+
+
 
 
 
@@ -32,12 +54,6 @@ export const getUsers = async () => {
     const {data} = await $AuthHost.get('api/users')
     // localStorage.setItem('token', data.accessToken)
     return jwtDecode(data.accessToken)
-}
-
-export const deleteToken = async (id) => {
-    await $host.post('/api/token/delete', {
-        id
-    })
 }
 
 

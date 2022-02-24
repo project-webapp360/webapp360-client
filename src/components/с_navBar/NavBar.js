@@ -51,6 +51,8 @@ const NavBar = observer(() => {
             name: 'Вася',
             creator: 'Менеджер'
         },])
+    const listLength = EventCardData.length
+
 
     const [modal1, setModal1] = useState(false);
     const [modal2, setModal2] = useState(false);
@@ -85,13 +87,34 @@ const NavBar = observer(() => {
         navigate("/login")
     }
 
+    const register = () => {
+        navigate("/register")
+    }
+
     return (
         <div>
             {
                 user.isAuth
                     ?
                     <div>
-                        <Modal visible={modal1} setVisible={setModal1}>
+                        {user.user.role === "USER"
+                        ?
+                        <div className='line'>
+                            <button onClick={logout}>Выйти</button>
+                        </div>
+                        :
+                        <div>
+                            {user.user.role === "MANAGER"
+                            ?
+                            <div className='line'>
+                                <button onClick={logout}>Выйти</button>
+                            </div>
+                            :
+                            <div>
+                                {user.user.role === "ADMIN"
+                                ?
+                                <div>
+                                    <Modal visible={modal1} setVisible={setModal1}>
                             <AddEvent visible={modal1} setVisible={setModal1} create={createEvent}/>
                         </Modal>
                         <Modal visible={modal2} setVisible={setModal2}>Modal 2</Modal>
@@ -99,11 +122,23 @@ const NavBar = observer(() => {
                         <div className="line">
                             <button onClick={changeVisible1}>Создать опрос</button>
                             <button onClick={changeVisible2}>Результаты опросов</button>
-                            <button onClick={changeVisible3}>Управление пользователями</button>
+                            {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
+                            <button onClick={register}>Создать пользователя</button>
                             <button onClick={logout}>Выйти</button>
 
 
                         </div>
+                                </div>
+                                :
+                                <div>
+
+                                </div>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        }
                     </div>
                     :
                     <div className="line">
