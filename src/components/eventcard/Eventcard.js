@@ -14,9 +14,9 @@ const Eventcard = (props) => {
   return (
 
     <div>
-      <Modal visible={modal} setVisible={setModal}>
+      {/*<Modal visible={modal} setVisible={setModal}>
         <Survey visible={modal} setVisible={setModal}/>
-      </Modal>
+      </Modal>*/}
       <div className="eventcard">
         <div className="eventcard__firstString">
           <div className="eventcard__title">{props.title}</div>
