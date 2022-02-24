@@ -14,10 +14,10 @@ const Mainpage = observer(() => {
   const {events} = useContext(Context)
 
 
-  useEffect( async () => {
-    const events = await getEvents()
-    localStorage.setItem("events", JSON.stringify(events))
-  })
+  // useEffect( async () => {
+  //   const events = await getEvents()
+  //   localStorage.setItem("events", JSON.stringify(events))
+  // })
   //
   // console.log(JSON.parse(localStorage.getItem("events")))
   // console.log(events.events)
