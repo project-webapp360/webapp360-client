@@ -71,7 +71,7 @@ const Survey = ({visible, setVisible}) => {
       <div className="survey__main">
         <div className="survey__first-line-number">Вопрос {page}</div>
         <FormControl variant="standard">
-        <FormLabel className="survey__first-line">{questions[page-1]}</FormLabel>
+          <FormLabel className="survey__first-line">{questions[page-1]}</FormLabel>
         <RadioGroup
           className="survey__test-form"
           defaultValue={value}
@@ -82,7 +82,7 @@ const Survey = ({visible, setVisible}) => {
           <FormControlLabel value="1" control={<Radio />} label="Редко" />
           <FormControlLabel value="2" control={<Radio />} label="Часто" />
           <FormControlLabel value="3" control={<Radio />} label="Всегда" />
-          <FormControlLabel value="4" control={<Radio />} label="Никогда" />
+          <FormControlLabel value="4" control={<Radio/>} label="Никогда" />
         </RadioGroup>
       </FormControl>
         <div className="survey__navigation">
@@ -99,7 +99,7 @@ const Survey = ({visible, setVisible}) => {
             :
             <button disabled className="survey__button">Вперёд</button>
           }
-          <button onClick={changeVisible} className="survey__button-end">Завершить</button>
+          <button onClick={changeAllVisible} className="survey__button-end">Завершить</button>
         </div>
       </div>
     </div>

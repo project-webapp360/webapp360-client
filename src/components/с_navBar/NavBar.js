@@ -103,11 +103,19 @@ const NavBar = observer(() => {
                         <Modal visible={modal2} setVisible={setModal2}>Modal 2</Modal>
                         <Modal visible={modal3} setVisible={setModal3}>Modal 3</Modal>
                         <div className="line">
-                            <button onClick={changeVisible1}>Создать опрос</button>
-                            <button onClick={changeVisible2}>Результаты опросов</button>
-                            {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
-                            <button onClick={register}>Создать пользователя</button>
-                            <button onClick={logout}>Выйти</button>
+                            <div>
+                                <button className="homebtn" onClick={() => {
+                                navigate('/mainpage')}
+                                }>Домой</button>
+                            </div>
+                            <div>
+                                <button onClick={changeVisible1}>Создать опрос</button>
+                                <button onClick={changeVisible2}>Результаты опросов</button>
+                                {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
+                                <button onClick={register}>Создать пользователя</button>
+                                <button onClick={logout}>Выйти</button>
+
+                            </div>
                         </div>
                     </div>
                     :

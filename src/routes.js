@@ -9,7 +9,7 @@ import Register from "./pages/register/Register";
 
 export const authRoutes = [
     {
-        path: '/auth',
+        path: '/auth',  
         Component: AuthPage
     },
     {
