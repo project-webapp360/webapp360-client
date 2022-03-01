@@ -60,13 +60,17 @@
     flex-direction: row;
     justify-content: flex-end;
 
+    /*
     margin-top: 10px;
+    */
 }
 
 .survey__page {
     justify-content: center;
     margin-right: 40px;
+    /*
     padding: 5px;
+    */
 
     font-family: Poppins;
     font-style: normal;
@@ -77,7 +81,9 @@
 
 .survey__button {
     margin-left: 20px;
+    /*
     padding: 5px 25px 5px 25px;
+    */
     border-radius: 4px;
     border: none;
 
@@ -94,7 +100,9 @@
 
 .survey__button-end{
     margin-left: 20px;
+    /*
     padding: 5px 25px 5px 25px;
+    */
     border-radius: 4px;
     border: none;
 
