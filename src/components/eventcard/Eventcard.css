@@ -5,6 +5,8 @@
     margin-left: 10px;
     margin-right: 10px;
 
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
 }
 .eventcard__firstString {
     display: flex;
@@ -104,4 +106,12 @@
 
 .eventcard__button-refuse:hover {
     background-color: #606060
+}
+
+.eventcard__button-agree:focus {
+    background-color: #648CFD;
+}
+
+.eventcard__button-refuse:focus {
+    background-color: #8D898B;
 }

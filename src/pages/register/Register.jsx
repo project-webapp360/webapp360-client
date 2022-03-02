@@ -1,17 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import './register.css'
-import {deleteToken, login, registration} from "../../axios/API";
+import {registration} from "../../axios/API";
 import {useNavigate} from 'react-router-dom'
 import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
-import UserService from '../../service/userService'
-import TokenService from "../../service/tokenService";
-
-const tokenService = new TokenService()
 
 
 const Register = observer(() => {
-    const {user} = useContext(Context)
     const navigate = useNavigate()
 
 
@@ -19,45 +13,15 @@ const Register = observer(() => {
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('')
 
-    const signIn = async (e) => {
-        try {
-            e.preventDefault()
-            const data = await login(email, password)
-            console.log(data.email)
-
-            user.setUser(data)
-            user.setIsAuth(true)
-            // localStorage.setItem('user', JSON.stringify(data))
-            // localStorage.setItem('isAuth', "true")
-            navigate("/mainpage")
-        } catch (e) {
-            alert(e.response.data.message)
-        }
-    }
-
     const singUp = async (e) => {
         try {
             e.preventDefault()
             const data = await registration(email, password, role)
 
-            // localStorage.setItem('user', JSON.stringify(data))
-            // localStorage.setItem('isAuth', "true")
             navigate("/mainpage")
         } catch (e) {
             alert(e.response.data.message)
         }
-    }
-
-    const logout = async () => {
-        deleteToken(user.user.id)
-        user.setIsAuth(false)
-        user.setUser({})
-        // localStorage.setItem('user', JSON.stringify(''))
-        // localStorage.setItem('isAuth', "false")
-        // localStorage.setItem('token', '')
-        tokenService.unbindToken('accessToken')
-        tokenService.unbindToken('refreshToken')
-        navigate("/login")
     }
 
 

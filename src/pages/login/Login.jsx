@@ -14,6 +14,13 @@ const Login = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
+    /*useEffect(
+        () => {
+            user.setUser({})
+            user.setIsAuth(false)
+        }
+    )*/
+
 
 
     const [email, setEmail] = useState('')

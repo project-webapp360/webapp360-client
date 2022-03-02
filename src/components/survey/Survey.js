@@ -87,19 +87,21 @@ const Survey = ({visible, setVisible}) => {
       </FormControl>
         <div className="survey__navigation">
           <div className="survey__page">{page} из 10</div>
-          {page > 1
-            ?
-            <button className="survey__button" onClick={decrease}>Назад</button>
-            :
-            <button disabled className="survey__button">Назад</button>
-          }
-          {page < 10
-            ?
-            <button className="survey__button" onClick={increase}>Вперёд</button>
-            :
-            <button disabled className="survey__button">Вперёд</button>
-          }
-          <button onClick={changeAllVisible} className="survey__button-end">Завершить</button>
+          <div>
+            {page > 1
+                ?
+                <button className="survey__button" onClick={decrease}>Назад</button>
+                :
+                <button disabled className="survey__button">Назад</button>
+            }
+            {page < 10
+                ?
+                <button className="survey__button" onClick={increase}>Вперёд</button>
+                :
+                <button disabled className="survey__button">Вперёд</button>
+            }
+            <button onClick={changeAllVisible} className="survey__button-end">Завершить</button>
+          </div>
         </div>
       </div>
     </div>

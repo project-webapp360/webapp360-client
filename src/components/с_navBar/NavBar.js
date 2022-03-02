@@ -111,7 +111,7 @@ const NavBar = observer(() => {
                             <div>
                                 <button onClick={changeVisible1}>Создать опрос</button>
                                 <button onClick={changeVisible2}>Результаты опросов</button>
-                                {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
+                                <button onClick={changeVisible3}>Управление пользователями</button>
                                 <button onClick={register}>Создать пользователя</button>
                                 <button onClick={logout}>Выйти</button>
 
