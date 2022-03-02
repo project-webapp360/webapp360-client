@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 .eventcard__testCreator{
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -25,7 +25,7 @@
     color: #90A0B7;
 }
 .eventcard__title {
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -35,7 +35,7 @@
 }
 
 .eventcard__date-start {
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -45,7 +45,7 @@
 }
 
 .eventcard__date-end {
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -55,7 +55,7 @@
 }
 
 .eventcard__name {
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -71,28 +71,32 @@
 }
 
 .eventcard__button-refuse {
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
     text-align: center;
     color: #FFFFFF;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
 
     border: none;
     margin-right: 20px;
-    background: #8D898B;
+    background: #FD218B;
     border-radius: 4px;
 }
 
 .eventcard__button-agree {
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
     text-align: center;
     color: #FFFFFF;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
 
     border: none;
     margin-right: 20px;
@@ -105,7 +109,7 @@
 }
 
 .eventcard__button-refuse:hover {
-    background-color: #606060
+    background-color: #e31d7d;
 }
 
 .eventcard__button-agree:focus {
@@ -113,5 +117,5 @@
 }
 
 .eventcard__button-refuse:focus {
-    background-color: #8D898B;
+    background-color: #FD218B;
 }

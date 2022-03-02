@@ -7,6 +7,7 @@ import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
 import {deleteToken} from "../../axios/API";
 import TokenService from "../../service/tokenService";
+import {Button} from "@mui/material";
 
 const tokenService = new TokenService()
 
@@ -111,7 +112,7 @@ const NavBar = observer(() => {
                             <div>
                                 <button onClick={changeVisible1}>Создать опрос</button>
                                 <button onClick={changeVisible2}>Результаты опросов</button>
-                                <button onClick={changeVisible3}>Управление пользователями</button>
+                                {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
                                 <button onClick={register}>Создать пользователя</button>
                                 <button onClick={logout}>Выйти</button>
 

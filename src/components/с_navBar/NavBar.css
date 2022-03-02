@@ -9,7 +9,7 @@
 
 .line button {
     margin-right: 10px;
-    font-family: Poppins;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -17,8 +17,8 @@
     text-align: center;
     color: #FFFFFF;
     border-radius: 4px;
-
-
+    padding: 0px 16px 0px 16px;
+    cursor: pointer;
 
     background: #648CFD;
     border: none;

@@ -29,21 +29,7 @@ export const authRoutes = [
 
 export const publicRoutes = [
     {
-        path: '/main',
-        Component: Main
-    },
-    {
-        path: '/second',
-        Component: Second
-    },
-    {
         path: '/login',
         Component: Login
     },
-    {
-        path: '/number',
-        Component: NumberComp
-    },
-
-
 ]
