@@ -1,10 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import './login.css'
-import {deleteToken, getEvents, login, registration} from "../../axios/API";
+import {deleteToken, login} from "../../axios/API";
 import {useNavigate} from 'react-router-dom'
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import UserService from '../../service/userService'
 import TokenService from "../../service/tokenService";
 
 const tokenService = new TokenService()
@@ -14,14 +13,24 @@ const Login = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
-    /*useEffect(
+    useEffect(
         () => {
-            user.setUser({})
-            user.setIsAuth(false)
+            if (user.user !== "{}") {
+                navigate('/mainpage')
+            }
+
         }
-    )*/
+    )
 
-
+    // async function logoutEach () {
+    //     try {
+    //         user.setUser({})
+    //         user.setIsAuth(false)
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // logoutEach()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
