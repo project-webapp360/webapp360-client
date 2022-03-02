@@ -15,7 +15,7 @@ const Login = observer(() => {
 
     useEffect(
         () => {
-            if (user.user !== "{}") {
+            if (user.isAuth === true) {
                 navigate('/mainpage')
             }
 
