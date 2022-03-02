@@ -87,9 +87,10 @@ const Mainpage = observer(() => {
 
       {/*<NavBar setVisible1={changeVisible1} setVisible2={changeVisible2} setVisible3={changeVisible3}/>*/}
       <Progressbar/>
-      {
-        events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
-      }
+      <h1>Victor is not okey</h1>
+      {/*{*/}
+      {/*  events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)*/}
+      {/*}*/}
     </div>
   );
 });
