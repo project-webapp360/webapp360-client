@@ -14,10 +14,16 @@ const Mainpage = observer(() => {
   const {events} = useContext(Context)
 
 
-  useEffect( async () => {
-    const events = await getEvents()
-    localStorage.setItem("events", JSON.stringify(events))
+
+  useEffect(   () => {
+    async function fetchData() {
+      const events = await getEvents()
+      localStorage.setItem("events", JSON.stringify(events))
+    }
+    fetchData()
   })
+
+
   //
   // console.log(JSON.parse(localStorage.getItem("events")))
   // console.log(events.events)
@@ -89,7 +95,7 @@ const Mainpage = observer(() => {
       <Progressbar/>
       <h1>Victor is not okey</h1>
       {/*{*/}
-      {/*  events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)*/}
+        events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
       {/*}*/}
     </div>
   );
