@@ -105,9 +105,7 @@ const NavBar = observer(() => {
                         <Modal visible={modal3} setVisible={setModal3}>Modal 3</Modal>
                         <div className="line">
                             <div>
-                                <button className="homebtn" onClick={() => {
-                                navigate('/mainpage')}
-                                }>Домой</button>
+                                <button className="homebtn" onClick={() => {navigate('/mainpage')}}>Домой</button>
                             </div>
                             <div>
                                 <button onClick={changeVisible1}>Создать опрос</button>
