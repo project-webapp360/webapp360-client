@@ -53,8 +53,9 @@ const App = observer(() => {
             <BrowserRouter>
                 <Navbar/>
                 {/*<AppRouter/>*/}
-                {/*<Mainpage/>*/}
+
                 <AppRouter/>
+                {/*<Mainpage/>*/}
             </BrowserRouter>
         </div>
     );
