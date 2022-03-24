@@ -3,6 +3,7 @@ import "./AddEvent.css"
 import {createEvent, getEvents} from "../../axios/API";
 import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
+import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 
 const AddEvent = ({create, setVisible}) => {
 
@@ -65,15 +66,19 @@ const AddEvent = ({create, setVisible}) => {
 
   return (
     <form className="full-form">
+
       <input className="inputs" type="text" placeholder={"Название опроса"} value={title} onChange={e => setTitle(e.target.value)}/>
 
       <input className="inputs" type="date" value={dateEnd} onChange={event => setDateEnd(event.target.value)}/>
 
-      <select className="inputs" name="user" id="user" value={name} onChange={e => setName(e.target.value)}>
-        {array.map((e) =>
-          <option value={e.Name}>{e.Name}</option>
-        )}
-      </select>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">User</InputLabel>
+        <Select value={name} label="user" onChange={event => setName(event.target.value)}>
+          {array.map((e) =>
+            <MenuItem value={e.Name}>{e.Name}</MenuItem>
+          )}
+        </Select>
+      </FormControl>
 
       <button className="input__button" onClick={newEventForm}>Create Test</button>
     </form>

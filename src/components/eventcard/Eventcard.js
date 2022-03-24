@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import "./Eventcard.css"
-import {Link} from "react-router-dom";
 import Survey from "../survey/Survey";
 import Modal from "../modal/Modal";
 
@@ -36,5 +35,4 @@ const Eventcard = (props) => {
 
   );
 };
-
 export default Eventcard;
