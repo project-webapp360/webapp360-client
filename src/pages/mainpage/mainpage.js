@@ -6,6 +6,13 @@ import {Context} from "../../index";
 import {getEvents} from "../../axios/API";
 import {observer} from "mobx-react-lite";
 
+const STATES = {
+  INITIAL: 'initial',
+  LOADING: 'loading',
+  ERROR: 'error',
+  LOADED: 'loaded'
+}
+
 const Mainpage = observer(() => {
 
   const {events} = useContext(Context)
@@ -47,17 +54,35 @@ const Mainpage = observer(() => {
     },])
 
   useEffect(   () => {
-    async function fetchData() {
-      const events = await getEvents()
-      localStorage.setItem("events", JSON.stringify(events))
-    }
-    fetchData()
+    events.fetchData()
   })
+
+  const switchState = (state) => {
+    switch (state) {
+
+      case STATES.INITIAL: {
+        return <h1>КОТИК!!!</h1>
+      }
+
+      case STATES.LOADING: {
+        return <h1>Выполняется загрузка...</h1>
+      }
+
+      case STATES.LOADED: {
+        return events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
+      }
+
+      default: {
+        return <h1>ERROR...</h1>
+      }
+
+    }
+  }
 
   return (
     <div className="mainPage">
       <Progressbar/>
-      {events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)}
+      {switchState(events.caseLoading)}
       </div>
   );
 });
