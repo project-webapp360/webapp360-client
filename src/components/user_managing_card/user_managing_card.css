@@ -1,0 +1,41 @@
+.user-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    border: none;
+    border-bottom: 2px solid #648CFD;
+
+    margin-bottom: 15px;
+}
+
+.user-card__title {
+    margin: 5px 5px 5px 20px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.user-card__button {
+    margin: 5px 5px 5px 20px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 4px;
+    border: none;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #648CFD;
+    cursor: pointer;
+}
+
+.user-card__button:hover {
+    background-color: rgb(61, 107, 255);
+}
