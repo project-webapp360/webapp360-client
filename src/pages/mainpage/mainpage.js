@@ -61,7 +61,7 @@ const Mainpage = observer(() => {
     switch (state) {
 
       case STATES.INITIAL: {
-        return <h1>КОТИК!!!</h1>
+        return <h1>...</h1>
       }
 
       case STATES.LOADING: {
@@ -69,7 +69,7 @@ const Mainpage = observer(() => {
       }
 
       case STATES.LOADED: {
-        return events.events.map((item) => <Eventcard title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
+        return events.events.map((item) => <Eventcard id={item._id} title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
       }
 
       default: {
