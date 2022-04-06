@@ -2,12 +2,18 @@ import React, {useState} from 'react';
 import "./Eventcard.css"
 import Survey from "../survey/Survey";
 import Modal from "../modal/Modal";
+import {deleteEvent} from "../../axios/API";
 
 const Eventcard = (props) => {
 
   const [modal,setModal] = useState(false);
   const changeVisible = () => {
     setModal(true)
+  }
+
+  const eventDelete = async (id) => {
+    const data = await deleteEvent(id)
+    console.log(data)
   }
 
   return (
@@ -26,7 +32,7 @@ const Eventcard = (props) => {
         <div className="eventcard__lastString">
           <div className="eventcard__name">тест на: {props.name}</div>
           <div className="eventcard__buttons">
-            <button className="eventcard__button-refuse">Отклонить</button>
+            <button className="eventcard__button-refuse" onClick={() =>{eventDelete(props.id)}}>Отклонить</button>
             <button className="eventcard__button-agree" onClick={changeVisible}>Принять</button>
           </div>
         </div>

@@ -46,7 +46,10 @@ export const getEvents = async () => {
     return data
 }
 
-
+export const deleteEvent = async (id) => {
+    const {data} = await $host.get(`api/event/delete/${id}`)
+    return {data}
+}
 
 
 
@@ -72,8 +75,8 @@ export const refreshToken = async (failedRequest) => {
     // localStorage.setItem('token', data.accessToken)
     tokenService.setToken('accessToken', data.accessToken)
     tokenService.setToken('refreshToken', data.refreshToken)
-    failedRequest.response.config.headers['Authorization'] = "Bearer " + data.accessToken
+    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + data.accessToken
     return Promise.resolve();
 }
 
-createAuthRefreshInterceptor($AuthHost, refreshAuthLogic);
+createAuthRefreshInterceptor($AuthHost, refreshToken);
