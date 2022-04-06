@@ -48,10 +48,6 @@ const AddEvent = ({create, setVisible}) => {
 
   }
 
-  const newEventCreate = async () => {
-
-  }
-
   const array = [
     {
       Name: "user1",

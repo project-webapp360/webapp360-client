@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {deleteToken} from "../../axios/API";
 import TokenService from "../../service/tokenService";
 import {Button} from "@mui/material";
+import UserManaging from "../user_managing/user_managing";
 
 const tokenService = new TokenService()
 
@@ -57,7 +58,7 @@ const NavBar = observer(() => {
 
     const [modal1, setModal1] = useState(false);
     const [modal2, setModal2] = useState(false);
-    const [modal3, setModal3] = useState(false);
+    const [modal4, setModal3] = useState(false);
 
 
     const changeVisible1 = () => {
@@ -88,10 +89,6 @@ const NavBar = observer(() => {
         navigate("/login")
     }
 
-    const register = () => {
-        navigate("/register")
-    }
-
     return (
         <div>
             {
@@ -99,19 +96,21 @@ const NavBar = observer(() => {
                     ?
                     <div>
                         <Modal visible={modal1} setVisible={setModal1}>
-                            <AddEvent visible={modal1} setVisible={setModal1} create={createEvent}/>
+                            <AddEvent setVisible={setModal1} create={createEvent}/>
                         </Modal>
                         <Modal visible={modal2} setVisible={setModal2}>Modal 2</Modal>
-                        <Modal visible={modal3} setVisible={setModal3}>Modal 3</Modal>
+                        <Modal visible={modal4} setVisible={setModal3}>
+                            <UserManaging setVisible={setModal3}/>
+                        </Modal>
                         <div className="line">
                             <div>
                                 <button className="homebtn" onClick={() => {navigate('/mainpage')}}>Домой</button>
                             </div>
                             <div>
                                 <button onClick={changeVisible1}>Создать опрос</button>
-                                <button onClick={changeVisible2}>Результаты опросов</button>
-                                {/*<button onClick={changeVisible3}>Управление пользователями</button>*/}
-                                <button onClick={register}>Создать пользователя</button>
+                                {/*<button onClick={changeVisible2}>Результаты опросов</button>*/}
+                                <button onClick={changeVisible3}>Управление пользователями</button>
+                                {/*<button onClick={register}>Создать пользователя</button>*/}
                                 <button onClick={logout}>Выйти</button>
 
                             </div>
