@@ -28,7 +28,7 @@ const UserManaging = (props) => {
       ban: false
     },
     {
-      number: 4,
+      number: 5,
       name: 'Родион',
       ban: true
     }]

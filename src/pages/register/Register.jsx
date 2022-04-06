@@ -6,62 +6,90 @@ import {observer} from "mobx-react-lite";
 
 
 const Register = observer(() => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [role, setRole] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [role, setRole] = useState('')
 
-    const singUp = async (e) => {
-        try {
-            e.preventDefault()
-            const data = await registration(email, password, role)
+  const singUp = async (e) => {
+    try {
+      e.preventDefault()
+      const data = await registration(email, password, role)
 
-            navigate("/mainpage")
-        } catch (e) {
-            alert(e.response.data.message)
-        }
+      navigate("/mainpage")
+    } catch (e) {
+      alert(e.response.data.message)
     }
+  }
 
 
-    return (
-        <div>
+  return (
+    <div className="mainWindowParent">
 
-            <div className="super valign-wrapper center ">
-                <div className="row form-border">
-                    <form className="col s12" onSubmit={singUp}>
+      <div className="mainWindowChild">
+        <form className="mainWindowForm" onSubmit={singUp}>
 
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input value={email} onChange={e => setEmail(e.target.value)} id={email} name={email} type="email" className="validate"/>
-                                    <label htmlFor={email}>Email</label>
-                            </div>
-                        </div>
+          <div className="realUserName">
 
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input value={password} onChange={e => setPassword(e.target.value)} id={password} name={password} type="password" className="validate"/>
-                                    <label htmlFor={password}>Пароль</label>
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input value={role} onChange={e => setRole(e.target.value)} id={role} name={role} type="text" className="validate"/>
-                                <label htmlFor={role}>Роль</label>
-                            </div>
-                        </div>
-
-                        <button className="btn z-depth-0 light-blue lighten-3 waves-effect waves-light">Создать
-                        </button>
-                    </form>
-
-                </div>
+            <div className="labelDiv">
+              <div>
+                <input type="email" className="inputs"/>
+                <label>Имя</label>
+              </div>
             </div>
 
-        </div>
-    );
+            <div className="labelDiv">
+              <div>
+                <input type="password" className="inputs"/>
+                <label>Фамилия</label>
+              </div>
+            </div>
+
+            <div className="labelDiv">
+              <div>
+                <input type="text" className="validate"/>
+                <label>Отчество</label>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="systemUserName">
+
+            <div className="labelDiv">
+              <div>
+                <input  value={email} onChange={e => setEmail(e.target.value)} id={email} name={email} type="email"
+                        className="inputs"/>
+                <label htmlFor={email}>Email</label>
+              </div>
+            </div>
+
+            <div className="labelDiv">
+              <div>
+                <input  value={password} onChange={e => setPassword(e.target.value)} id={password} name={password}
+                        type="password" className="inputs"/>
+                <label htmlFor={password}>Пароль</label>
+              </div>
+            </div>
+
+            <div className="labelDiv">
+              <div>
+                <input value={role} onChange={e => setRole(e.target.value)} id={role} name={role} type="text"
+                       className="validate"/>
+                <label htmlFor={role}>Роль</label>
+              </div>
+            </div>
+
+          </div>
+
+          <button className="createButton">Создать нового пользователя</button>
+        </form>
+      </div>
+
+    </div>
+  );
 });
 
 export default Register;
