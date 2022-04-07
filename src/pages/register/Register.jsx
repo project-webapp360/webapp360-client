@@ -3,6 +3,7 @@ import './register.css'
 import {registration} from "../../axios/API";
 import {useNavigate} from 'react-router-dom'
 import {observer} from "mobx-react-lite";
+import {MenuItem} from "@mui/material";
 
 
 const Register = observer(() => {
@@ -24,6 +25,17 @@ const Register = observer(() => {
     }
   }
 
+  const array = [
+    {
+      Name: "user1",
+    },
+    {
+      Name: "user2",
+    },
+    {
+      Name: "user3",
+    },
+  ]
 
   return (
     <div className="mainWindowParent">
@@ -60,16 +72,16 @@ const Register = observer(() => {
 
             <div className="input-label-div">
               <div>
-                <input  value={email} onChange={e => setEmail(e.target.value)} id={email} name={email} type="email"
-                        className="inputsDiv"/>
+                <input value={email} onChange={e => setEmail(e.target.value)} id={email} name={email} type="email"
+                       className="inputsDiv"/>
                 <label className="labelDiv" htmlFor={email}>Email</label>
               </div>
             </div>
 
             <div className="input-label-div">
               <div>
-                <input  value={password} onChange={e => setPassword(e.target.value)} id={password} name={password}
-                        type="password" className="inputsDiv"/>
+                <input value={password} onChange={e => setPassword(e.target.value)} id={password} name={password}
+                       type="password" className="inputsDiv"/>
                 <label className="labelDiv" htmlFor={password}>Пароль</label>
               </div>
             </div>
@@ -81,7 +93,14 @@ const Register = observer(() => {
                 <label className="labelDiv" htmlFor={role}>Роль</label>
               </div>
             </div>
-
+            {/*
+            <select value={role} onChange={e => setRole(e.target.value)} name={role} id={role}>
+              {array.map((e) =>
+                <MenuItem value={e.Name}>{e.Name}</MenuItem>
+              )}
+            </select>
+            <label className="labelDiv" htmlFor={role}>Роль</label>
+            */}
           </div>
 
           <button className="createButton">Создать нового пользователя</button>
