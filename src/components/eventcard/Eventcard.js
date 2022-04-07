@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import "./Eventcard.css"
 import Survey from "../survey/Survey";
 import Modal from "../modal/Modal";
 import {deleteEvent} from "../../axios/API";
+import {Context} from "../../index";
+import {observable} from "mobx";
 
 const Eventcard = (props) => {
+
+  const {events} = useContext(Context)
 
   const [modal,setModal] = useState(false);
   const changeVisible = () => {
@@ -13,6 +17,7 @@ const Eventcard = (props) => {
 
   const eventDelete = async (id) => {
     const data = await deleteEvent(id)
+    await events.updateData(data)
     console.log(data)
   }
 
@@ -41,4 +46,5 @@ const Eventcard = (props) => {
 
   );
 };
+
 export default Eventcard;

@@ -42,15 +42,6 @@ const Navbar = observer(() => {
         }
     }
 
-    const refresh = async (e) => {
-        try {
-            e.preventDefault()
-            const data = await refreshToken()
-            console.log(data)
-        } catch (e) {
-
-        }
-    }
 
     return (
         <div>
@@ -62,9 +53,7 @@ const Navbar = observer(() => {
                             <div className="item">
                                 <button onClick={() => user.setIsAuth(!user.isAuth)}>Change</button>
                             </div>
-                            <div className="item">
-                                <button onClick={refresh}>refresh</button>
-                            </div>
+
                             <div className="item">
                                 <Link to="/main">Main</Link>
                             </div>

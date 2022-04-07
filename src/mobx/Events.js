@@ -23,6 +23,7 @@ export default class Events {
             state: observable,
             fetchData: action,
             caseLoading: computed,
+            updateData: action
         })
     }
 
@@ -67,6 +68,13 @@ export default class Events {
                 this.state = "error"
             })
         }
+    }
+
+    async updateData(data) {
+        runInAction(() => {
+            this.events = data
+            this.state = STATES.LOADING
+        })
     }
 
 

@@ -39,6 +39,7 @@ const AddEvent = ({create, setVisible}) => {
           user.user.role
       )
       const eventsFormDB = await getEvents()
+      events.updateData(eventsFormDB)
       events.setEvents([...eventsFormDB])
       console.log(events.events)
     navigate('/mainpage')

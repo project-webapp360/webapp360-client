@@ -19,13 +19,13 @@ const authInterceptor = config => {
     return config
 }
 
-const refreshInterceptor = config => {
+/*const refreshInterceptor = config => {
     config.headers.authorization = `Bearer ${tokenService.getTokenFromStorage('refreshToken')}`
     return config
-}
+}*/
 
 $AuthHost.interceptors.request.use(authInterceptor)
-$refresh.interceptors.request.use(refreshInterceptor)
+// $refresh.interceptors.request.use(refreshInterceptor)
 
 export {
     $host,
