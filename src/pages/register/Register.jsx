@@ -33,24 +33,24 @@ const Register = observer(() => {
 
           <div className="realUserName">
 
-            <div className="labelDiv">
+            <div className="input-label-div">
               <div>
-                <input type="email" className="inputs"/>
-                <label>Имя</label>
+                <input type="text" className="inputsDiv"/>
+                <label className="labelDiv">Имя</label>
               </div>
             </div>
 
-            <div className="labelDiv">
+            <div className="input-label-div">
               <div>
-                <input type="password" className="inputs"/>
-                <label>Фамилия</label>
+                <input type="text" className="inputsDiv"/>
+                <label className="labelDiv">Фамилия</label>
               </div>
             </div>
 
-            <div className="labelDiv">
+            <div className="input-label-div">
               <div>
-                <input type="text" className="validate"/>
-                <label>Отчество</label>
+                <input type="text" className="inputsDiv"/>
+                <label className="labelDiv">Отчество</label>
               </div>
             </div>
 
@@ -58,27 +58,27 @@ const Register = observer(() => {
 
           <div className="systemUserName">
 
-            <div className="labelDiv">
+            <div className="input-label-div">
               <div>
                 <input  value={email} onChange={e => setEmail(e.target.value)} id={email} name={email} type="email"
-                        className="inputs"/>
-                <label htmlFor={email}>Email</label>
+                        className="inputsDiv"/>
+                <label className="labelDiv" htmlFor={email}>Email</label>
               </div>
             </div>
 
-            <div className="labelDiv">
+            <div className="input-label-div">
               <div>
                 <input  value={password} onChange={e => setPassword(e.target.value)} id={password} name={password}
-                        type="password" className="inputs"/>
-                <label htmlFor={password}>Пароль</label>
+                        type="password" className="inputsDiv"/>
+                <label className="labelDiv" htmlFor={password}>Пароль</label>
               </div>
             </div>
 
-            <div className="labelDiv">
+            <div className="input-label-div">
               <div>
                 <input value={role} onChange={e => setRole(e.target.value)} id={role} name={role} type="text"
-                       className="validate"/>
-                <label htmlFor={role}>Роль</label>
+                       className="inputsDiv"/>
+                <label className="labelDiv" htmlFor={role}>Роль</label>
               </div>
             </div>
 
