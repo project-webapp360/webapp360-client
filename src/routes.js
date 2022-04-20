@@ -6,6 +6,7 @@ import NumberComp from "./pages/number/NumberComp";
 import Quiz from "./pages/Quiz/Quiz";
 import Mainpage from "./pages/mainpage/mainpage";
 import Register from "./pages/register/Register";
+import UserManagingPage from "./pages/userManagingPage/userManagingPage";
 
 export const authRoutes = [
     {
@@ -23,9 +24,11 @@ export const authRoutes = [
     {
         path: '/register',
         Component: Register
-    }
-
-]
+    },
+    {
+        path: '/UserManagingPage',
+        Component: UserManagingPage
+    }]
 
 export const publicRoutes = [
     {

@@ -38,6 +38,7 @@ const Eventcard = (props) => {
           <div className="eventcard__name">тест на: {props.name}</div>
           <div className="eventcard__buttons">
             <button className="eventcard__button-refuse" onClick={() =>{eventDelete(props.id)}}>Отклонить</button>
+            <button className="eventcard__button-info">Статистика</button>
             <button className="eventcard__button-agree" onClick={changeVisible}>Принять</button>
           </div>
         </div>

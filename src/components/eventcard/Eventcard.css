@@ -87,6 +87,23 @@
     border-radius: 4px;
 }
 
+.eventcard__button-info {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+
+    border: none;
+    margin-right: 20px;
+    border-radius: 4px;
+    background: #9f9f9f;
+}
+
 .eventcard__button-agree {
     font-family: Montserrat;
     font-style: normal;
@@ -108,12 +125,20 @@
     background-color: rgb(61, 107, 255);
 }
 
+.eventcard__button-info:hover {
+    background-color: #969696;
+}
+
 .eventcard__button-refuse:hover {
     background-color: #e31d7d;
 }
 
 .eventcard__button-agree:focus {
     background-color: #648CFD;
+}
+
+.eventcard__button-info:focus {
+    background-color: #9f9f9f;
 }
 
 .eventcard__button-refuse:focus {

@@ -15,12 +15,16 @@ const UserManagingCard = (props) => {
         ?
         <div className="user-card">
           <div className="user-card__title">{props.userName}</div>
-          <button onClick={ban} className="user-card__button">БАН!!!</button>
+          <div>
+            <button onClick={ban} className="user-card__button">БАН!!!</button>
+          </div>
         </div>
         :
         <div className="user-card">
           <div className="user-card__title">{props.userName}</div>
-          <button className="user-card__button">РазБАНить?</button>
+          <div>
+            <button className="user-card__button">РазБАНить?</button>
+          </div>
         </div>
       }
 

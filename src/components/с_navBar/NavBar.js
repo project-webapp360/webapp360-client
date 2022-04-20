@@ -8,7 +8,6 @@ import {useNavigate} from "react-router-dom";
 import {deleteToken} from "../../axios/API";
 import TokenService from "../../service/tokenService";
 import {Button} from "@mui/material";
-import UserManaging from "../user_managing/user_managing";
 
 const tokenService = new TokenService()
 
@@ -89,6 +88,10 @@ const NavBar = observer(() => {
         navigate("/login")
     }
 
+    const userManagingNavigate = () => {
+        navigate("/UserManagingPage")
+    }
+
     return (
         <div>
             {
@@ -99,9 +102,7 @@ const NavBar = observer(() => {
                             <AddEvent setVisible={setModal1} create={createEvent}/>
                         </Modal>
                         <Modal visible={modal2} setVisible={setModal2}>Modal 2</Modal>
-                        <Modal visible={modal4} setVisible={setModal3}>
-                            <UserManaging setVisible={setModal3}/>
-                        </Modal>
+                        <Modal visible={modal4} setVisible={setModal3}></Modal>
                         <div className="line">
                             <div>
                                 <button className="homebtn" onClick={() => {navigate('/mainpage')}}>Домой</button>
@@ -109,7 +110,7 @@ const NavBar = observer(() => {
                             <div>
                                 <button onClick={changeVisible1}>Создать опрос</button>
                                 {/*<button onClick={changeVisible2}>Результаты опросов</button>*/}
-                                <button onClick={changeVisible3}>Управление пользователями</button>
+                                <button onClick={userManagingNavigate}>Управление пользователями</button>
                                 {/*<button onClick={register}>Создать пользователя</button>*/}
                                 <button onClick={logout}>Выйти</button>
 
