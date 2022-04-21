@@ -22,6 +22,24 @@
     color: #707683;
 }
 
+.user-card__button__bun {
+    margin: 5px 20px 5px 20px;
+    padding: 0px 10px 0px 10px;
+    min-width: 140px;
+    border-radius: 4px;
+    border: none;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #fb218b;
+    cursor: pointer;
+}
+
 .user-card__button {
     margin: 5px 20px 5px 20px;
     padding: 0px 10px 0px 10px;
@@ -42,4 +60,8 @@
 
 .user-card__button:hover {
     background-color: rgb(61, 107, 255);
+}
+
+.user-card__button__bun:hover {
+    background-color: #e31d7d;
 }

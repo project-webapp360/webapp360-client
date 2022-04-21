@@ -16,7 +16,7 @@ const UserManagingCard = (props) => {
         <div className="user-card">
           <div className="user-card__title">{props.userName}</div>
           <div>
-            <button onClick={ban} className="user-card__button">БАН!!!</button>
+            <button onClick={ban} className="user-card__button__bun">БАН!!!</button>
           </div>
         </div>
         :
