@@ -34,9 +34,8 @@
     flex-direction: column;
     align-items: flex-start;
 
-    border-bottom: 1px solid #000000;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 5%;
+    margin-right: 40%;
     padding-bottom: 20px;
 }
 
@@ -45,11 +44,11 @@
     flex-direction: column;
     align-items: flex-end;
 
-    padding-right: 20px;
+    margin-left: 40%;
+    margin-right: 5%;
 }
 
 .input-label-div {
-    max-width: 200px;
 }
 
 .inputsDiv {
@@ -81,7 +80,7 @@
     text-align: center;
     color: #FFFFFF;
 
-    margin: 20px 12% 0px 12%;
+    margin: 25px 12% 0px 12%;
     padding: 2px 0px 2px 0px;
     border-radius: 4px;
     cursor: pointer;
@@ -91,4 +90,13 @@
 
 .createButton:hover {
     background-color: rgb(61, 107, 255);
+}
+
+.createButton:focus {
+    background-color: rgb(52, 90, 211);
+}
+
+.blackLine {
+    margin: 0px 5% 5px 5%;
+    border-bottom: 1px solid #000000;
 }

@@ -6,8 +6,6 @@ import {useNavigate} from "react-router-dom";
 const UserManagingPage = () => {
   const navigate = useNavigate()
 
-  const numberOfUsers = 6
-
   const userNames = [
     {
       number: 1,
@@ -44,8 +42,8 @@ const UserManagingPage = () => {
     <div className="mainDiv">
       <div className="topPanel">
         <div>
-          <div className="number_of_users">Всего сотрудников: {numberOfUsers}</div>
-          <div className="progressbar__date">Сегодня: {new Date().toLocaleDateString("fr-CA")}</div>
+          <div className="number_of_users">Всего сотрудников: {userNames.length}</div>
+          <div className="userManagingPage_Date">Сегодня: {new Date().toLocaleDateString("fr-CA")}</div>
         </div>
         <button className="create_button" onClick={register}>Создать нового пользователя</button>
       </div>

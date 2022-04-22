@@ -5,8 +5,10 @@
     align-items: center;
     border: none;
     background: white;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
 
-    margin-bottom: 10px;
+    margin: 5px 10px 5px 10px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -59,9 +61,17 @@
 }
 
 .user-card__button:hover {
-    background-color: rgb(61, 107, 255);
+    background-color: #3D6BFFFF;
 }
 
 .user-card__button__bun:hover {
     background-color: #e31d7d;
+}
+
+.user-card__button:focus {
+    background-color: #3a63ea;
+}
+
+.user-card__button__bun:focus {
+    background-color: #d51c76;
 }

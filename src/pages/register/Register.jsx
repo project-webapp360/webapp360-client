@@ -68,6 +68,8 @@ const Register = observer(() => {
 
           </div>
 
+          <div className="blackLine"></div>
+
           <div className="systemUserName">
 
             <div className="input-label-div">

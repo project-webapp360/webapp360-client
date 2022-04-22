@@ -83,9 +83,7 @@ const Mainpage = observer(() => {
     <div className="mainPage">
       <Progressbar/>
       {switchState(events.caseLoading)}
-
-
-      </div>
+    </div>
   );
 });
 
