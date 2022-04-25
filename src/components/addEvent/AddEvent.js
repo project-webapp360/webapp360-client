@@ -1,7 +1,8 @@
 import React, {useContext, useState} from 'react';
-import {createEvent, getEvents} from "../../axios/API";
+import {createEvent, createEventUsers, getEvents, getEventsUser} from "../../axios/API";
 import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
+import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import "./AddEvent.css"
 
 const AddEvent = ({create, setVisible}) => {
@@ -29,22 +30,26 @@ const AddEvent = ({create, setVisible}) => {
         setDateEnd('')
         setName('')
 
-        try {
-            const data = await createEvent(
-                title,
-                new Date().toLocaleDateString("fr-CA"),
-                dateEnd,
-                "Ivan",
-                user.user.role
-            )
-            const eventsFormDB = await getEvents()
-            events.updateData(eventsFormDB)
-            events.setEvents([...eventsFormDB])
-            console.log(events.events)
-            navigate('/mainpage')
-        } catch (e) {
-            alert(e.response.data.message)
-        }
+    try {
+      const data = await createEvent(
+          title,
+          new Date().toLocaleDateString("fr-CA"),
+          dateEnd,
+          "Ivan",
+          user.user.role
+      )
+
+      const allUsers = await createEventUsers(data._id)
+
+      // const eventsFormDB = await getEvents()
+      const eventsFormDB = await getEventsUser(user.user.id)
+      events.updateData(eventsFormDB)
+      events.setEvents([...eventsFormDB])
+      console.log(events.events)
+    navigate('/mainpage')
+    } catch (e) {
+      alert(e.response.data.message)
+    }
 
     }
 

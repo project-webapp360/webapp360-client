@@ -15,6 +15,7 @@ const STATES = {
 
 const Mainpage = observer(() => {
 
+  const {user} = useContext(Context)
   const {events} = useContext(Context)
   const [EventCardData, setEventCardData] = useState([
     {
@@ -69,7 +70,7 @@ const Mainpage = observer(() => {
       }
 
       case STATES.LOADED: {
-        return events.events.map((item) => <Eventcard id={item._id} title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
+        return events.events.map((item) => <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
       }
 
       default: {
