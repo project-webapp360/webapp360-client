@@ -12,12 +12,12 @@ const Register = observer(() => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('')
+  const [userRole, setUserRole] = useState("user")
 
   const singUp = async (e) => {
     try {
       e.preventDefault()
-      const data = await registration(email, password, role)
+      const data = await registration(email, password, userRole)
 
       navigate("/mainpage")
     } catch (e) {
@@ -27,13 +27,13 @@ const Register = observer(() => {
 
   const array = [
     {
-      Name: "user1",
+      Name: "user",
     },
     {
-      Name: "user2",
+      Name: "manager",
     },
     {
-      Name: "user3",
+      Name: "admin",
     },
   ]
 
@@ -89,20 +89,15 @@ const Register = observer(() => {
             </div>
 
             <div className="input-label-div">
-              <div>
-                <input value={role} onChange={e => setRole(e.target.value)} id={role} name={role} type="text"
-                       className="inputsDiv"/>
-                <label className="labelDiv" htmlFor={role}>Роль</label>
+              <div className="mySelectDiv">
+                <select className="labelSelect" value={userRole} label="user" name="" id="" onChange={event => setUserRole(event.target.value)}>
+                  {array.map((e) =>
+                    <option value={e.Name}>{e.Name}</option>
+                  )}
+                </select>
               </div>
+              <label className="labelDiv" htmlFor={userRole}>Роль</label>
             </div>
-            {/*
-            <select value={role} onChange={e => setRole(e.target.value)} name={role} id={role}>
-              {array.map((e) =>
-                <MenuItem value={e.Name}>{e.Name}</MenuItem>
-              )}
-            </select>
-            <label className="labelDiv" htmlFor={role}>Роль</label>
-            */}
           </div>
 
           <button className="createButton">Создать нового пользователя</button>

@@ -7,7 +7,6 @@ import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
 import {deleteToken} from "../../axios/API";
 import TokenService from "../../service/tokenService";
-import {Button} from "@mui/material";
 
 const tokenService = new TokenService()
 
@@ -105,8 +104,11 @@ const NavBar = observer(() => {
                         <Modal visible={modal4} setVisible={setModal3}></Modal>
                         <div className="line">
                             <div>
-                                <button className="homebtn" onClick={() => {navigate('/mainpage')}}>Домой</button>
+                                <button className="homebtn" onClick={() => {navigate('/mainpage')}}>
+                                    <i className="fa fa-home"></i>
+                                </button>
                             </div>
+                            <div className="logo">Обзор-360</div>
                             <div>
                                 <button onClick={changeVisible1}>Создать опрос</button>
                                 {/*<button onClick={changeVisible2}>Результаты опросов</button>*/}

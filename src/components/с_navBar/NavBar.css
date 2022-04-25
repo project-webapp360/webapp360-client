@@ -8,6 +8,15 @@
     padding-right: 20px;
 }
 
+.logo {
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1.5em;
+    line-height: 1;
+    letter-spacing: 3px;
+    color: #a9a9a9;
+}
+
 .line button {
     margin-right: 10px;
     font-family: Montserrat;

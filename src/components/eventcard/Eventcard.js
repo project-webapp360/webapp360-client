@@ -66,10 +66,9 @@ const Eventcard = (props) => {
         <div className="eventcard__lastString">
           <div className="eventcard__name">тест на: {props.name}</div>
           <div className="eventcard__buttons">
-            <button className="eventcard__button-refuse" onClick={changeConfirmVisibleTrue}>Отклонить
-            </button>
+            <button className="eventcard__button-refuse" onClick={changeConfirmVisibleTrue}>Удалить</button>
             <button className="eventcard__button-info">Статистика</button>
-            <button className="eventcard__button-agree" onClick={changeVisible}>Принять</button>
+            <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
           </div>
         </div>
 

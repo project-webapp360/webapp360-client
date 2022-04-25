@@ -40,7 +40,7 @@
 }
 
 .systemUserName {
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: flex-end;
 
@@ -49,6 +49,7 @@
 }
 
 .input-label-div {
+
 }
 
 .inputsDiv {
@@ -69,6 +70,11 @@
     line-height: 27px;
 
     color: #000000;
+}
+
+.labelSelect {
+    display: block;
+    width: 100%;
 }
 
 .createButton {
