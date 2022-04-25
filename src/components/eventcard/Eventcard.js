@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import "./Eventcard.css"
 import Survey from "../survey/Survey";
 import Modal from "../modal/Modal";
-import {deleteEvent} from "../../axios/API";
+import {deleteEvent, deleteEventUser} from "../../axios/API";
 import {Context} from "../../index";
 import {observable} from "mobx";
 
@@ -15,10 +15,11 @@ const Eventcard = (props) => {
     setModal(true)
   }
 
-  const eventDelete = async (id) => {
+  const eventDelete = async (idUser, id) => {
     const data = await deleteEvent(id)
+    // const data = await deleteEventUser(idUser, id)
     await events.updateData(data)
-    console.log(data)
+    console.log(data + '123123123')
   }
 
   return (
@@ -37,7 +38,7 @@ const Eventcard = (props) => {
         <div className="eventcard__lastString">
           <div className="eventcard__name">тест на: {props.name}</div>
           <div className="eventcard__buttons">
-            <button className="eventcard__button-refuse" onClick={() =>{eventDelete(props.id)}}>Отклонить</button>
+            <button className="eventcard__button-refuse" onClick={() =>{eventDelete(props.idUser ,props.id)}}>Отклонить</button>
             <button className="eventcard__button-info">Статистика</button>
             <button className="eventcard__button-agree" onClick={changeVisible}>Принять</button>
           </div>

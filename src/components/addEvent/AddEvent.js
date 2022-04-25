@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
-import "./AddEvent.css"
-import {createEvent, getEvents} from "../../axios/API";
+import {createEvent, createEventUsers, getEvents, getEventsUser} from "../../axios/API";
 import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import "./AddEvent.css"
 
 const AddEvent = ({create, setVisible}) => {
 
@@ -38,7 +38,11 @@ const AddEvent = ({create, setVisible}) => {
           "Ivan",
           user.user.role
       )
-      const eventsFormDB = await getEvents()
+
+      const allUsers = await createEventUsers(data._id)
+
+      // const eventsFormDB = await getEvents()
+      const eventsFormDB = await getEventsUser(user.user.id)
       events.updateData(eventsFormDB)
       events.setEvents([...eventsFormDB])
       console.log(events.events)
@@ -75,6 +79,15 @@ const AddEvent = ({create, setVisible}) => {
             <MenuItem value={e.Name}>{e.Name}</MenuItem>
           )}
         </Select>
+{/*
+        <div>
+          <select name="user" id="user">
+            <option value="user">
+              user
+            </option>
+          </select>
+        </div>*/}
+
       </FormControl>
 
       <button className="input__button" onClick={newEventForm}>Create Test</button>
