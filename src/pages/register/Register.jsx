@@ -12,7 +12,7 @@ const Register = observer(() => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [userRole, setUserRole] = useState("user")
+  const [userRole, setUserRole] = useState("")
 
   const singUp = async (e) => {
     try {
