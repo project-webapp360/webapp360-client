@@ -32,9 +32,9 @@ const Eventcard = (props) => {
     setModalConfirm(false)
   }
 
-  const confirmAgree = () => {
+  const confirmAgree = async () => {
     setModalConfirm(false)
-    eventDelete(props.id)
+    await eventDelete(props.idUser, props.id)
   }
 
   return (

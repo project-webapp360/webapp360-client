@@ -3,7 +3,7 @@ import Progressbar from "../../components/progressbar/progressbar";
 import Eventcard from "../../components/eventcard/Eventcard";
 import "./mainpage.css"
 import {Context} from "../../index";
-import {getEvents} from "../../axios/API";
+import {getEvents, getUsers} from "../../axios/API";
 import {observer} from "mobx-react-lite";
 
 const STATES = {
@@ -55,7 +55,9 @@ const Mainpage = observer(() => {
     },])
 
   useEffect(   () => {
-    events.fetchData()
+    events.fetchData(user.user.id)
+    console.log(`user: ${user.user}`)
+    console.log(`isAuth: ${user.isAuth}`)
   })
 
   const switchState = (state) => {

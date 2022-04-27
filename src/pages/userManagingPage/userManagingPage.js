@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import './userManagingPage.css'
 import UserManagingCard from "../../components/user_managing_card/user_managing_card";
 import {useNavigate} from "react-router-dom";
+import {Context} from "../../index";
+import Eventcard from "../../components/eventcard/Eventcard";
+
+const STATES = {
+  INITIAL: 'initial',
+  LOADING: 'loading',
+  ERROR: 'error',
+  LOADED: 'loaded'
+}
 
 const UserManagingPage = () => {
   const navigate = useNavigate()
+
+  const {users} = useContext(Context)
 
   const userNames = [
     {
@@ -38,17 +49,46 @@ const UserManagingPage = () => {
     navigate("/register")
   }
 
+  useEffect(   () => {
+    users.fetchData()
+  })
+
+  const switchState = (state) => {
+    switch (state) {
+
+      case STATES.INITIAL: {
+        return <h1>...</h1>
+      }
+
+      case STATES.LOADING: {
+        return <h1>Выполняется загрузка...</h1>
+      }
+
+      case STATES.LOADED: {
+        console.log(`${users.users}`)
+        // return users.users.map((item) => <h1>{item.email}</h1>)
+        return users.users.map((item) => <UserManagingCard userName={item.email} userRole={item.role} banned={false}/>)
+      }
+
+      default: {
+        return <h1>ERROR...</h1>
+      }
+
+    }
+  }
+
   return (
     <div className="mainDiv">
       <div className="topPanel">
         <div>
-          <div className="number_of_users">Всего сотрудников: {userNames.length}</div>
+          <div className="number_of_users">Всего сотрудников: {users.users.length}</div>
           <div className="userManagingPage_Date">Сегодня: {new Date().toLocaleDateString("fr-CA")}</div>
         </div>
         <button className="create_button" onClick={register}>Создать нового пользователя</button>
       </div>
       <div>
-        {userNames.map((item) => <UserManagingCard number={item.number} userName={item.name} banned={item.ban}/>)}
+        {/*{userNames.map((item) => <UserManagingCard number={item.number} userName={item.name} banned={item.ban}/>)}*/}
+        {switchState(users.caseLoading)}
       </div>
     </div>
   );

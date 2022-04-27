@@ -2,10 +2,10 @@ import React, {useContext, useState} from 'react';
 import {createEvent, createEventUsers, getEvents, getEventsUser} from "../../axios/API";
 import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
-import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import "./AddEvent.css"
+import {observer} from "mobx-react-lite";
 
-const AddEvent = ({create, setVisible}) => {
+const AddEvent = observer(({create, setVisible}) => {
 
     const {user} = useContext(Context)
     const {events} = useContext(Context)
@@ -22,7 +22,7 @@ const AddEvent = ({create, setVisible}) => {
             dateStart: new Date().toLocaleDateString("fr-CA"),
             dateEnd,
             name,
-            creator: "Менеджер"
+            creator: 'Менеджер'
         }
         create(newEvent)
         setVisible(false);
@@ -30,26 +30,30 @@ const AddEvent = ({create, setVisible}) => {
         setDateEnd('')
         setName('')
 
-    try {
-      const data = await createEvent(
-          title,
-          new Date().toLocaleDateString("fr-CA"),
-          dateEnd,
-          "Ivan",
-          user.user.role
-      )
+        try {
+            const data = await createEvent(
+                title,
+                new Date().toLocaleDateString("fr-CA"),
+                dateEnd,
+                name,
+                // user.user.role,
+                'Менеджер'
+            )
 
-      const allUsers = await createEventUsers(data._id)
+            const allUsers = await createEventUsers(data._id)
 
-      // const eventsFormDB = await getEvents()
-      const eventsFormDB = await getEventsUser(user.user.id)
-      events.updateData(eventsFormDB)
-      events.setEvents([...eventsFormDB])
-      console.log(events.events)
-    navigate('/mainpage')
-    } catch (e) {
-      alert(e.response.data.message)
-    }
+            // const eventsFormDB = await getEvents()
+            console.log('events massive 1')
+            const eventsFormDB = await getEventsUser(user.user.id)
+            console.log('events massive 2')
+            console.log(eventsFormDB)
+            await events.updateData(eventsFormDB)
+            events.setEvents([...eventsFormDB])
+            console.log(events.events)
+            navigate('/mainpage')
+        } catch (e) {
+            alert(e.response.data.message)
+        }
 
     }
 
@@ -75,7 +79,8 @@ const AddEvent = ({create, setVisible}) => {
                    onChange={event => setDateEnd(event.target.value)}/>
 
             <div className="mySelectDiv">
-                <select className="mySelect" value={name} label="user" name="" id="" onChange={event => setName(event.target.value)}>
+                <select className="mySelect" value={name} label="user" name="" id=""
+                        onChange={event => setName(event.target.value)}>
                     {array.map((e) =>
                         <option value={e.Name}>{e.Name}</option>
                     )}
@@ -85,6 +90,6 @@ const AddEvent = ({create, setVisible}) => {
             <button className="input__button" onClick={newEventForm}>Create Test</button>
         </form>
     );
-};
+});
 
 export default AddEvent;

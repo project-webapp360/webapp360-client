@@ -4,6 +4,7 @@ import App from './App';
 import User from "./mobx/User";
 import NumberCount from "./mobx/Number";
 import Events from "./mobx/Events";
+import Users from "./mobx/Users";
 
 export const Context = createContext(null)
 
@@ -13,7 +14,8 @@ ReactDOM.render(
     <Context.Provider value={{
         user: new User(),
         number: new NumberCount(),
-        events: new Events()
+        events: new Events(),
+        users: new Users()
     }}>
         <App/>
     </Context.Provider>,

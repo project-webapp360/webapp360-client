@@ -41,8 +41,9 @@ const Login = observer(() => {
       const data = await login(email, password)
       console.log(data.email)
 
-      user.setUser(data)
       user.setIsAuth(true)
+      user.setUser(data)
+
       // localStorage.setItem('user', JSON.stringify(data))
       // localStorage.setItem('isAuth', "true")
       navigate("/mainpage")

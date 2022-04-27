@@ -22,7 +22,8 @@ export const login = async (email, password) => {
     console.log(data.refreshToken)
     tokenService.setToken('accessToken', data.accessToken)
     tokenService.setToken('refreshToken', data.refreshToken)
-    return jwtDecode(data.accessToken)
+    // return jwtDecode(data.accessToken)
+    return data
 }
 
 export const deleteToken = async (id) => {
@@ -76,9 +77,10 @@ export const deleteEventUser = async (idUser, idEvent) => {
 
 
 export const getUsers = async () => {
-    const {data} = await $AuthHost.get('api/users')
+    const {data} = await $host.get('api/users')
     // localStorage.setItem('token', data.accessToken)
-    return jwtDecode(data.accessToken)
+    // return jwtDecode(data.accessToken)
+    return data
 }
 
 
