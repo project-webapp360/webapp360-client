@@ -91,6 +91,10 @@ const NavBar = observer(() => {
         navigate("/UserManagingPage")
     }
 
+    const userProfileNavigate = () => {
+        navigate("/profilePage")
+    }
+
     return (
         <div>
             {
@@ -110,6 +114,9 @@ const NavBar = observer(() => {
                             </div>
                             <div className="logo">Обзор-360</div>
                             <div>
+                                <button onClick={userProfileNavigate}>
+                                    <i className="fa fa-user"></i>
+                                </button>
                                 <button onClick={changeVisible1}>Создать опрос</button>
                                 {/*<button onClick={changeVisible2}>Результаты опросов</button>*/}
                                 <button onClick={userManagingNavigate}>Управление пользователями</button>
