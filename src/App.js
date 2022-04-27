@@ -22,7 +22,7 @@ const App = observer(() => {
     const {user} = useContext(Context)
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
+    /*useEffect(() => {
         getUsers().then(data => {
             user.setUser(true)
             user.setIsAuth(true)
@@ -46,7 +46,7 @@ const App = observer(() => {
 
     useEffect(() => {
         fetchPosts()
-    }, [])
+    }, [])*/
 
     return (
         <div>

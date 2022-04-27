@@ -19,7 +19,7 @@ const Register = observer(() => {
       e.preventDefault()
       const data = await registration(email, password, userRole)
 
-      navigate("/mainpage")
+      navigate('/UserManagingPage')
     } catch (e) {
       alert(e.response.data.message)
     }
@@ -27,13 +27,13 @@ const Register = observer(() => {
 
   const array = [
     {
-      Name: "user",
+      Name: 'USER',
     },
     {
-      Name: "manager",
+      Name: 'MANAGER',
     },
     {
-      Name: "admin",
+      Name: 'ADMIN',
     },
   ]
 
@@ -90,7 +90,7 @@ const Register = observer(() => {
 
             <div className="input-label-div">
               <div className="mySelectDiv">
-                <select className="labelSelect" value={userRole} label="user" name="" id="" onChange={event => setUserRole(event.target.value)}>
+                <select className="labelSelect" value={userRole} name="" id="" onChange={event => setUserRole(event.target.value)}>
                   {array.map((e) =>
                     <option value={e.Name}>{e.Name}</option>
                   )}

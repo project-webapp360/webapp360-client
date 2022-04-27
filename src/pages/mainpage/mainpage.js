@@ -3,7 +3,7 @@ import Progressbar from "../../components/progressbar/progressbar";
 import Eventcard from "../../components/eventcard/Eventcard";
 import "./mainpage.css"
 import {Context} from "../../index";
-import {getEvents} from "../../axios/API";
+import {getEvents, getUsers} from "../../axios/API";
 import {observer} from "mobx-react-lite";
 
 const STATES = {
@@ -15,6 +15,7 @@ const STATES = {
 
 const Mainpage = observer(() => {
 
+  const {user} = useContext(Context)
   const {events} = useContext(Context)
   const [EventCardData, setEventCardData] = useState([
     {
@@ -54,7 +55,9 @@ const Mainpage = observer(() => {
     },])
 
   useEffect(   () => {
-    events.fetchData()
+    events.fetchData(user.user.id)
+    console.log(`user: ${user.user}`)
+    console.log(`isAuth: ${user.isAuth}`)
   })
 
   const switchState = (state) => {
@@ -69,7 +72,7 @@ const Mainpage = observer(() => {
       }
 
       case STATES.LOADED: {
-        return events.events.map((item) => <Eventcard id={item._id} title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
+        return events.events.map((item) => <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
       }
 
       default: {
