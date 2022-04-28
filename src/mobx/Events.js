@@ -58,8 +58,8 @@ export default class Events {
 
         try {
 
-            // const data = await getEventsUser(userId)
-            const data = await getEvents()
+            const data = await getEventsUser(userId)
+            // const data = await getEvents()
             runInAction(() => {
                 this.events = data
                 this.state = STATES.LOADED

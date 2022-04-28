@@ -48,7 +48,7 @@ const AddEvent = observer(({create, setVisible}) => {
             console.log('events massive 2')
             console.log(eventsFormDB)
             await events.updateData(eventsFormDB)
-            events.setEvents([...eventsFormDB])
+            // events.setEvents([...eventsFormDB])
             console.log(events.events)
             navigate('/mainpage')
         } catch (e) {

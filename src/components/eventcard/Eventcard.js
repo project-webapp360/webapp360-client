@@ -18,8 +18,8 @@ const Eventcard = (props) => {
   }
 
   const eventDelete = async (idUser, id) => {
-    const data = await deleteEvent(id)
-    // const data = await deleteEventUser(idUser, id)
+    // const data = await deleteEvent(id)
+    const data = await deleteEventUser(idUser, id)
     await events.updateData(data)
     console.log(data + '123123123')
   }
@@ -52,7 +52,7 @@ const Eventcard = (props) => {
       </Modal>
 
       <Modal visible={modal} setVisible={setModal}>
-        <Survey visible={modal} setVisible={setModal}/>
+        <Survey eventId={props.id} visible={modal} setVisible={setModal}/>
       </Modal>
 
       <div className="eventcard">
