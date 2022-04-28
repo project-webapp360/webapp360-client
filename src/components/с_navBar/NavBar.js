@@ -7,6 +7,7 @@ import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
 import {deleteToken} from "../../axios/API";
 import TokenService from "../../service/tokenService";
+import Eventcard from "../eventcard/Eventcard";
 
 const tokenService = new TokenService()
 
@@ -95,7 +96,93 @@ const NavBar = observer(() => {
         navigate("/profilePage")
     }
 
+    const switchPermission = (role) => {
+        switch (role) {
+
+            case role.USER: {
+                return (
+                  <div>
+                    <div className="line">
+                        <div>
+                            <button className="homebtn" onClick={() => {navigate('/mainpage')}}>
+                                <i className="fa fa-home"></i>
+                            </button>
+                        </div>
+                        <div className="logo">Обзор-360</div>
+                        <div>
+                            <button onClick={userProfileNavigate}>
+                                <i className="fa fa-user"></i>
+                            </button>
+                            <button onClick={logout}>Выйти</button>
+                        </div>
+                    </div>
+                </div>
+                );}
+
+            case role.MANAGER: {
+                return (<div>
+                    <Modal visible={modal1} setVisible={setModal1}>
+                        <AddEvent setVisible={setModal1} create={createEvent}/>
+                    </Modal>
+                    <div className="line">
+                        <div>
+                            <button className="homebtn" onClick={() => {navigate('/mainpage')}}>
+                                <i className="fa fa-home"></i>
+                            </button>
+                        </div>
+                        <div className="logo">Обзор-360</div>
+                        <div>
+                            <button onClick={userProfileNavigate}>
+                                <i className="fa fa-user"></i>
+                            </button>
+                            <button onClick={changeVisible1}>Создать опрос</button>
+                            <button onClick={logout}>Выйти</button>
+                        </div>
+                    </div>
+                </div>
+            );}
+
+            case role.ADMIN: {
+                return (
+                <div>
+                    <Modal visible={modal1} setVisible={setModal1}>
+                        <AddEvent setVisible={setModal1} create={createEvent}/>
+                    </Modal>
+                    <div className="line">
+                        <div>
+                            <button className="homebtn" onClick={() => {
+                                navigate('/mainpage')
+                            }}>
+                                <i className="fa fa-home"></i>
+                            </button>
+                        </div>
+                        <div className="logo">Обзор-360</div>
+                        <div>
+                            <button onClick={userProfileNavigate}>
+                                <i className="fa fa-user"></i>
+                            </button>
+                            <button onClick={changeVisible1}>Создать опрос</button>
+                            <button onClick={userManagingNavigate}>Управление пользователями</button>
+                            <button onClick={logout}>Выйти</button>
+                        </div>
+                    </div>
+                </div>
+            );}
+
+            default: {
+                return (
+                  <div className="line">
+                      <div className="logo">Обзор-360</div>
+                  </div>
+                );}
+
+        }
+    }
+
     return (
+      /*<div>
+          {switchPermission(role)}
+      </div>*/
         <div>
             {
                 user.isAuth
@@ -104,8 +191,6 @@ const NavBar = observer(() => {
                         <Modal visible={modal1} setVisible={setModal1}>
                             <AddEvent setVisible={setModal1} create={createEvent}/>
                         </Modal>
-                        <Modal visible={modal2} setVisible={setModal2}>Modal 2</Modal>
-                        <Modal visible={modal4} setVisible={setModal3}></Modal>
                         <div className="line">
                             <div>
                                 <button className="homebtn" onClick={() => {navigate('/mainpage')}}>
@@ -118,11 +203,8 @@ const NavBar = observer(() => {
                                     <i className="fa fa-user"></i>
                                 </button>
                                 <button onClick={changeVisible1}>Создать опрос</button>
-                                {/*<button onClick={changeVisible2}>Результаты опросов</button>*/}
                                 <button onClick={userManagingNavigate}>Управление пользователями</button>
-                                {/*<button onClick={register}>Создать пользователя</button>*/}
                                 <button onClick={logout}>Выйти</button>
-
                             </div>
                         </div>
                     </div>
