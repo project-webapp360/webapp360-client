@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {LinearProgress} from "@mui/material";
-import "./progressbar.css"
 import {Context} from "../../index";
+import "./progressbar.css"
 
 const Progressbar = () => {
 
@@ -11,9 +11,9 @@ const Progressbar = () => {
 
   return (
     <div className="progressbar">
-      <p className="progressbar__text">пройдено {completedEvents} тестов из {allEvents} возможных</p>
+      <p className="progressbar__text">Пройдено {completedEvents} тестов из {allEvents} возможных</p>
       <LinearProgress variant="determinate" value={completedEvents/allEvents*100}/>
-      <div className="progressbar__date">сегодня: {new Date().toLocaleDateString("fr-CA")}</div>
+      <div className="progressbar__date">Сегодня: {new Date().toLocaleDateString("fr-CA")}</div>
     </div>
   );
 };

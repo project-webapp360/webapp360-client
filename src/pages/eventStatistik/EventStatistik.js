@@ -20,17 +20,17 @@ const applicationsStatusThisMonth = [
     {
         status: "Плохая",
         value: 14,
-        color: "#8c0505",
+        color: "#f5675b",
     },
     {
         status: "Хорошая",
         value: 26,
-        color: "#eac405",
+        color: "#fdb846",
     },
     {
         status: "Отличная",
         value: 60,
-        color: "#12ef06",
+        color: "#2ed27a",
     },
 ];
 
@@ -47,25 +47,25 @@ const renderTooltip = context => {
 
 
 const myData0 = [
-    { name: "Отличная", value: 60, fill: "#53ca13" },
-    { name: "Хорошая", value: 26, fill: "#ffc810" },
-    { name: "Плохая", value: 14, fill:"#c7196c" },
+    { name: "Отлично", value: 60, fill: "#2ed27a" },
+    { name: "Хорошо", value: 26, fill: "#fdb846" },
+    { name: "Плохо", value: 14, fill:"#f5675b" },
 ];
 
 const myData1 = [
-    { name: "Отличная", value: 60, fill: "#53ca13" },
-    { name: "Хорошая", value: 26, fill: "#ffc810" },
-    { name: "Плохая", value: 14, fill:"#c7196c" },
+    { name: "Отлично", value: 60, fill: "#2ed27a" },
+    { name: "Хорошо", value: 26, fill: "#fdb846" },
+    { name: "Плохо", value: 14, fill:"#f5675b" },
 ];
 const myData2 = [
-    { name: "Отличная", value: 60, fill: "#53ca13" },
-    { name: "Хорошая", value: 26, fill: "#ffc810" },
-    { name: "Плохая", value: 14, fill:"#c7196c" },
+    { name: "Отлично", value: 60, fill: "#2ed27a" },
+    { name: "Хорошо", value: 26, fill: "#fdb846" },
+    { name: "Плохо", value: 14, fill:"#f5675b" },
 ];
 const myData3 = [
-    { name: "Отличная", value: 60, fill: "#53ca13" },
-    { name: "Хорошая", value: 26, fill: "#ffc810" },
-    { name: "Плохая", value: 14, fill:"#c7196c" },
+    { name: "Отлично", value: 60, fill: "#2ed27a" },
+    { name: "Хорошо", value: 26, fill: "#fdb846" },
+    { name: "Плохо", value: 14, fill:"#f5675b" },
 ];
 
 
@@ -73,175 +73,161 @@ const allUser = 13
 const completedUser = 7
 
 const EventStatistik = ({visible, setVisible}) => {
-/*    const [modal,setModal] = useState(false);*/
     return (
-/*        <div>
-{/!*            <Modal visible={modal} setVisible={setModal}>
-                <div className="statistik__modal"></div>
-            </Modal>*!/}
-            <div className="main">
-            <div className="progressbar">
-                <p className="progressbar__text">прошло {completedUser} пользователей из {allUser} возможных</p>
-                <LinearProgress variant="determinate" value={completedUser/allUser*100}/>
-            </div>
-            <div className="statistik__main">
-                <div className="statistik__main1">
-                <Chart>
-                <ChartTitle/>
-                <ChartLegend visible={false} />
-                <ChartTooltip render={renderTooltip} />
-                <ChartSeries>
-                    <ChartSeriesItem
-                        type="donut"
-                        data={applicationsStatusThisMonth}
-                        categoryField="status"
-                        field="value"
-                    >
-                        <ChartSeriesLabels
-                            color="#fff"
-                            background="none"
-                            content={labelContent}
-                        />
-                    </ChartSeriesItem>
-                </ChartSeries>
-            </Chart>
-                </div>
-                <div className="statistik__main1">
-                <Chart>
-                    <ChartTitle/>
-                    <ChartLegend visible={false} />
-                    <ChartTooltip render={renderTooltip} />
-                    <ChartSeries>
-                        <ChartSeriesItem
-                            type="donut"
-                            data={applicationsStatusThisMonth}
-                            categoryField="status"
-                            field="value"
-                        >
-                            <ChartSeriesLabels
-                                color="#fff"
-                                background="none"
-                                content={labelContent}
-                            />
-                        </ChartSeriesItem>
-                    </ChartSeries>
-                </Chart>
-                    </div>
-                    <div className="statistik__main1">
-                    <Chart>
-                        <ChartTitle/>
-                        <ChartLegend visible={false} />
-                        <ChartTooltip render={renderTooltip} />
-                        <ChartSeries>
-                            <ChartSeriesItem
-                                type="donut"
-                                data={applicationsStatusThisMonth}
-                                categoryField="status"
-                                field="value"
-                            >
-                                <ChartSeriesLabels
-                                    color="#fff"
-                                    background="none"
-                                    content={labelContent}
-                                />
-                            </ChartSeriesItem>
-                        </ChartSeries>
-                    </Chart>
-                    </div>
-                    <div className="statistik__main1">
-                    <Chart>
-                        <ChartTitle/>
-                        <ChartLegend visible={false} />
-                        <ChartTooltip render={renderTooltip} />
-                        <ChartSeries>
-                            <ChartSeriesItem
-                                type="donut"
-                                data={applicationsStatusThisMonth}
-                                categoryField="status"
-                                field="value"
-                            >
-                                <ChartSeriesLabels
-                                    color="#fff"
-                                    background="none"
-                                    content={labelContent}
-                                />
-                            </ChartSeriesItem>
-                        </ChartSeries>
-                    </Chart>
-                    </div>
-                </div>
-            </div>
-            </div>*/
 
-
-
-        <div className="main">
+        <div className="statistic__main__window">
             <div className="progressbar">
                 <p className="progressbar__text">Прошло {completedUser} пользователей из {allUser} возможных</p>
                 <LinearProgress variant="determinate" value={completedUser/allUser*100}/>
             </div>
-        <div className="statistik__main">
-        <div>
-    <PieChart width={300} height={300}>
-        <Pie
-            dataKey="value"
-            isAnimationActive={true}
-            data={myData0}
-            outerRadius={120}
-            fill="orangered"
-            label
-        />
+            <div className="statistik__main">
+                <div className="statistik__main__statistik">
+                    <div className="statistic__pair">
+                        <div className="statistik__pie__div">
+                            <div className="statistik__pie__div__left">
+                                <p>Работоспособность</p>
+                                <div className="blackLine"></div>
+                                <PieChart width={200} height={200}>
+                                    <Pie
+                                      dataKey="value"
+                                      isAnimationActive={true}
+                                      data={myData0}
+                                      outerRadius={100}
+                                      fill="orangered"
+                                    />
+                                    <Tooltip />
+                                </PieChart>
+                            </div>
+                            <div className="statistik__pie__div__right">
+                                <div className="circleDiv">
+                                    <div className="circleGreen"></div>
+                                    <p>Отлично</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleYellow"></div>
+                                    <p>Хорошо</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleRed"></div>
+                                    <p>Плохо</p>
+                                </div>
+                            </div>
 
-        {/* Display the tooltips */}
-        <Tooltip />
-    </PieChart>
-        </div>
-    <div>
-        <PieChart width={300} height={300}>
-            <Pie
-                dataKey="value"
-                isAnimationActive={true}
-                data={myData1}
-                outerRadius={120}
-                fill="orangered"
-                label
-            />
+                        </div>
+                        <div className="statistik__pie__div">
 
-            {/* Display the tooltips */}
-            <Tooltip />
-        </PieChart>
-    </div>
-    <div>
-        <PieChart width={300} height={300}>
-            <Pie
-                dataKey="value"
-                isAnimationActive={true}
-                data={myData2}
-                outerRadius={120}
-                fill="orangered"
-                label
-            />
+                            <div className="statistik__pie__div__left">
+                                <p>Ответственность</p>
+                                <div className="blackLine"></div>
+                                <PieChart width={200} height={200}>
+                                    <Pie
+                                      dataKey="value"
+                                      isAnimationActive={true}
+                                      data={myData1}
+                                      outerRadius={100}
+                                      fill="orangered"
+                                    />
+                                    <Tooltip />
+                                </PieChart>
+                            </div>
 
-            {/* Display the tooltips */}
-            <Tooltip />
-        </PieChart>
-    </div>
-    <div>
-        <PieChart width={300} height={300}>
-            <Pie
-                dataKey="value"
-                isAnimationActive={true}
-                data={myData3}
-                outerRadius={120}
-                fill="orangered"
-                label
-            />
+                            <div className="statistik__pie__div__right">
+                                <div className="circleDiv">
+                                    <div className="circleGreen"></div>
+                                    <p>Отлично</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleYellow"></div>
+                                    <p>Хорошо</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleRed"></div>
+                                    <p>Плохо</p>
+                                </div>
+                            </div>
 
-            {/* Display the tooltips */}
-            <Tooltip />
-        </PieChart>
-    </div>
-        </div>
+                        </div>
+                    </div>
+
+                    <div className="statistic__pair">
+                        <div className="statistik__pie__div">
+
+                            <div className="statistik__pie__div__left">
+                                <p>Общительность</p>
+                                <div className="blackLine"></div>
+                                <PieChart width={200} height={200}>
+                                    <Pie
+                                      dataKey="value"
+                                      isAnimationActive={true}
+                                      data={myData2}
+                                      outerRadius={100}
+                                      fill="orangered"
+                                    />
+                                    <Tooltip />
+                                </PieChart>
+                            </div>
+
+                            <div className="statistik__pie__div__right">
+                                <div className="circleDiv">
+                                    <div className="circleGreen"></div>
+                                    <p>Отлично</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleYellow"></div>
+                                    <p>Хорошо</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleRed"></div>
+                                    <p>Плохо</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="statistik__pie__div">
+
+                            <div className="statistik__pie__div__left">
+                                <p>Креативность</p>
+                                <div className="blackLine"></div>
+                                <PieChart width={200} height={200}>
+                                    <Pie
+                                      dataKey="value"
+                                      isAnimationActive={true}
+                                      data={myData3}
+                                      outerRadius={100}
+                                      fill="orangered"
+                                    />
+                                    <Tooltip />
+                                </PieChart>
+                            </div>
+
+                            <div className="statistik__pie__div__right">
+                                <div className="circleDiv">
+                                    <div className="circleGreen"></div>
+                                    <p>Отлично</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleYellow"></div>
+                                    <p>Хорошо</p>
+                                </div>
+                                <div className="circleDiv">
+                                    <div className="circleRed"></div>
+                                    <p>Плохо</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div className="statistik__support__info">
+                    <div className="statistik__support__info__div">
+                        <p>Название опроса: Something</p>
+                        <p>Опрос на: Солонников Виктор</p>
+                        <p>Дата начала: 2022-04-28</p>
+                        <p>Дата конца: 2022-04-29</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     );
