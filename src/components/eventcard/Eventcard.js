@@ -1,9 +1,14 @@
 import React, {useContext, useState} from 'react';
 import "./Eventcard.css"
 import Survey from "../survey/Survey";
+import EventStatistik from "../eventStatistik/EventStatistik";
 import Modal from "../modal/Modal";
+import Modal1 from "../modal/Modal";
 import {deleteEvent} from "../../axios/API";
 import {Context} from "../../index";
+import {observable} from "mobx";
+import {useNavigate} from "react-router-dom";
+
 
 const Eventcard = (props) => {
 
@@ -15,6 +20,8 @@ const Eventcard = (props) => {
   const changeVisible = () => {
     setModal(true)
   }
+  const [modal1,setModal1] = useState(false);
+
 
   const eventDelete = async (id) => {
     const data = await deleteEvent(id)
@@ -35,6 +42,13 @@ const Eventcard = (props) => {
     eventDelete(props.id)
   }
 
+  const navigate = useNavigate()
+
+  const eventStatistik = (e) => {
+    e.preventDefault()
+    navigate("/eventStatistik")
+  }
+
   return (
     <div>
 
@@ -53,6 +67,9 @@ const Eventcard = (props) => {
         <Survey visible={modal} setVisible={setModal}/>
       </Modal>
 
+{/*      <Modal1 visible={modal1} setVisible={setModal1}>
+        <EventStatistik visible={modal1} setVisible={setModal1}/>
+      </Modal1>*/}
       <div className="eventcard">
 
         <div className="eventcard__firstString">
@@ -66,7 +83,7 @@ const Eventcard = (props) => {
         <div className="eventcard__lastString">
           <div className="eventcard__name">тест на: {props.name}</div>
           <div className="eventcard__buttons">
-            <button className="eventcard__button-info">
+            <button className="eventcard__button-info" onClick={eventStatistik}>
               <i className="fas fa-info-circle fa-xs"></i>
             </button>
             <button className="eventcard__button-refuse" onClick={changeConfirmVisibleTrue}>Удалить</button>
@@ -77,6 +94,8 @@ const Eventcard = (props) => {
       </div>
 
     </div>
+
   );
 };
+
 export default Eventcard;
