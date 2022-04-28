@@ -45,7 +45,7 @@ const Eventcard = (props) => {
 
     const eventStatistik = (e) => {
         e.preventDefault()
-        navigate("/eventStatistik")
+        navigate(`/eventStatistik/?id=${props.id}`)
     }
 
     return (

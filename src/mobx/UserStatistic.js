@@ -1,5 +1,6 @@
-import {action, computed, makeAutoObservable, makeObservable, observable, runInAction} from 'mobx'
-import {getEvents, getEventsUser} from "../axios/API";
+import {action, computed, makeObservable, observable, runInAction} from 'mobx'
+import {getResultsUser, getUsers} from "../axios/API";
+
 
 const STATES = {
     INITIAL: 'initial',
@@ -8,23 +9,16 @@ const STATES = {
     LOADED: 'loaded'
 }
 
-export default class Events {
-    events = [{
-        title: "Название",
-        dateStart: "2022-02-23",
-        dateEnd: "Конец",
-        name: 'Вася',
-        creator: 'Менеджер',
-        needCompete: true
-    }]
+export default class UserStatistic {
+    results = []
     state = STATES.INITIAL
+    usersCount
 
     constructor() {
         makeObservable(this, {
-            state: observable,
-            fetchData: action,
-            caseLoading: computed,
-            updateData: action
+            state:  observable,
+            fetchResult: action,
+            caseLoading: computed
         })
     }
 
@@ -50,7 +44,7 @@ export default class Events {
         }
     }
 
-    async fetchData(userId) {
+    async fetchResult(eventId) {
 
         if (this.state === STATES.INITIAL)
         {
@@ -58,15 +52,15 @@ export default class Events {
         }
 
         try {
-
-            const data = await getEventsUser(userId)
-            // const data = await getEvents()
+            const data = await getResultsUser(eventId)
+            console.log(data)
+            const usersCountData = await getUsers()
             runInAction(() => {
-                this.events = data
+                this.usersCount = usersCountData.length
+                this.results = data
                 this.state = STATES.LOADED
             })
-            console.log(data)
-            console.log('please work')
+            console.log('please work too')
         } catch (e) {
             runInAction(() => {
                 this.state = "error"
@@ -74,10 +68,5 @@ export default class Events {
         }
     }
 
-    async updateData(data) {
-        runInAction(() => {
-            this.events = data
-            this.state = STATES.LOADING
-        })
-    }
+
 }

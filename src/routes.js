@@ -36,7 +36,7 @@ export const authRoutes = [
         Component: ProfilePage
     },
     {
-        path: '/eventStatistik',
+        path: '/eventStatistik/*',
         Component: EventStatistik
     }]
 

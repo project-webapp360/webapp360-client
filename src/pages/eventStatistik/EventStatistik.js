@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 /*import Modal from "../modal/Modal";*/
 import "hammerjs";
 import "./EventStatistik.css";
 import "@progress/kendo-theme-material/dist/all.css";
 import {Pie, PieChart, Tooltip} from "recharts";
 import {LinearProgress} from "@mui/material";
+import Eventcard from "../../components/eventcard/Eventcard";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
+import {useSearchParams} from "react-router-dom";
+
+const STATES = {
+    INITIAL: 'initial',
+    LOADING: 'loading',
+    ERROR: 'error',
+    LOADED: 'loaded'
+}
 
 const applicationsStatusThisMonth = [
     {
@@ -62,165 +73,204 @@ const myData3 = [
 const allUser = 13
 const completedUser = 7
 
-const EventStatistik = ({visible, setVisible}) => {
+
+
+const EventStatistik = observer(() => {
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const id = searchParams.get("id")
+
+        //usersCount
+        //results
+
+    const {userStatistic} = useContext(Context)
+
+    useEffect(() => {
+         userStatistic.fetchResult(id)
+
+    })
+
+    const switchState = (state) => {
+        switch (state) {
+
+            case STATES.INITIAL: {
+                return <h1>...</h1>
+            }
+
+            case STATES.LOADING: {
+                return <h1>Выполняется загрузка...</h1>
+            }
+
+            case STATES.LOADED: {
+                return <div className="statistic__main__window">
+                    <div className="progressbar">
+                        <p className="progressbar__text">Прошло {completedUser} пользователей из {allUser} возможных</p>
+                        <LinearProgress variant="determinate" value={completedUser / allUser * 100}/>
+                    </div>
+                    <div className="statistik__main">
+                        <div className="statistik__main__statistik">
+                            <div className="statistic__pair">
+                                <div className="statistik__pie__div">
+                                    <div className="statistik__pie__div__left">
+                                        <p>Работоспособность</p>
+                                        <div className="blackLine"></div>
+                                        <PieChart width={200} height={200}>
+                                            <Pie
+                                                dataKey="value"
+                                                isAnimationActive={true}
+                                                data={myData0}
+                                                outerRadius={100}
+                                                fill="orangered"
+                                            />
+                                            <Tooltip/>
+                                        </PieChart>
+                                    </div>
+                                    <div className="statistik__pie__div__right">
+                                        <div className="circleDiv">
+                                            <div className="circleGreen"></div>
+                                            <p>Отлично</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleYellow"></div>
+                                            <p>Хорошо</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleRed"></div>
+                                            <p>Плохо</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div className="statistik__pie__div">
+
+                                    <div className="statistik__pie__div__left">
+                                        <p>Ответственность</p>
+                                        <div className="blackLine"></div>
+                                        <PieChart width={200} height={200}>
+                                            <Pie
+                                                dataKey="value"
+                                                isAnimationActive={true}
+                                                data={myData1}
+                                                outerRadius={100}
+                                                fill="orangered"
+                                            />
+                                            <Tooltip/>
+                                        </PieChart>
+                                    </div>
+
+                                    <div className="statistik__pie__div__right">
+                                        <div className="circleDiv">
+                                            <div className="circleGreen"></div>
+                                            <p>Отлично</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleYellow"></div>
+                                            <p>Хорошо</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleRed"></div>
+                                            <p>Плохо</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div className="statistic__pair">
+                                <div className="statistik__pie__div">
+
+                                    <div className="statistik__pie__div__left">
+                                        <p>Общительность</p>
+                                        <div className="blackLine"></div>
+                                        <PieChart width={200} height={200}>
+                                            <Pie
+                                                dataKey="value"
+                                                isAnimationActive={true}
+                                                data={myData2}
+                                                outerRadius={100}
+                                                fill="orangered"
+                                            />
+                                            <Tooltip/>
+                                        </PieChart>
+                                    </div>
+
+                                    <div className="statistik__pie__div__right">
+                                        <div className="circleDiv">
+                                            <div className="circleGreen"></div>
+                                            <p>Отлично</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleYellow"></div>
+                                            <p>Хорошо</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleRed"></div>
+                                            <p>Плохо</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div className="statistik__pie__div">
+
+                                    <div className="statistik__pie__div__left">
+                                        <p>Креативность</p>
+                                        <div className="blackLine"></div>
+                                        <PieChart width={200} height={200}>
+                                            <Pie
+                                                dataKey="value"
+                                                isAnimationActive={true}
+                                                data={myData3}
+                                                outerRadius={100}
+                                                fill="orangered"
+                                            />
+                                            <Tooltip/>
+                                        </PieChart>
+                                    </div>
+
+                                    <div className="statistik__pie__div__right">
+                                        <div className="circleDiv">
+                                            <div className="circleGreen"></div>
+                                            <p>Отлично</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleYellow"></div>
+                                            <p>Хорошо</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleRed"></div>
+                                            <p>Плохо</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className="statistik__support__info">
+                            <div className="statistik__support__info__div">
+                                <p>Название опроса: Something</p>
+                                <p>Опрос на: Солонников Виктор</p>
+                                <p>Дата начала: 2022-04-28</p>
+                                <p>Дата конца: 2022-04-29</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+            default: {
+                return <h1>ERROR...</h1>
+            }
+
+        }
+    }
+
+
     return (
-
-        <div className="statistic__main__window">
-            <div className="progressbar">
-                <p className="progressbar__text">Прошло {completedUser} пользователей из {allUser} возможных</p>
-                <LinearProgress variant="determinate" value={completedUser / allUser * 100}/>
-            </div>
-            <div className="statistik__main">
-                <div className="statistik__main__statistik">
-                    <div className="statistic__pair">
-                        <div className="statistik__pie__div">
-                            <div className="statistik__pie__div__left">
-                                <p>Работоспособность</p>
-                                <div className="blackLine"></div>
-                                <PieChart width={200} height={200}>
-                                    <Pie
-                                        dataKey="value"
-                                        isAnimationActive={true}
-                                        data={myData0}
-                                        outerRadius={100}
-                                        fill="orangered"
-                                    />
-                                    <Tooltip/>
-                                </PieChart>
-                            </div>
-                            <div className="statistik__pie__div__right">
-                                <div className="circleDiv">
-                                    <div className="circleGreen"></div>
-                                    <p>Отлично</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleYellow"></div>
-                                    <p>Хорошо</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleRed"></div>
-                                    <p>Плохо</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="statistik__pie__div">
-
-                            <div className="statistik__pie__div__left">
-                                <p>Ответственность</p>
-                                <div className="blackLine"></div>
-                                <PieChart width={200} height={200}>
-                                    <Pie
-                                        dataKey="value"
-                                        isAnimationActive={true}
-                                        data={myData1}
-                                        outerRadius={100}
-                                        fill="orangered"
-                                    />
-                                    <Tooltip/>
-                                </PieChart>
-                            </div>
-
-                            <div className="statistik__pie__div__right">
-                                <div className="circleDiv">
-                                    <div className="circleGreen"></div>
-                                    <p>Отлично</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleYellow"></div>
-                                    <p>Хорошо</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleRed"></div>
-                                    <p>Плохо</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="statistic__pair">
-                        <div className="statistik__pie__div">
-
-                            <div className="statistik__pie__div__left">
-                                <p>Общительность</p>
-                                <div className="blackLine"></div>
-                                <PieChart width={200} height={200}>
-                                    <Pie
-                                        dataKey="value"
-                                        isAnimationActive={true}
-                                        data={myData2}
-                                        outerRadius={100}
-                                        fill="orangered"
-                                    />
-                                    <Tooltip/>
-                                </PieChart>
-                            </div>
-
-                            <div className="statistik__pie__div__right">
-                                <div className="circleDiv">
-                                    <div className="circleGreen"></div>
-                                    <p>Отлично</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleYellow"></div>
-                                    <p>Хорошо</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleRed"></div>
-                                    <p>Плохо</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="statistik__pie__div">
-
-                            <div className="statistik__pie__div__left">
-                                <p>Креативность</p>
-                                <div className="blackLine"></div>
-                                <PieChart width={200} height={200}>
-                                    <Pie
-                                        dataKey="value"
-                                        isAnimationActive={true}
-                                        data={myData3}
-                                        outerRadius={100}
-                                        fill="orangered"
-                                    />
-                                    <Tooltip/>
-                                </PieChart>
-                            </div>
-
-                            <div className="statistik__pie__div__right">
-                                <div className="circleDiv">
-                                    <div className="circleGreen"></div>
-                                    <p>Отлично</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleYellow"></div>
-                                    <p>Хорошо</p>
-                                </div>
-                                <div className="circleDiv">
-                                    <div className="circleRed"></div>
-                                    <p>Плохо</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div className="statistik__support__info">
-                    <div className="statistik__support__info__div">
-                        <p>Название опроса: Something</p>
-                        <p>Опрос на: Солонников Виктор</p>
-                        <p>Дата начала: 2022-04-28</p>
-                        <p>Дата конца: 2022-04-29</p>
-                    </div>
-                </div>
-            </div>
-
+        <div>
+            {switchState(userStatistic.caseLoading)}
         </div>
-
     );
-}
+})
 
 export default EventStatistik;

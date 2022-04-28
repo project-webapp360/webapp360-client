@@ -4,6 +4,7 @@ import UserManagingCard from "../../components/user_managing_card/user_managing_
 import {useNavigate} from "react-router-dom";
 import {Context} from "../../index";
 import Eventcard from "../../components/eventcard/Eventcard";
+import {observer} from "mobx-react-lite";
 
 const STATES = {
   INITIAL: 'initial',
@@ -12,7 +13,7 @@ const STATES = {
   LOADED: 'loaded'
 }
 
-const UserManagingPage = () => {
+const UserManagingPage = observer(() => {
   const navigate = useNavigate()
 
   const {users} = useContext(Context)
@@ -92,6 +93,6 @@ const UserManagingPage = () => {
       </div>
     </div>
   );
-};
+});
 
 export default UserManagingPage;

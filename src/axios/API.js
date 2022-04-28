@@ -90,6 +90,13 @@ export const sendResultsUser = async (idUser, arrayResults) => {
     })
 }
 
+export const getResultsUser = async (eventId) => {
+    const {data} = await $host.post('api/results/get/user', {
+        eventId
+    })
+    return data
+}
+
 
 
 

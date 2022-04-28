@@ -7,87 +7,96 @@ import {getEvents, getUsers} from "../../axios/API";
 import {observer} from "mobx-react-lite";
 
 const STATES = {
-  INITIAL: 'initial',
-  LOADING: 'loading',
-  ERROR: 'error',
-  LOADED: 'loaded'
+    INITIAL: 'initial',
+    LOADING: 'loading',
+    ERROR: 'error',
+    LOADED: 'loaded'
 }
 
 const Mainpage = observer(() => {
 
-  const {user} = useContext(Context)
-  const {events} = useContext(Context)
-  const [EventCardData, setEventCardData] = useState([
-    {
-      title: "Название",
-      dateStart:"2022-02-23",
-      dateEnd:"Конец",
-      name:'Вася',
-      creator:'Менеджер'
-    },
-    {
-      title: "Название",
-      dateStart:"2022-02-23",
-      dateEnd:"Конец",
-      name:'Вася',
-      creator:'Менеджер'
-    },
-    {
-      title: "Название",
-      dateStart:"2022-02-23",
-      dateEnd:"Конец",
-      name:'Вася',
-      creator:'Менеджер'
-    },
-    {
-      title: "Название",
-      dateStart:"2022-02-23",
-      dateEnd:"Конец",
-      name:'Вася',
-      creator:'Админ'
-    },
-    {
-      title: "Название",
-      dateStart:"2022-02-23",
-      dateEnd:"Конец",
-      name:'Вася',
-      creator:'Менеджер'
-    },])
+    const {user} = useContext(Context)
+    const {events} = useContext(Context)
+    const [EventCardData, setEventCardData] = useState([
+        {
+            title: "Название",
+            dateStart: "2022-02-23",
+            dateEnd: "Конец",
+            name: 'Вася',
+            creator: 'Менеджер'
+        },
+        {
+            title: "Название",
+            dateStart: "2022-02-23",
+            dateEnd: "Конец",
+            name: 'Вася',
+            creator: 'Менеджер'
+        },
+        {
+            title: "Название",
+            dateStart: "2022-02-23",
+            dateEnd: "Конец",
+            name: 'Вася',
+            creator: 'Менеджер'
+        },
+        {
+            title: "Название",
+            dateStart: "2022-02-23",
+            dateEnd: "Конец",
+            name: 'Вася',
+            creator: 'Админ'
+        },
+        {
+            title: "Название",
+            dateStart: "2022-02-23",
+            dateEnd: "Конец",
+            name: 'Вася',
+            creator: 'Менеджер'
+        },])
 
-  useEffect(   () => {
-    events.fetchData(user.user.id)
-    console.log(`user: ${user.user}`)
-    console.log(`isAuth: ${user.isAuth}`)
-  })
+    useEffect(() => {
+        events.fetchData(user.user.id)
+        console.log(`user: ${user.user}`)
+        console.log(`isAuth: ${user.isAuth}`)
+    })
 
-  const switchState = (state) => {
-    switch (state) {
+    const switchState = (state) => {
+        switch (state) {
 
-      case STATES.INITIAL: {
-        return <h1>...</h1>
-      }
+            case STATES.INITIAL: {
+                return <h1>...</h1>
+            }
 
-      case STATES.LOADING: {
-        return <h1>Выполняется загрузка...</h1>
-      }
+            case STATES.LOADING: {
+                return <h1>Выполняется загрузка...</h1>
+            }
 
-      case STATES.LOADED: {
-        return events.events.map((item) => <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart} dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>)
-      }
+            case STATES.LOADED: {
+                console.log(events.events[0].name)
+                return events.events.map((item) =>
 
-      default: {
-        return <h1>ERROR...</h1>
-      }
 
+                    item.needCompete === undefined ?
+                        <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
+                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>
+                        :
+                        <h1>None</h1>
+                )
+            }
+
+            default: {
+                return <h1>ERROR...</h1>
+            }
+
+        }
     }
-  }
 
-  return (
-    <div className="mainPage">
-      <Progressbar/>
-      {switchState(events.caseLoading)}
-    </div>
-  );
+    return (
+        <div className="mainPage">
+            <Progressbar/>
+            {switchState(events.caseLoading)}
+        </div>
+    );
 });
 
 export default Mainpage;

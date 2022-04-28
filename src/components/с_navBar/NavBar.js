@@ -99,7 +99,7 @@ const NavBar = observer(() => {
     const switchPermission = (role) => {
         switch (role) {
 
-            case role.USER: {
+            case 'USER': {
                 return (
                   <div>
                     <div className="line">
@@ -119,7 +119,7 @@ const NavBar = observer(() => {
                 </div>
                 );}
 
-            case role.MANAGER: {
+            case 'MANAGER': {
                 return (<div>
                     <Modal visible={modal1} setVisible={setModal1}>
                         <AddEvent setVisible={setModal1} create={createEvent}/>
@@ -142,7 +142,7 @@ const NavBar = observer(() => {
                 </div>
             );}
 
-            case role.ADMIN: {
+            case 'ADMIN': {
                 return (
                 <div>
                     <Modal visible={modal1} setVisible={setModal1}>
