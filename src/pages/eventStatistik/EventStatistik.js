@@ -1,19 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 /*import Modal from "../modal/Modal";*/
 import "hammerjs";
 import "./EventStatistik.css";
 import "@progress/kendo-theme-material/dist/all.css";
-import { PieChart, Pie, Tooltip } from "recharts";
-
-import {
-    Chart,
-    ChartTitle,
-    ChartLegend,
-    ChartTooltip,
-    ChartSeries,
-    ChartSeriesItem,
-    ChartSeriesLabels,
-} from "@progress/kendo-react-charts";
+import {Pie, PieChart, Tooltip} from "recharts";
 import {LinearProgress} from "@mui/material";
 
 const applicationsStatusThisMonth = [
@@ -37,7 +27,7 @@ const applicationsStatusThisMonth = [
 const labelContent = e => e.category;
 
 const renderTooltip = context => {
-    const { category, value } = context.point || context;
+    const {category, value} = context.point || context;
     return (
         <div>
             {category}: {value}%
@@ -47,25 +37,25 @@ const renderTooltip = context => {
 
 
 const myData0 = [
-    { name: "Отлично", value: 60, fill: "#2ed27a" },
-    { name: "Хорошо", value: 26, fill: "#fdb846" },
-    { name: "Плохо", value: 14, fill:"#f5675b" },
+    {name: "Отлично", value: 60, fill: "#2ed27a"},
+    {name: "Хорошо", value: 26, fill: "#fdb846"},
+    {name: "Плохо", value: 14, fill: "#f5675b"},
 ];
 
 const myData1 = [
-    { name: "Отлично", value: 60, fill: "#2ed27a" },
-    { name: "Хорошо", value: 26, fill: "#fdb846" },
-    { name: "Плохо", value: 14, fill:"#f5675b" },
+    {name: "Отлично", value: 60, fill: "#2ed27a"},
+    {name: "Хорошо", value: 26, fill: "#fdb846"},
+    {name: "Плохо", value: 14, fill: "#f5675b"},
 ];
 const myData2 = [
-    { name: "Отлично", value: 60, fill: "#2ed27a" },
-    { name: "Хорошо", value: 26, fill: "#fdb846" },
-    { name: "Плохо", value: 14, fill:"#f5675b" },
+    {name: "Отлично", value: 60, fill: "#2ed27a"},
+    {name: "Хорошо", value: 26, fill: "#fdb846"},
+    {name: "Плохо", value: 14, fill: "#f5675b"},
 ];
 const myData3 = [
-    { name: "Отлично", value: 60, fill: "#2ed27a" },
-    { name: "Хорошо", value: 26, fill: "#fdb846" },
-    { name: "Плохо", value: 14, fill:"#f5675b" },
+    {name: "Отлично", value: 60, fill: "#2ed27a"},
+    {name: "Хорошо", value: 26, fill: "#fdb846"},
+    {name: "Плохо", value: 14, fill: "#f5675b"},
 ];
 
 
@@ -78,7 +68,7 @@ const EventStatistik = ({visible, setVisible}) => {
         <div className="statistic__main__window">
             <div className="progressbar">
                 <p className="progressbar__text">Прошло {completedUser} пользователей из {allUser} возможных</p>
-                <LinearProgress variant="determinate" value={completedUser/allUser*100}/>
+                <LinearProgress variant="determinate" value={completedUser / allUser * 100}/>
             </div>
             <div className="statistik__main">
                 <div className="statistik__main__statistik">
@@ -89,13 +79,13 @@ const EventStatistik = ({visible, setVisible}) => {
                                 <div className="blackLine"></div>
                                 <PieChart width={200} height={200}>
                                     <Pie
-                                      dataKey="value"
-                                      isAnimationActive={true}
-                                      data={myData0}
-                                      outerRadius={100}
-                                      fill="orangered"
+                                        dataKey="value"
+                                        isAnimationActive={true}
+                                        data={myData0}
+                                        outerRadius={100}
+                                        fill="orangered"
                                     />
-                                    <Tooltip />
+                                    <Tooltip/>
                                 </PieChart>
                             </div>
                             <div className="statistik__pie__div__right">
@@ -121,13 +111,13 @@ const EventStatistik = ({visible, setVisible}) => {
                                 <div className="blackLine"></div>
                                 <PieChart width={200} height={200}>
                                     <Pie
-                                      dataKey="value"
-                                      isAnimationActive={true}
-                                      data={myData1}
-                                      outerRadius={100}
-                                      fill="orangered"
+                                        dataKey="value"
+                                        isAnimationActive={true}
+                                        data={myData1}
+                                        outerRadius={100}
+                                        fill="orangered"
                                     />
-                                    <Tooltip />
+                                    <Tooltip/>
                                 </PieChart>
                             </div>
 
@@ -157,13 +147,13 @@ const EventStatistik = ({visible, setVisible}) => {
                                 <div className="blackLine"></div>
                                 <PieChart width={200} height={200}>
                                     <Pie
-                                      dataKey="value"
-                                      isAnimationActive={true}
-                                      data={myData2}
-                                      outerRadius={100}
-                                      fill="orangered"
+                                        dataKey="value"
+                                        isAnimationActive={true}
+                                        data={myData2}
+                                        outerRadius={100}
+                                        fill="orangered"
                                     />
-                                    <Tooltip />
+                                    <Tooltip/>
                                 </PieChart>
                             </div>
 
@@ -190,13 +180,13 @@ const EventStatistik = ({visible, setVisible}) => {
                                 <div className="blackLine"></div>
                                 <PieChart width={200} height={200}>
                                     <Pie
-                                      dataKey="value"
-                                      isAnimationActive={true}
-                                      data={myData3}
-                                      outerRadius={100}
-                                      fill="orangered"
+                                        dataKey="value"
+                                        isAnimationActive={true}
+                                        data={myData3}
+                                        outerRadius={100}
+                                        fill="orangered"
                                     />
-                                    <Tooltip />
+                                    <Tooltip/>
                                 </PieChart>
                             </div>
 
