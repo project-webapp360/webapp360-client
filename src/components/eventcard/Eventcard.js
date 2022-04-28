@@ -2,8 +2,9 @@ import React, {useContext, useState} from 'react';
 import "./Eventcard.css"
 import Survey from "../survey/Survey";
 import Modal from "../modal/Modal";
-import {deleteEvent} from "../../axios/API";
+import {deleteEvent, deleteEventUser} from "../../axios/API";
 import {Context} from "../../index";
+import {observable} from "mobx";
 import {useNavigate} from "react-router-dom";
 
 
@@ -20,11 +21,12 @@ const Eventcard = (props) => {
     const [modal1, setModal1] = useState(false);
 
 
-    const eventDelete = async (id) => {
-        const data = await deleteEvent(id)
-        await events.updateData(data)
-        console.log(data)
-    }
+  const eventDelete = async (idUser, id) => {
+    // const data = await deleteEvent(id)
+    const data = await deleteEventUser(idUser, id)
+    await events.updateData(data)
+    console.log(data + '123123123')
+  }
 
     const changeConfirmVisibleTrue = () => {
         setModalConfirm(true)
@@ -34,10 +36,10 @@ const Eventcard = (props) => {
         setModalConfirm(false)
     }
 
-    const confirmAgree = () => {
-        setModalConfirm(false)
-        eventDelete(props.id)
-    }
+  const confirmAgree = async () => {
+    setModalConfirm(false)
+    await eventDelete(props.idUser, props.id)
+  }
 
     const navigate = useNavigate()
 
@@ -60,9 +62,9 @@ const Eventcard = (props) => {
                 </div>
             </Modal>
 
-            <Modal visible={modal} setVisible={setModal}>
-                <Survey visible={modal} setVisible={setModal}/>
-            </Modal>
+      <Modal visible={modal} setVisible={setModal}>
+        <Survey eventId={props.id} visible={modal} setVisible={setModal}/>
+      </Modal>
 
             <div className="eventcard">
 

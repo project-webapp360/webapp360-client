@@ -85,11 +85,11 @@ const NavBar = observer(() => {
         // localStorage.setItem('token', '')
         tokenService.unbindToken('accessToken')
         tokenService.unbindToken('refreshToken')
-        navigate("/login")
+        navigate('/login')
     }
 
     const userManagingNavigate = () => {
-        navigate("/UserManagingPage")
+        navigate('/UserManagingPage')
     }
 
     const userProfileNavigate = () => {

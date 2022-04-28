@@ -22,7 +22,8 @@ export const login = async (email, password) => {
     console.log(data.refreshToken)
     tokenService.setToken('accessToken', data.accessToken)
     tokenService.setToken('refreshToken', data.refreshToken)
-    return jwtDecode(data.accessToken)
+    // return jwtDecode(data.accessToken)
+    return data
 }
 
 export const deleteToken = async (id) => {
@@ -41,8 +42,23 @@ export const createEvent = async (title, dateStart, dateEnd, name, creator) => {
     return data
 }
 
+export const createEventUsers = async (eventId) => {
+    const {data} = await $host.post('api/event/create/user', {
+        id: eventId
+    })
+    return data
+}
+
 export const getEvents = async () => {
     const {data} = await $host.get('api/event/events')
+    return data
+}
+
+
+export const getEventsUser = async (userId) => {
+    const {data} = await $host.post('api/event/events/user', {
+        id: userId
+    })
     return data
 }
 
@@ -51,12 +67,27 @@ export const deleteEvent = async (id) => {
     return {data}
 }
 
+export const deleteEventUser = async (idUser, idEvent) => {
+    const {data} = await $host.post('api/event/delete/user', {
+        idUser: idUser, idEvent: idEvent
+    })
+    return {data}
+}
+
 
 
 export const getUsers = async () => {
-    const {data} = await $AuthHost.get('api/users')
+    const {data} = await $host.get('api/users')
     // localStorage.setItem('token', data.accessToken)
-    return jwtDecode(data.accessToken)
+    // return jwtDecode(data.accessToken)
+    return data
+}
+
+export const sendResultsUser = async (idUser, arrayResults) => {
+    await $host.post('api/results/set/user', {
+        id: idUser,
+        results: arrayResults
+    })
 }
 
 

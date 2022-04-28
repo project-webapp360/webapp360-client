@@ -1,12 +1,17 @@
 import React from 'react';
 import "./user_managing_card.css"
+import {getUsers} from "../../axios/API";
 
 const UserManagingCard = (props) => {
 
-  function ban () {
-   // props.banned = true
-    console.log(props.number);
+  // function ban () {
+  //  // props.banned = true
+  //   console.log(props.number);
+  //
+  // }
 
+  const testButton = async() => {
+    console.log(await getUsers())
   }
 
   return (
@@ -18,19 +23,19 @@ const UserManagingCard = (props) => {
             <button className="user-card__button__info">
               <i className="fas fa-info-circle fa-xs"></i>
             </button>
-            <div className="user-card__title">{props.userName}</div>
+            <div className="user-card__title">{props.userName} - {props.userRole}</div>
           </div>
           <div>
-            <button onClick={ban} className="user-card__button__bun">БАН!!!</button>
+            <button className="user-card__button__bun">БАН!!!</button>
           </div>
         </div>
         :
         <div className="user-card">
           <div className="user_info_div">
-            <button className="user-card__button__info">
+            <button onClick={testButton} className="user-card__button__info">
               <i className="fas fa-info-circle fa-xs"></i>
             </button>
-            <div className="user-card__title">{props.userName}</div>
+            <div className="user-card__title">{props.userName} - {props.userRole}</div>
           </div>
           <div>
             <button className="user-card__button">РазБАНить?</button>

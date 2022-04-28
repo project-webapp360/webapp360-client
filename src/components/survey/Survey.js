@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import "./Survey.css"
 import Modal from "../modal/Modal";
+import {sendResultsUser} from "../../axios/API";
+import {Context} from "../../index";
 
-const Survey = ({visible, setVisible}) => {
+const Survey = ({eventId, visible, setVisible}) => {
+
+  const {user} = useContext(Context)
 
   const [questions, setQuestions] = useState([
     "Вы сталкиваетесь с трудностями в общении в процессе работы?",
@@ -17,11 +21,11 @@ const Survey = ({visible, setVisible}) => {
     "Иванов предлагает новые идеи и решения?",
     "Иван умеет находить общий язык со своими коллегами?",
   ])
-  const [answers, setAnswers] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0,])
+  const [answers, setAnswers] = useState(['0', '0', '0', '0', '0', '0', '0', '0', '0', '0',])
   const [page, setPage] = useState(1)
   const [value, setValue] = useState(0);
 
-  const decrease = (event) => {
+    const decrease = (event) => {
     console.log(page)
     setPage(page - 1)
     getAnswer(page - 2)
@@ -42,10 +46,17 @@ const Survey = ({visible, setVisible}) => {
     setModal(false)
   }
 
+  const sendAnswers = async () => {
+    setModal(false)
+    setVisible(false)
+    await sendResultsUser(eventId ,answers)
+  }
+
   const changeAllVisible = () => {
     setModal(false)
     setVisible(false)
   }
+
 
   const handleRadioChange = (event) => {
     setValue(event.target.value)
@@ -104,7 +115,7 @@ const Survey = ({visible, setVisible}) => {
               :
               <button disabled className="survey__button">Вперёд</button>
             }
-            <button onClick={changeAllVisible} className="survey__button-end">Завершить</button>
+            <button onClick={sendAnswers} className="survey__button-end">Завершить</button>
           </div>
         </div>
 
