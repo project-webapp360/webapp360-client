@@ -17,24 +17,6 @@ const STATES = {
     LOADED: 'loaded'
 }
 
-const applicationsStatusThisMonth = [
-    {
-        status: "Плохая",
-        value: 14,
-        color: "#f5675b",
-    },
-    {
-        status: "Хорошая",
-        value: 26,
-        color: "#fdb846",
-    },
-    {
-        status: "Отличная",
-        value: 60,
-        color: "#2ed27a",
-    },
-];
-
 const labelContent = e => e.category;
 
 const renderTooltip = context => {
@@ -48,31 +30,30 @@ const renderTooltip = context => {
 
 
 const myData0 = [
-    {name: "Отлично", value: 60, fill: "#2ed27a"},
-    {name: "Хорошо", value: 26, fill: "#fdb846"},
-    {name: "Плохо", value: 14, fill: "#f5675b"},
+    {name: "Отлично", value: 0, fill: "#2ed27a"},
+    {name: "Хорошо", value: 0, fill: "#fdb846"},
+    {name: "нормально", value: 0, fill: "#f5675b"},
+    {name: "Плохо", value: 0, fill: "#707683"},
 ];
 
 const myData1 = [
-    {name: "Отлично", value: 60, fill: "#2ed27a"},
-    {name: "Хорошо", value: 26, fill: "#fdb846"},
-    {name: "Плохо", value: 14, fill: "#f5675b"},
+    {name: "Отлично", value: 0, fill: "#2ed27a"},
+    {name: "Хорошо", value: 0, fill: "#fdb846"},
+    {name: "нормально", value: 0, fill: "#f5675b"},
+    {name: "Плохо", value: 0, fill: "#707683"},
 ];
 const myData2 = [
-    {name: "Отлично", value: 60, fill: "#2ed27a"},
-    {name: "Хорошо", value: 26, fill: "#fdb846"},
-    {name: "Плохо", value: 14, fill: "#f5675b"},
+    {name: "Отлично", value: 0, fill: "#2ed27a"},
+    {name: "Хорошо", value: 0, fill: "#fdb846"},
+    {name: "нормально", value: 0, fill: "#f5675b"},
+    {name: "Плохо", value: 0, fill: "#707683"},
 ];
 const myData3 = [
-    {name: "Отлично", value: 60, fill: "#2ed27a"},
-    {name: "Хорошо", value: 26, fill: "#fdb846"},
-    {name: "Плохо", value: 14, fill: "#f5675b"},
+    {name: "Отлично", value: 0, fill: "#2ed27a"},
+    {name: "Хорошо", value: 0, fill: "#fdb846"},
+    {name: "нормально", value: 0, fill: "#f5675b"},
+    {name: "Плохо", value: 0, fill: "#707683"},
 ];
-
-
-const allUser = 13
-const completedUser = 7
-
 
 
 const EventStatistik = observer(() => {
@@ -80,17 +61,81 @@ const EventStatistik = observer(() => {
     const [searchParams, setSearchParams] = useSearchParams();
     const id = searchParams.get("id")
 
-        //usersCount
-        //results
-
     const {userStatistic} = useContext(Context)
 
     useEffect(() => {
-         userStatistic.fetchResult(id)
-
+         userStatistic.fetchResult(id);
     })
 
+
+    const calculate = () => {
+        userStatistic.results.results.map((item) => {
+            item.map((items,index) => {
+                if (index === 0 || index === 1 || index === 2) {
+                    if (items === '1'){
+                        myData0[3].value ++;
+                    };
+                    if (items === '2'){
+                        myData0[2].value ++;
+                    };
+                    if (items === '3'){
+                        myData0[1].value ++;
+                    };
+                    if (items === '4'){
+                        myData0[0].value ++;
+                    };
+                }
+                if (index === 3 || index === 4 || index === 5) {
+                    if (items === '1'){
+                        myData1[3].value ++;
+                    };
+                    if (items === '2'){
+                        myData1[2].value ++;
+                    };
+                    if (items === '3'){
+                        myData1[1].value ++;
+                    };
+                    if (items === '4'){
+                        myData1[0].value ++;
+                    };
+                }
+                if (index === 6 || index === 7) {
+                    if (items === '1'){
+                        myData2[3].value ++;
+                    };
+                    if (items === '2'){
+                        myData2[2].value ++;
+                    };
+                    if (items === '3'){
+                        myData2[1].value ++;
+                    };
+                    if (items === '4'){
+                        myData2[0].value ++;
+                    };
+                }
+                if (index === 8 || index === 9) {
+                    if (items === '1'){
+                        myData3[3].value ++;
+                    };
+                    if (items === '2'){
+                        myData3[2].value ++;
+                    };
+                    if (items === '3'){
+                        myData3[1].value ++;
+                    };
+                    if (items === '4'){
+                        myData3[0].value ++;
+                    };
+                }
+
+            })
+        })
+
+    }
+
+
     const switchState = (state) => {
+
         switch (state) {
 
             case STATES.INITIAL: {
@@ -102,10 +147,11 @@ const EventStatistik = observer(() => {
             }
 
             case STATES.LOADED: {
+                calculate()
                 return <div className="statistic__main__window">
                     <div className="progressbar">
-                        <p className="progressbar__text">Прошло {completedUser} пользователей из {allUser} возможных</p>
-                        <LinearProgress variant="determinate" value={completedUser / allUser * 100}/>
+                        <p className="progressbar__text">Прошло {userStatistic.results.results.length} пользователей из {userStatistic.usersCount} возможных</p>
+                        <LinearProgress variant="determinate" value={userStatistic.results.results.length / userStatistic.usersCount * 100}/>
                     </div>
                     <div className="statistik__main">
                         <div className="statistik__main__statistik">
@@ -136,6 +182,10 @@ const EventStatistik = observer(() => {
                                         </div>
                                         <div className="circleDiv">
                                             <div className="circleRed"></div>
+                                            <p>Нормально</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleBlack"></div>
                                             <p>Плохо</p>
                                         </div>
                                     </div>
@@ -169,6 +219,10 @@ const EventStatistik = observer(() => {
                                         </div>
                                         <div className="circleDiv">
                                             <div className="circleRed"></div>
+                                            <p>Нормально</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleBlack"></div>
                                             <p>Плохо</p>
                                         </div>
                                     </div>
@@ -205,6 +259,10 @@ const EventStatistik = observer(() => {
                                         </div>
                                         <div className="circleDiv">
                                             <div className="circleRed"></div>
+                                            <p>Нормально</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleBlack"></div>
                                             <p>Плохо</p>
                                         </div>
                                     </div>
@@ -238,6 +296,10 @@ const EventStatistik = observer(() => {
                                         </div>
                                         <div className="circleDiv">
                                             <div className="circleRed"></div>
+                                            <p>Нормально</p>
+                                        </div>
+                                        <div className="circleDiv">
+                                            <div className="circleBlack"></div>
                                             <p>Плохо</p>
                                         </div>
                                     </div>
@@ -247,10 +309,10 @@ const EventStatistik = observer(() => {
                         </div>
                         <div className="statistik__support__info">
                             <div className="statistik__support__info__div">
-                                <p>Название опроса: Something</p>
-                                <p>Опрос на: Солонников Виктор</p>
-                                <p>Дата начала: 2022-04-28</p>
-                                <p>Дата конца: 2022-04-29</p>
+                                <p>Название опроса: {userStatistic.results.title}</p>
+                                <p>Опрос на: {userStatistic.results.name}</p>
+                                <p>Дата начала: {userStatistic.results.dateStart}</p>
+                                <p>Дата конца: {userStatistic.results.dateEnd}</p>
                             </div>
                         </div>
                     </div>
@@ -261,10 +323,8 @@ const EventStatistik = observer(() => {
             default: {
                 return <h1>ERROR...</h1>
             }
-
         }
     }
-
 
     return (
         <div>
