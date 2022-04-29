@@ -1,19 +1,31 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {createEvent, createEventUsers, getEvents, getEventsUser} from "../../axios/API";
 import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
 import "./AddEvent.css"
 import {observer} from "mobx-react-lite";
+import Eventcard from "../eventcard/Eventcard";
+
+const STATES = {
+    INITIAL: 'initial',
+    LOADING: 'loading',
+    ERROR: 'error',
+    LOADED: 'loaded'
+}
 
 const AddEvent = observer(({create, setVisible}) => {
 
-    const {user} = useContext(Context)
+    const {user, users} = useContext(Context)
     const {events} = useContext(Context)
     const navigate = useNavigate()
 
+    useEffect(() => {
+        users.fetchData()
+    })
+
     const [title, setTitle] = useState('')
     const [dateEnd, setDateEnd] = useState('')
-    const [name, setName] = useState('')
+    const [name, setName] = useState(' ')
 
     const newEventForm = async (e) => {
         e.preventDefault()
@@ -36,8 +48,8 @@ const AddEvent = observer(({create, setVisible}) => {
                 new Date().toLocaleDateString("fr-CA"),
                 dateEnd,
                 name,
-                // user.user.role,
-                'Менеджер'
+                user.user.email,
+                // 'Менеджер'
             )
 
             const allUsers = await createEventUsers(data._id)
@@ -69,6 +81,34 @@ const AddEvent = observer(({create, setVisible}) => {
         },
     ]
 
+    const switchState = (state) => {
+        switch (state) {
+
+            case STATES.INITIAL: {
+                return <h1>...</h1>
+            }
+
+            case STATES.LOADING: {
+                return <h1>Выполняется загрузка...</h1>
+            }
+
+            case STATES.LOADED: {
+
+                return users.users.map((e) =>
+                    <option value={e.email}>{e.email}</option>
+                )
+            }
+
+            default: {
+                return <h1>ERROR...</h1>
+            }
+
+        }
+    }
+
+
+
+
     return (
         <form className="full-form">
 
@@ -81,9 +121,8 @@ const AddEvent = observer(({create, setVisible}) => {
             <div className="mySelectDiv">
                 <select className="mySelect" value={name} label="user" name="" id=""
                         onChange={event => setName(event.target.value)}>
-                    {array.map((e) =>
-                        <option value={e.Name}>{e.Name}</option>
-                    )}
+                    <option className="hiddenOption" value=""></option>
+                    {switchState(users.caseLoading)}
                 </select>
             </div>
 

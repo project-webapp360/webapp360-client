@@ -180,10 +180,10 @@ const NavBar = observer(() => {
     }
 
     return (
-      /*<div>
-          {switchPermission(role)}
-      </div>*/
-        <div>
+      <div>
+          {switchPermission(user.user.role)}
+      </div>
+       /* <div>
             {
                 user.isAuth
                     ?
@@ -213,7 +213,7 @@ const NavBar = observer(() => {
                         <button>Авторизоваться</button>
                     </div>
             }
-        </div>
+        </div>*/
     );
 });
 export default NavBar;

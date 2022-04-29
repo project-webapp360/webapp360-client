@@ -50,3 +50,7 @@
 .input__button:hover {
     background-color: rgb(61, 107, 255);
 }
+
+.hiddenOption {
+    display: none;
+}

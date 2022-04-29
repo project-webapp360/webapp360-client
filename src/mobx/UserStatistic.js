@@ -68,5 +68,11 @@ export default class UserStatistic {
         }
     }
 
+    async updateData(eventId) {
+        runInAction(() => {
+            this.fetchResult(eventId)
+        })
+    }
+
 
 }
