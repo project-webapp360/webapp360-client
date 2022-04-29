@@ -93,10 +93,10 @@ const Survey = ({eventId, visible, setVisible}) => {
             value={value}
             onChange={handleRadioChange}
           >
-            <FormControlLabel value="1" control={<Radio/>} label="Редко"/>
-            <FormControlLabel value="2" control={<Radio/>} label="Часто"/>
-            <FormControlLabel value="3" control={<Radio/>} label="Всегда"/>
-            <FormControlLabel value="4" control={<Radio/>} label="Никогда"/>
+            <FormControlLabel value="4" control={<Radio/>} label="Всегда"/>
+            <FormControlLabel value="3" control={<Radio/>} label="Часто"/>
+            <FormControlLabel value="2" control={<Radio/>} label="Редко"/>
+            <FormControlLabel value="1" control={<Radio/>} label="Никогда"/>
           </RadioGroup>
         </FormControl>
 
