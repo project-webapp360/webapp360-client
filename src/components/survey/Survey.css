@@ -3,6 +3,7 @@
     flex-direction: column;
 
     z-index: -1;
+    min-width: 500px;
 }
 
 .survey__modal {
@@ -58,18 +59,25 @@
 .survey__navigation {
     display: flex;
     flex-direction: row;
-    justify-content:  space-evenly;
+    justify-content:  space-between;
 }
 
 .survey__page {
     justify-content: center;
-    margin-right: 40px;
+    margin-left: 20px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
+}
+
+.button__group {
+    display: flex;
+    align-items: flex-end;
+
+    margin-right: 20px;
 }
 
 .survey__button {

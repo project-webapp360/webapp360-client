@@ -5,6 +5,7 @@ import "./mainpage.css"
 import {Context} from "../../index";
 import {getEvents, getUsers} from "../../axios/API";
 import {observer} from "mobx-react-lite";
+import Progressbar_manage from "../../components/progressbar_manage/progressbar_manage";
 
 const STATES = {
     INITIAL: 'initial',
@@ -93,6 +94,18 @@ const Mainpage = observer(() => {
 
     return (
         <div className="mainPage">
+            {user.user.role === 'MANAGER'
+              ?
+              <Progressbar_manage/>
+              :
+              <div></div>
+            }
+            {user.user.role === 'ADMIN'
+              ?
+              <Progressbar_manage/>
+              :
+              <div></div>
+            }
             <Progressbar/>
             {switchState(events.caseLoading)}
         </div>

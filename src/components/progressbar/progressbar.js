@@ -11,7 +11,7 @@ const Progressbar = () => {
 
   return (
     <div className="progressbar">
-      <p className="progressbar__text">Пройдено {completedEvents} опросов из {allEvents} возможных</p>
+      <p className="progressbar__text">Пройдено опросов лично {completedEvents} из {allEvents} возможных</p>
       <LinearProgress variant="determinate" value={completedEvents/allEvents*100}/>
       <div className="progressbar__date">Сегодня: {new Date().toLocaleDateString("fr-CA")}</div>
     </div>

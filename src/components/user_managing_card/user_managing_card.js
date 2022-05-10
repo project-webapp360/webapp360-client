@@ -20,13 +20,13 @@ const UserManagingCard = (props) => {
         ?
         <div className="user-card">
           <div className="user_info_div">
-            {/*<button className="user-card__button__info">
+            <button className="user-card__button__info">
               <i className="fas fa-info-circle fa-xs"></i>
-            </button>*/}
+            </button>
             <div className="user-card__title">{props.userName} - {props.userRole}</div>
           </div>
           <div>
-            <button className="user-card__button__bun">БАН!!!</button>
+            <button className="user-card__button__bun">Заблокировать</button>
           </div>
         </div>
         :
@@ -38,7 +38,7 @@ const UserManagingCard = (props) => {
             <div className="user-card__title">{props.userName} - {props.userRole}</div>
           </div>
           <div>
-            <button className="user-card__button">РазБАНить?</button>
+            <button className="user-card__button">Разблокировать</button>
           </div>
         </div>
       }

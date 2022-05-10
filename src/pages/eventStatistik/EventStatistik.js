@@ -44,6 +44,7 @@ const myData1 = [
     {name: "Плохо", value: 0, fill: "#707683"},
     {name: "Нету результатов", value: 1, fill: "#466fc5"},
 ];
+
 const myData2 = [
     {name: "Отлично", value: 0, fill: "#2ed27a"},
     {name: "Хорошо", value: 0, fill: "#fdb846"},
@@ -51,6 +52,7 @@ const myData2 = [
     {name: "Плохо", value: 0, fill: "#707683"},
     {name: "Нету результатов", value: 1, fill: "#466fc5"},
 ];
+
 const myData3 = [
     {name: "Отлично", value: 0, fill: "#2ed27a"},
     {name: "Хорошо", value: 0, fill: "#fdb846"},
@@ -134,17 +136,17 @@ const EventStatistik = observer(() => {
 
             })
         })
-        if (myData0[0].value !== 0 || myData0[3].value !== 0 || myData0[3].value !== 0 || myData0[3].value !== 0) {
-            myData0[4].value --
+        if (myData0[0].value !== 0 || myData0[1].value !== 0 || myData0[2].value !== 0 || myData0[3].value !== 0) {
+            myData0[4].value = 0
         }
-        if (myData1[0].value !== 0 || myData1[3].value !== 0 || myData1[3].value !== 0 || myData1[3].value !== 0) {
-            myData1[4].value --
+        if (myData1[0].value !== 0 || myData1[1].value !== 0 || myData1[2].value !== 0 || myData1[3].value !== 0) {
+            myData1[4].value = 0
         }
-        if (myData2[0].value !== 0 || myData2[3].value !== 0 || myData2[3].value !== 0 || myData2[3].value !== 0) {
-            myData2[4].value --
+        if (myData2[0].value !== 0 || myData2[1].value !== 0 || myData2[2].value !== 0 || myData2[3].value !== 0) {
+            myData2[4].value = 0
         }
-        if (myData3[0].value !== 0 || myData3[3].value !== 0 || myData3[3].value !== 0 || myData3[3].value !== 0) {
-            myData3[4].value --
+        if (myData3[0].value !== 0 || myData3[1].value !== 0 || myData3[2].value !== 0 || myData3[3].value !== 0) {
+            myData3[4].value = 0
         }
 
     }

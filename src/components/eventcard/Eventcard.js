@@ -154,7 +154,7 @@ const Eventcard = (props) => {
                                         <i className="fas fa-info-circle fa-xs"></i>
                                     </button>
                                     <button className="eventcard__button-refuse"
-                                            onClick={changeConfirmVisibleTrue}>Удалить
+                                            onClick={changeConfirmVisibleTrue}>Заморозить
                                     </button>
                                     <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
                                 </div>
