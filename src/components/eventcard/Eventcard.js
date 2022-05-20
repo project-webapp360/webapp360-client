@@ -74,7 +74,12 @@ const Eventcard = (props) => {
                             <div className="eventcard__lastString">
                                 <div className="eventcard__name">тест на: {props.name}</div>
                                 <div className="eventcard__buttons">
-                                    <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                    {props.Complete === false
+                                        ?
+                                        <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                        :
+                                        <button disabled className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                    }
                                 </div>
                             </div>
 
@@ -107,7 +112,12 @@ const Eventcard = (props) => {
                                     <button className="eventcard__button-info" onClick={eventStatistik}>
                                         <i className="fas fa-info-circle fa-xs"></i>
                                     </button>
-                                    <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                    {props.Complete === false
+                                        ?
+                                        <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                        :
+                                        <button disabled className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                    }
                                 </div>
                             </div>
 
@@ -156,7 +166,12 @@ const Eventcard = (props) => {
                                     <button className="eventcard__button-refuse"
                                             onClick={changeConfirmVisibleTrue}>Заморозить
                                     </button>
-                                    <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                    {props.Complete === false
+                                        ?
+                                        <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                        :
+                                        <button disabled className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                    }
                                 </div>
                             </div>
 

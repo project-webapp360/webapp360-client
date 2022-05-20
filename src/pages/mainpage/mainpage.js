@@ -76,11 +76,14 @@ const Mainpage = observer(() => {
                 return events.events.map((item) =>
 
 
-                    item.needCompete === undefined ?
+                    item.needCompete === undefined
+                        ?
                         <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
-                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator}/>
+                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={false}/>
                         :
-                        <h1>None</h1>
+                        <div>none</div>
+                        /*<Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
+                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={true}/>*/
                 )
             }
 
@@ -93,13 +96,7 @@ const Mainpage = observer(() => {
 
     return (
         <div className="mainPage">
-            {user.user.role === 'MANAGER'
-              ?
-              <Progressbar_manage/>
-              :
-              <div></div>
-            }
-            {user.user.role === 'ADMIN'
+            {user.user.role === 'MANAGER' || user.user.role === 'ADMIN'
               ?
               <Progressbar_manage/>
               :

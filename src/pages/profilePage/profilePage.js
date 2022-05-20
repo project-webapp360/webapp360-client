@@ -37,15 +37,11 @@ const ProfilePage = () => {
         <div className="profileInfo">
           <Avatar className="avatar" alt="" src="../profile_image.png" sx={{ width: 90, height: 90 }} />
           <div className="header">Профиль</div>
+          <p>Никнэйм: Дятел</p>
           <p>Имя: Солонников Виктор</p>
-          <p>Роль: ADMIN</p>
           <p>Почта: AIM325@ya.ru</p>
-          <p>Средняя оценка:
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-          </p>
+          <p>Роль: ADMIN</p>
+
         </div>
 
 
