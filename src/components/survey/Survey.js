@@ -104,16 +104,28 @@ const Survey = ({eventId, visible, setVisible}) => {
           <div className="survey__page">{page} из 10</div>
           <div className="button__group">
             {page > 1
-              ?
-              <button className="survey__button" onClick={decrease}>Назад</button>
-              :
-              <button disabled className="survey__button">Назад</button>
+                ?
+                <button className="survey__button" onClick={decrease}>Назад</button>
+                :
+                <button disabled className="survey__button">Назад</button>
             }
-            {page < 10
-              ?
-              <button className="survey__button" onClick={increase}>Вперёд</button>
-              :
-              <button onClick={sendAnswers} className="survey__button-end">Завершить</button>
+            {page < 10 && answers[page - 1] != 0
+                ?
+                <button className="survey__button" onClick={increase}>Вперёд</button>
+                :
+                <button disabled className="survey__button" onClick={increase}>Вперёд</button>
+            }
+            {page === 10 && answers[page - 1] != 0
+                ?
+                <button onClick={sendAnswers} className="survey__button-end">Завершить</button>
+                :
+                <div></div>
+            }
+            {page === 10 && answers[page - 1] === 0
+                ?
+                <button disabled onClick={sendAnswers} className="survey__button-end">Завершить</button>
+                :
+                <div></div>
             }
           </div>
         </div>
