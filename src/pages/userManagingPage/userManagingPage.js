@@ -18,33 +18,6 @@ const UserManagingPage = observer(() => {
 
   const {users} = useContext(Context)
 
-  const userNames = [
-    {
-      number: 1,
-      name: 'Вася',
-      ban: false
-    },
-    {
-      number: 2,
-      name: 'Серафим',
-      ban: true
-    },
-    {
-      number: 3,
-      name: 'Оля',
-      ban: false
-    },
-    {
-      number: 4,
-      name: 'Олег',
-      ban: false
-    },
-    {
-      number: 5,
-      name: 'Родион',
-      ban: true
-    }]
-
   const register = (e) => {
     e.preventDefault()
     navigate("/register")

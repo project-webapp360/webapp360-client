@@ -48,6 +48,13 @@ const Register = observer(() => {
             <div className="input-label-div">
               <div>
                 <input type="text" className="inputsDiv"/>
+                <label className="labelDiv">Никнэйм</label>
+              </div>
+            </div>
+
+            <div className="input-label-div">
+              <div>
+                <input type="text" className="inputsDiv"/>
                 <label className="labelDiv">Имя</label>
               </div>
             </div>
@@ -56,13 +63,6 @@ const Register = observer(() => {
               <div>
                 <input type="text" className="inputsDiv"/>
                 <label className="labelDiv">Фамилия</label>
-              </div>
-            </div>
-
-            <div className="input-label-div">
-              <div>
-                <input type="text" className="inputsDiv"/>
-                <label className="labelDiv">Отчество</label>
               </div>
             </div>
 

@@ -34,7 +34,6 @@ const myData0 = [
     {name: "Хорошо", value: 0, fill: "#fdb846"},
     {name: "нормально", value: 0, fill: "#f5675b"},
     {name: "Плохо", value: 0, fill: "#707683"},
-    {name: "Нету результатов", value: 1, fill: "#466fc5"},
 ];
 
 const myData1 = [
@@ -42,7 +41,6 @@ const myData1 = [
     {name: "Хорошо", value: 0, fill: "#fdb846"},
     {name: "нормально", value: 0, fill: "#f5675b"},
     {name: "Плохо", value: 0, fill: "#707683"},
-    {name: "Нету результатов", value: 1, fill: "#466fc5"},
 ];
 
 const myData2 = [
@@ -50,7 +48,6 @@ const myData2 = [
     {name: "Хорошо", value: 0, fill: "#fdb846"},
     {name: "нормально", value: 0, fill: "#f5675b"},
     {name: "Плохо", value: 0, fill: "#707683"},
-    {name: "Нету результатов", value: 1, fill: "#466fc5"},
 ];
 
 const myData3 = [
@@ -58,7 +55,13 @@ const myData3 = [
     {name: "Хорошо", value: 0, fill: "#fdb846"},
     {name: "нормально", value: 0, fill: "#f5675b"},
     {name: "Плохо", value: 0, fill: "#707683"},
-    {name: "Нету результатов", value: 1, fill: "#466fc5"},
+];
+
+const myData4 = [
+    {name: "Работоспособность", value: 0, fill: "#2ed07a"},
+    {name: "Ответственность", value: 0, fill: "#fbb746"},
+    {name: "Общительность", value: 0, fill: "#f3665b"},
+    {name: "Креативность", value: 0, fill: "#6f7583"},
 ];
 
 
@@ -73,8 +76,34 @@ const EventStatistik = observer(() => {
          userStatistic.fetchResult(id);
     })
 
+    let count0 = 0
+    let count1 = 0
+    let count2 = 0
+    let count3 = 0
+    let count4 = 0
+
 
     const calculate = () => {
+        myData0[0].value = 0
+        myData0[1].value = 0
+        myData0[2].value = 0
+        myData0[3].value = 0
+        myData1[0].value = 0
+        myData1[1].value = 0
+        myData1[2].value = 0
+        myData1[3].value = 0
+        myData2[0].value = 0
+        myData2[1].value = 0
+        myData2[2].value = 0
+        myData2[3].value = 0
+        myData3[0].value = 0
+        myData3[1].value = 0
+        myData3[2].value = 0
+        myData3[3].value = 0
+        myData4[0].value = 0
+        myData4[1].value = 0
+        myData4[2].value = 0
+        myData4[3].value = 0
         userStatistic.results.results.map((item) => {
             item.map((items,index) => {
                 if (index === 0 || index === 1 || index === 2) {
@@ -136,19 +165,24 @@ const EventStatistik = observer(() => {
 
             })
         })
-        if (myData0[0].value !== 0 || myData0[1].value !== 0 || myData0[2].value !== 0 || myData0[3].value !== 0) {
-            myData0[4].value = 0
-        }
-        if (myData1[0].value !== 0 || myData1[1].value !== 0 || myData1[2].value !== 0 || myData1[3].value !== 0) {
-            myData1[4].value = 0
-        }
-        if (myData2[0].value !== 0 || myData2[1].value !== 0 || myData2[2].value !== 0 || myData2[3].value !== 0) {
-            myData2[4].value = 0
-        }
-        if (myData3[0].value !== 0 || myData3[1].value !== 0 || myData3[2].value !== 0 || myData3[3].value !== 0) {
-            myData3[4].value = 0
-        }
 
+        if (userStatistic.results.results.length != 0){
+            count0 = (myData0[0].value*5 + myData0[1].value*4 + myData0[2].value*3 + myData0[3].value*2)/(3*userStatistic.results.results.length)
+            count1 = (myData1[0].value*5 + myData1[1].value*4 + myData1[2].value*3 + myData1[3].value*2)/(3*userStatistic.results.results.length)
+            count2 = (myData2[0].value*5 + myData2[1].value*4 + myData2[2].value*3 + myData2[3].value*2)/(2*userStatistic.results.results.length)
+            count3 = (myData3[0].value*5 + myData3[1].value*4 + myData3[2].value*3 + myData3[3].value*2)/(2*userStatistic.results.results.length)
+            count4 = (count0 + count1 + count2 + count3)/4
+
+            myData4[0].value = count0
+            myData4[1].value = count1
+            myData4[2].value = count2
+            myData4[3].value = count3
+
+            count0 = count0.toFixed(2)
+            count1 = count1.toFixed(2)
+            count2 = count2.toFixed(2)
+            count3 = count3.toFixed(2)
+        }
     }
 
 
@@ -177,17 +211,20 @@ const EventStatistik = observer(() => {
                                 <div className="statistik__pie__div">
                                     <div className="statistik__pie__div__left">
                                         <p>Работоспособность</p>
-                                        <div className="blackLine"></div>
-                                        <PieChart width={200} height={200}>
-                                            <Pie
-                                                dataKey="value"
-                                                isAnimationActive={true}
-                                                data={myData0}
-                                                outerRadius={100}
-                                                fill="orangered"
-                                            />
-                                            <Tooltip/>
-                                        </PieChart>
+                                        <div>
+                                            <div className="blackLine"></div>
+                                            <PieChart width={200} height={200}>
+                                                <Pie
+                                                    dataKey="value"
+                                                    isAnimationActive={true}
+                                                    data={myData0}
+                                                    outerRadius={100}
+                                                    fill="orangered"
+                                                />
+                                            </PieChart>
+                                            <div className="inner__text">{count0}</div>
+                                        </div>
+
                                     </div>
                                     <div className="statistik__pie__div__right">
                                         <div className="circleDiv">
@@ -214,16 +251,18 @@ const EventStatistik = observer(() => {
                                     <div className="statistik__pie__div__left">
                                         <p>Ответственность</p>
                                         <div className="blackLine"></div>
-                                        <PieChart width={200} height={200}>
-                                            <Pie
-                                                dataKey="value"
-                                                isAnimationActive={true}
-                                                data={myData1}
-                                                outerRadius={100}
-                                                fill="orangered"
-                                            />
-                                            <Tooltip/>
-                                        </PieChart>
+                                        <div>
+                                            <PieChart width={200} height={200}>
+                                                <Pie
+                                                    dataKey="value"
+                                                    isAnimationActive={true}
+                                                    data={myData1}
+                                                    outerRadius={100}
+                                                    fill="orangered"
+                                                />
+                                            </PieChart>
+                                            <div className="inner__text">{count1}</div>
+                                        </div>
                                     </div>
 
                                     <div className="statistik__pie__div__right">
@@ -254,7 +293,7 @@ const EventStatistik = observer(() => {
                                     <div className="statistik__pie__div__left">
                                         <p>Общительность</p>
                                         <div className="blackLine"></div>
-                                        <PieChart width={200} height={200}>
+                                        <div><PieChart width={200} height={200}>
                                             <Pie
                                                 dataKey="value"
                                                 isAnimationActive={true}
@@ -262,8 +301,9 @@ const EventStatistik = observer(() => {
                                                 outerRadius={100}
                                                 fill="orangered"
                                             />
-                                            <Tooltip/>
                                         </PieChart>
+                                            <div className="inner__text">{count2}</div>
+                                        </div>
                                     </div>
 
                                     <div className="statistik__pie__div__right">
@@ -291,16 +331,18 @@ const EventStatistik = observer(() => {
                                     <div className="statistik__pie__div__left">
                                         <p>Креативность</p>
                                         <div className="blackLine"></div>
-                                        <PieChart width={200} height={200}>
-                                            <Pie
-                                                dataKey="value"
-                                                isAnimationActive={true}
-                                                data={myData3}
-                                                outerRadius={100}
-                                                fill="orangered"
-                                            />
-                                            <Tooltip/>
-                                        </PieChart>
+                                        <div>
+                                            <PieChart width={200} height={200}>
+                                                <Pie
+                                                    dataKey="value"
+                                                    isAnimationActive={true}
+                                                    data={myData3}
+                                                    outerRadius={100}
+                                                    fill="orangered"
+                                                />
+                                            </PieChart>
+                                            <div className="inner__text">{count3}</div>
+                                        </div>
                                     </div>
 
                                     <div className="statistik__pie__div__right">
@@ -331,6 +373,45 @@ const EventStatistik = observer(() => {
                                 <p>Опрос на: {userStatistic.results.name}</p>
                                 <p>Дата начала: {userStatistic.results.dateStart}</p>
                                 <p>Дата конца: {userStatistic.results.dateEnd}</p>
+                            </div>
+                            <div className="final__statistik__pie__div">
+
+                                <div className="statistik__pie__div__left">
+                                    <p>Общая оценка</p>
+                                    <div className="blackLine"></div>
+                                    <div>
+                                        <PieChart width={200} height={200}>
+                                            <Pie
+                                                dataKey="value"
+                                                isAnimationActive={true}
+                                                data={myData4}
+                                                outerRadius={100}
+                                                fill="orangered"
+                                            />
+                                        </PieChart>
+                                        <div className="inner__text">{count4}</div>
+                                    </div>
+                                </div>
+
+                                <div className="statistik__pie__div__right">
+                                    <div className="circleDiv">
+                                        <div className="circleGreen"></div>
+                                        <p>Работоспособность</p>
+                                    </div>
+                                    <div className="circleDiv">
+                                        <div className="circleYellow"></div>
+                                        <p>Ответственность</p>
+                                    </div>
+                                    <div className="circleDiv">
+                                        <div className="circleRed"></div>
+                                        <p>Общительность</p>
+                                    </div>
+                                    <div className="circleDiv">
+                                        <div className="circleBlack"></div>
+                                        <p>Креативность</p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
