@@ -73,7 +73,7 @@ const Mainpage = observer(() => {
             }
 
             case STATES.LOADED: {
-                console.log(events.events[0].name)
+                // console.log(events.events[0].name)
                 return events.events.map((item) =>
 
 
