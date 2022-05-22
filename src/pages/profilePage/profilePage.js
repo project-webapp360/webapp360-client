@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Avatar, LinearProgress} from "@mui/material";
 import "./profilePage.css"
 import {Pie, PieChart, Tooltip} from "recharts";
+import {Context} from "../../index";
+
+
 
 const myData0 = [
   {name: "Отлично", value: 1, fill: "#2ed27a"},
@@ -35,6 +38,9 @@ const count3 = 0
 
 
 const ProfilePage = () => {
+
+  const {user} = useContext(Context)
+
   return (
     <div className="main">
       <div className="profileContent">
@@ -249,8 +255,8 @@ const ProfilePage = () => {
             <div className="header">Профиль</div>
             <p>Никнэйм: Дятел</p>
             <p>Имя: Солонников Виктор</p>
-            <p>Почта: AIM325@ya.ru</p>
-            <p>Роль: ADMIN</p>
+            <p>Почта: {user.user.email}</p>
+            <p>Роль: {user.user.role}</p>n
 
           </div>
         </div>

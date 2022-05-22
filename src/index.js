@@ -8,12 +8,13 @@ import Users from "./mobx/Users";
 import UserStatistic from "./mobx/UserStatistic";
 import {Provider} from "react-redux";
 import {store} from './redux/index'
+
 export const Context = createContext(null)
 
 console.log(process.env.REACT_APP_URL)
 
 ReactDOM.render(
-    <Provider store={store}>
+    // <Provider store={store}>
         <Context.Provider value={{
             user: new User(),
             number: new NumberCount(),
@@ -21,9 +22,11 @@ ReactDOM.render(
             users: new Users(),
             userStatistic: new UserStatistic()
         }}>
+
             <App/>
+
         </Context.Provider>,
-    </Provider>,
+    // </Provider>,
     document.getElementById('root')
 );
 

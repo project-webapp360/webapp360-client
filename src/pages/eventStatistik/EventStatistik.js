@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 /*import Modal from "../modal/Modal";*/
 import "hammerjs";
 import "./EventStatistik.css";
@@ -72,9 +72,12 @@ const EventStatistik = observer(() => {
 
     const {userStatistic} = useContext(Context)
 
+
+
+
     useEffect(() => {
-         userStatistic.fetchResult(id);
-    })
+         userStatistic.fetchResult(id)
+    }, [])
 
     let count0 = 0
     let count1 = 0
@@ -427,6 +430,7 @@ const EventStatistik = observer(() => {
 
     return (
         <div>
+            {}
             {switchState(userStatistic.caseLoading)}
         </div>
     );

@@ -16,7 +16,7 @@ const STATES = {
 const UserManagingPage = observer(() => {
   const navigate = useNavigate()
 
-  const {users} = useContext(Context)
+  const {users, user} = useContext(Context)
 
   const register = (e) => {
     e.preventDefault()
@@ -25,7 +25,7 @@ const UserManagingPage = observer(() => {
 
   useEffect(   () => {
     users.fetchData()
-  })
+  }, [users.loading])
 
   const switchState = (state) => {
     switch (state) {
@@ -39,9 +39,10 @@ const UserManagingPage = observer(() => {
       }
 
       case STATES.LOADED: {
-        console.log(`${users.users}`)
+        console.log(users.users)
         // return users.users.map((item) => <h1>{item.email}</h1>)
-        return users.users.map((item) => <UserManagingCard userName={item.email} userRole={item.role} banned={false}/>)
+        // let result = users.users.filter(item => item.email !== user.user.email)
+        return users.users.map((item) => <UserManagingCard userName={item.email} userRole={item.role} banned={item.isBanned}/>)
       }
 
       default: {

@@ -46,10 +46,9 @@ export default class UserStatistic {
 
     async fetchResult(eventId) {
 
-        if (this.state === STATES.INITIAL)
-        {
+
             this.state = STATES.LOADING
-        }
+
 
         try {
             const data = await getResultsUser(eventId)

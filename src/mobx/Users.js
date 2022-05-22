@@ -12,10 +12,12 @@ const STATES = {
 export default class Users {
     users = []
     state = STATES.INITIAL
+    loading = false
 
     constructor() {
         makeObservable(this, {
-            state:  observable,
+            loading: observable,
+            state: observable,
             fetchData: action,
             caseLoading: computed,
             updateData: action
@@ -24,18 +26,15 @@ export default class Users {
 
     get caseLoading() {
         switch (this.state) {
-            case STATES.INITIAL:
-            {
+            case STATES.INITIAL: {
                 console.log('CASE INITIAL')
                 return STATES.INITIAL
             }
-            case STATES.LOADING:
-            {
+            case STATES.LOADING: {
                 console.log('CASE LOADING')
                 return STATES.LOADING
             }
-            case STATES.LOADED:
-            {
+            case STATES.LOADED: {
                 console.log('CASE LOADED')
                 return STATES.LOADED
             }
@@ -46,10 +45,7 @@ export default class Users {
 
     async fetchData() {
 
-        if (this.state === STATES.INITIAL)
-        {
-            this.state = STATES.LOADING
-        }
+        this.state = STATES.LOADING
 
         try {
             const data = await getUsers()
@@ -70,5 +66,11 @@ export default class Users {
             this.users = data
             this.state = STATES.LOADING
         })
+    }
+
+    async updateMobx() {
+        this.loading = true
+        await this.fetchData()
+        this.loading = false
     }
 }

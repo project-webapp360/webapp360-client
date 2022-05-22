@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./user_managing_card.css"
-import {getUsers} from "../../axios/API";
+import {bannedUser, getUsers, unbannedUser} from "../../axios/API";
+import {Context} from "../../index";
 
 const UserManagingCard = (props) => {
+
+  const {user, users} = useContext(Context)
 
   // function ban () {
   //  // props.banned = true
@@ -14,36 +17,83 @@ const UserManagingCard = (props) => {
     console.log(await getUsers())
   }
 
-  return (
-    <div>
-      {props.banned === false
-        ?
-        <div className="user-card">
-          <div className="user_info_div">
-            <button className="user-card__button__info">
-              <i className="fas fa-info-circle fa-xs"></i>
-            </button>
-            <div className="user-card__title">{props.userName} - {props.userRole}</div>
-          </div>
-          <div>
-            <button className="user-card__button__bun">Заблокировать</button>
-          </div>
-        </div>
-        :
-        <div className="user-card">
-          <div className="user_info_div">
-            <button onClick={testButton} className="user-card__button__info">
-              <i className="fas fa-info-circle fa-xs"></i>
-            </button>
-            <div className="user-card__title">{props.userName} - {props.userRole}</div>
-          </div>
-          <div>
-            <button className="user-card__button">Разблокировать</button>
-          </div>
-        </div>
-      }
+  const userBanned = async() => {
+      const data = await bannedUser(props.userName)
+      await users.updateMobx()
+      console.log(data)
+  }
 
-    </div>
+    const userUnbanned = async() => {
+        const data = await unbannedUser(props.userName)
+        await users.updateMobx()
+        console.log(data)
+    }
+
+  return (
+      <div>
+      {
+        props.userRole === user.user.role ?
+            <div>
+              {props.banned === false
+                  ?
+                  <div className="user-card">
+                    <div className="user_info_div">
+                      <button className="user-card__button__info">
+                        <i className="fas fa-info-circle fa-xs"></i>
+                      </button>
+                      <div className="user-card__title">{props.userName} - {props.userRole}</div>
+                    </div>
+                    <div>
+                      {/*<button className="user-card__button__bun">Заблокировать</button>*/}
+                    </div>
+                  </div>
+                  :
+                  <div className="user-card">
+                    <div className="user_info_div">
+                      <button onClick={testButton} className="user-card__button__info">
+                        <i className="fas fa-info-circle fa-xs"></i>
+                      </button>
+                      <div className="user-card__title">{props.userName} - {props.userRole}</div>
+                    </div>
+                    <div>
+                      <button className="user-card__button">Разблокировать</button>
+                    </div>
+                  </div>
+              }
+
+            </div>
+            :
+            <div>
+              {props.banned === false
+                  ?
+                  <div className="user-card">
+                    <div className="user_info_div">
+                      <button className="user-card__button__info">
+                        <i className="fas fa-info-circle fa-xs"></i>
+                      </button>
+                      <div className="user-card__title">{props.userName} - {props.userRole}</div>
+                    </div>
+                    <div>
+                      <button onClick={() => {userBanned()}} className="user-card__button__bun">Заблокировать</button>
+                    </div>
+                  </div>
+                  :
+                  <div className="user-card">
+                    <div className="user_info_div">
+                      <button onClick={testButton} className="user-card__button__info">
+                        <i className="fas fa-info-circle fa-xs"></i>
+                      </button>
+                      <div className="user-card__title">{props.userName} - {props.userRole}</div>
+                    </div>
+                    <div>
+                      <button onClick={() => {userUnbanned()}} className="user-card__button">Разблокировать</button>
+                    </div>
+                  </div>
+              }
+
+            </div>
+      }
+      </div>
   );
 };
 

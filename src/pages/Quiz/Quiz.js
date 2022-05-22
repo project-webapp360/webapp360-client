@@ -73,7 +73,7 @@ const Quiz = () => {
                 </h1>}
             </div>
             <Button onClick={() => {addCustomer(prompt())}}>Добавить клиента</Button>
-            <Button onClick={() => {getCash(Number(prompt()))}}>Удалить клиента</Button>
+            <Button onClick={() => {}}>Удалить клиента</Button>
             <Button onClick={() => {fetchEvents()}}>Fetch</Button>
             {events.states === STATES.INITIAL && <h1>INITIAL</h1>}
             {events.states === STATES.LOADING && <h1>LOADING</h1>}

@@ -21,7 +21,7 @@ const AddEvent = observer(({create, setVisible}) => {
 
     useEffect(() => {
         users.fetchData()
-    })
+    }, [])
 
     const [title, setTitle] = useState('')
     const [dateEnd, setDateEnd] = useState('')
@@ -54,13 +54,9 @@ const AddEvent = observer(({create, setVisible}) => {
 
             const allUsers = await createEventUsers(data._id)
 
-            // const eventsFormDB = await getEvents()
-            console.log('events massive 1')
             const eventsFormDB = await getEventsUser(user.user.id)
-            console.log('events massive 2')
             console.log(eventsFormDB)
-            await events.updateData(eventsFormDB)
-            // events.setEvents([...eventsFormDB])
+            await events.updateData(eventsFormDB, user.user.id)
             console.log(events.events)
             navigate('/mainpage')
         } catch (e) {
@@ -93,8 +89,8 @@ const AddEvent = observer(({create, setVisible}) => {
             }
 
             case STATES.LOADED: {
-
-                return users.users.map((e) =>
+                let result = users.users.filter(item => item.email !== user.user.email)
+                return result.map((e) =>
                     <option value={e.email}>{e.email}</option>
                 )
             }
