@@ -27,7 +27,7 @@ const Eventcard = (props) => {
         // const data = await deleteEvent(id)
         const data = await deleteEventUser(idUser, id)
         await deleteEvent(id)
-        await events.updateData(data)
+        await events.updateData(data, idUser)
         console.log(data + '123123123')
     }
 

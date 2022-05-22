@@ -6,6 +6,7 @@ import {Context} from "../../index";
 import {getEvents, getUsers} from "../../axios/API";
 import {observer} from "mobx-react-lite";
 import Progressbar_manage from "../../components/progressbar_manage/progressbar_manage";
+import DevTools from "mobx-react-devtools";
 
 const STATES = {
     INITIAL: 'initial',
@@ -56,10 +57,12 @@ const Mainpage = observer(() => {
         },])
 
     useEffect(() => {
+        if (events.loading) return;
         events.fetchData(user.user.id)
-        console.log(`user: ${user.user}`)
+        console.log(`user:`)
+        console.log(user.user)
         console.log(`isAuth: ${user.isAuth}`)
-    })
+    }, [events.loading])
 
     const switchState = (state) => {
         switch (state) {
@@ -73,6 +76,7 @@ const Mainpage = observer(() => {
             }
 
             case STATES.LOADED: {
+                // console.log(events.events[0].name)
                 return events.events.map((item) =>
 
 
@@ -104,6 +108,7 @@ const Mainpage = observer(() => {
             }
             <Progressbar/>
             {switchState(events.caseLoading)}
+
         </div>
 
     );

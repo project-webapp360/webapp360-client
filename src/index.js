@@ -6,21 +6,27 @@ import NumberCount from "./mobx/Number";
 import Events from "./mobx/Events";
 import Users from "./mobx/Users";
 import UserStatistic from "./mobx/UserStatistic";
+import {Provider} from "react-redux";
+import {store} from './redux/index'
 
 export const Context = createContext(null)
 
 console.log(process.env.REACT_APP_URL)
 
 ReactDOM.render(
-    <Context.Provider value={{
-        user: new User(),
-        number: new NumberCount(),
-        events: new Events(),
-        users: new Users(),
-        userStatistic: new UserStatistic()
-    }}>
-        <App/>
-    </Context.Provider>,
+    // <Provider store={store}>
+        <Context.Provider value={{
+            user: new User(),
+            number: new NumberCount(),
+            events: new Events(),
+            users: new Users(),
+            userStatistic: new UserStatistic()
+        }}>
+
+            <App/>
+
+        </Context.Provider>,
+    // </Provider>,
     document.getElementById('root')
 );
 

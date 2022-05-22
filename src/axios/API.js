@@ -59,6 +59,7 @@ export const getEventsUser = async (userId) => {
     const {data} = await $host.post('api/event/events/user', {
         id: userId
     })
+        console.log(data)
     return data
 }
 
@@ -70,6 +71,20 @@ export const deleteEvent = async (id) => {
 export const deleteEventUser = async (idUser, idEvent) => {
     const {data} = await $host.post('api/event/delete/user', {
         idUser: idUser, idEvent: idEvent
+    })
+    return {data}
+}
+
+export const bannedUser = async (email) => {
+    const {data} = await $host.post('api/user/banned', {
+        email
+    })
+    return {data}
+}
+
+export const unbannedUser = async (email) => {
+    const {data} = await $host.post('api/user/unbanned', {
+        email
     })
     return {data}
 }
