@@ -4,6 +4,18 @@
     align-items: center;
 }
 
+.full-form > p {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: start;
+
+    margin: 0px 0px 0px -30%;
+    padding: 0px 0px 0px 0px;
+}
+
 .inputs {
     min-width: 200px;
     margin: 5px 20px 15px 20px;
@@ -23,7 +35,7 @@
 }
 
 .mySelectDiv {
-    margin-top: 5px;
+    margin: 0px 0px 5px 0px;
     min-width: 100%;
 
     border: none;

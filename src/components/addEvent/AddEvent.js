@@ -24,8 +24,9 @@ const AddEvent = observer(({create, setVisible}) => {
     })
 
     const [title, setTitle] = useState('')
-    const [dateEnd, setDateEnd] = useState('')
+    const [dateEnd, setDateEnd] = useState(' ')
     const [name, setName] = useState(' ')
+    const [type, setType] = useState(' ')
 
     const newEventForm = async (e) => {
         e.preventDefault()
@@ -34,6 +35,7 @@ const AddEvent = observer(({create, setVisible}) => {
             dateStart: new Date().toLocaleDateString("fr-CA"),
             dateEnd,
             name,
+            type,
             creator: 'Менеджер'
         }
         create(newEvent)
@@ -41,6 +43,7 @@ const AddEvent = observer(({create, setVisible}) => {
         setTitle('')
         setDateEnd('')
         setName('')
+        setType('')
 
         try {
             const data = await createEvent(
@@ -48,6 +51,7 @@ const AddEvent = observer(({create, setVisible}) => {
                 new Date().toLocaleDateString("fr-CA"),
                 dateEnd,
                 name,
+                type,
                 user.user.email,
                 // 'Менеджер'
             )
@@ -68,18 +72,6 @@ const AddEvent = observer(({create, setVisible}) => {
         }
 
     }
-
-    const array = [
-        {
-            Name: "user1",
-        },
-        {
-            Name: "user2",
-        },
-        {
-            Name: "user3",
-        },
-    ]
 
     const switchState = (state) => {
         switch (state) {
@@ -121,12 +113,26 @@ const AddEvent = observer(({create, setVisible}) => {
             <div className="mySelectDiv">
                 <select className="mySelect" value={name} label="user" name="" id=""
                         onChange={event => setName(event.target.value)}>
-                    <option className="hiddenOption" value=""></option>
+                    <option className="hiddenOption" value=" ">На кого опрос</option>
                     {switchState(users.caseLoading)}
                 </select>
             </div>
 
-            <button className="input__button" onClick={newEventForm}>Create Test</button>
+            <div className="mySelectDiv">
+                <select className="mySelect" value={type} label="type" name="" id=""
+                        onChange={event => setType(event.target.value)}>
+                    <option className="hiddenOption" value=" ">Тип опроса</option>
+                    <option value="0">User</option>
+                    <option value="1">Manager</option>
+                </select>
+            </div>
+
+            {title != '' && dateEnd != ' ' && name != ' ' && type != ' '
+                ?
+                <button className="input__button" onClick={newEventForm}>Создать опрос</button>
+                :
+                <button disabled className="input__button" onClick={newEventForm}>Создать опрос</button>
+            }
         </form>
     );
 });
