@@ -35,7 +35,6 @@ const AddEvent = observer(({create, setVisible}) => {
             dateStart: new Date().toLocaleDateString("fr-CA"),
             dateEnd,
             name,
-            type,
             creator: 'Менеджер'
         }
         create(newEvent)
@@ -43,7 +42,6 @@ const AddEvent = observer(({create, setVisible}) => {
         setTitle('')
         setDateEnd('')
         setName('')
-        setType('')
 
         try {
             const data = await createEvent(
@@ -51,7 +49,6 @@ const AddEvent = observer(({create, setVisible}) => {
                 new Date().toLocaleDateString("fr-CA"),
                 dateEnd,
                 name,
-                type,
                 user.user.email,
                 // 'Менеджер'
             )
