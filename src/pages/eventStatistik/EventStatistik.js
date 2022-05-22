@@ -213,6 +213,18 @@ const EventStatistik = observer(() => {
                             <div className="statistic__pair">
                                 <div className="statistik__pie__div">
                                     <div className="statistik__pie__div__left">
+                                        {/*{type === 0
+                                            ?
+                                            <p>Работоспособность</p>
+                                            :
+                                            <div></div>
+                                        }
+                                        {type === 1
+                                            ?
+                                            <p>Лидерские качества</p>
+                                            :
+                                            <div></div>
+                                        }*/}
                                         <p>Работоспособность</p>
                                         <div>
                                             <div className="blackLine"></div>
