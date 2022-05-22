@@ -144,7 +144,7 @@ const Eventcard = (props) => {
                         </Modal>
 
                         <Modal visible={modal} setVisible={setModal}>
-                            <Survey eventId={props.id} visible={modal} setVisible={setModal}/>
+                            <Survey eventId={props.id} visible={modal} type={1} setVisible={setModal}/>
                         </Modal>
 
                         <div className="eventcard">
