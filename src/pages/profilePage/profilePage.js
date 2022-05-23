@@ -256,7 +256,7 @@ const ProfilePage = () => {
             <p>Никнэйм: Дятел</p>
             <p>Имя: Солонников Виктор</p>
             <p>Почта: {user.user.email}</p>
-            <p>Роль: {user.user.role}</p>n
+            <p>Роль: {user.user.role}</p>
 
           </div>
         </div>

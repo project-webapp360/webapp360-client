@@ -2,10 +2,12 @@ import React, {useContext} from 'react';
 import "./user_managing_card.css"
 import {bannedUser, getUsers, unbannedUser} from "../../axios/API";
 import {Context} from "../../index";
+import {useNavigate} from "react-router-dom";
 
 const UserManagingCard = (props) => {
 
   const {user, users} = useContext(Context)
+  const navigate = useNavigate()
 
   // function ban () {
   //  // props.banned = true
@@ -29,6 +31,10 @@ const UserManagingCard = (props) => {
         console.log(data)
     }
 
+    const userStatisticPageNavigate = () => {
+        navigate('/userStatisticPage')
+    }
+
   return (
       <div>
       {
@@ -38,7 +44,7 @@ const UserManagingCard = (props) => {
                   ?
                   <div className="user-card">
                     <div className="user_info_div">
-                      <button className="user-card__button__info">
+                      <button onClick={userStatisticPageNavigate} className="user-card__button__info">
                         <i className="fas fa-info-circle fa-xs"></i>
                       </button>
                       <div className="user-card__title">{props.userName} - {props.userRole}</div>
@@ -50,7 +56,7 @@ const UserManagingCard = (props) => {
                   :
                   <div className="user-card">
                     <div className="user_info_div">
-                      <button onClick={testButton} className="user-card__button__info">
+                      <button onClick={userStatisticPageNavigate} className="user-card__button__info">
                         <i className="fas fa-info-circle fa-xs"></i>
                       </button>
                       <div className="user-card__title">{props.userName} - {props.userRole}</div>
@@ -68,7 +74,7 @@ const UserManagingCard = (props) => {
                   ?
                   <div className="user-card">
                     <div className="user_info_div">
-                      <button className="user-card__button__info">
+                      <button onClick={userStatisticPageNavigate} className="user-card__button__info">
                         <i className="fas fa-info-circle fa-xs"></i>
                       </button>
                       <div className="user-card__title">{props.userName} - {props.userRole}</div>
@@ -80,7 +86,7 @@ const UserManagingCard = (props) => {
                   :
                   <div className="user-card">
                     <div className="user_info_div">
-                      <button onClick={testButton} className="user-card__button__info">
+                      <button onClick={userStatisticPageNavigate} className="user-card__button__info">
                         <i className="fas fa-info-circle fa-xs"></i>
                       </button>
                       <div className="user-card__title">{props.userName} - {props.userRole}</div>

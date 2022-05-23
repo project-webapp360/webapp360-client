@@ -9,6 +9,7 @@ import Register from "./pages/register/Register";
 import UserManagingPage from "./pages/userManagingPage/userManagingPage";
 import ProfilePage from "./pages/profilePage/profilePage";
 import EventStatistik from "./pages/eventStatistik/EventStatistik";
+import userStatisticPage from "./pages/userStatisticPage/userStatisticPage";
 
 export const authRoutes = [
     {
@@ -34,6 +35,10 @@ export const authRoutes = [
     {
         path: '/ProfilePage',
         Component: ProfilePage
+    },
+    {
+        path: '/userStatisticPage',
+        Component: userStatisticPage
     },
     {
         path: '/eventStatistik/*',
