@@ -1,6 +1,6 @@
 .eventcard {
     padding: 10px;
-    margin: 10px ;
+    margin: 10px;
     background: white;
 
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
@@ -65,7 +65,8 @@
     display: flex;
     justify-content: space-between;
 }
-.eventcard__testCreator{
+
+.eventcard__testCreator {
     font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
@@ -77,6 +78,7 @@
 
     color: #90A0B7;
 }
+
 .eventcard__title {
     font-family: Montserrat;
     font-style: normal;
@@ -117,8 +119,7 @@
     color: #707683;
 }
 
-.eventcard__lastString
-{
+.eventcard__lastString {
     display: flex;
     justify-content: space-between;
 }
@@ -172,6 +173,23 @@
     margin-right: 20px;
     border-radius: 4px;
     background: #215afc;
+}
+
+.eventcard__button-agree-disabled {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+
+    border: none;
+    margin-right: 20px;
+    border-radius: 4px;
+    background: #f5f5f5;
 }
 
 .eventcard__button-agree:hover {

@@ -4,9 +4,7 @@ import Survey from "../survey/Survey";
 import Modal from "../modal/Modal";
 import {deleteEvent, deleteEventUser} from "../../axios/API";
 import {Context} from "../../index";
-import {observable} from "mobx";
 import {useNavigate} from "react-router-dom";
-import AddEvent from "../addEvent/AddEvent";
 
 
 const Eventcard = (props) => {
@@ -27,7 +25,7 @@ const Eventcard = (props) => {
         // const data = await deleteEvent(id)
         const data = await deleteEventUser(idUser, id)
         await deleteEvent(id)
-        await events.updateData(data, idUser)
+        await events.updateData(idUser)
         console.log(data + '123123123')
     }
 
@@ -58,7 +56,7 @@ const Eventcard = (props) => {
                 return (
                     <div>
                         <Modal visible={modal} setVisible={setModal}>
-                            <Survey eventId={props.id} visible={modal} setVisible={setModal}/>
+                            <Survey eventId={props.id} visible={modal} setVisible={setModal} type={props.type} targetEmail={props.targetEmail}/>
                         </Modal>
 
                         <div className="eventcard">
@@ -78,7 +76,7 @@ const Eventcard = (props) => {
                                         ?
                                         <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
                                         :
-                                        <button disabled className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                        <button disabled className="eventcard__button-agree-disabled" onClick={changeVisible}>Начать</button>
                                     }
                                 </div>
                             </div>
@@ -93,7 +91,7 @@ const Eventcard = (props) => {
                 return (<div>
 
                         <Modal visible={modal} setVisible={setModal}>
-                            <Survey eventId={props.id} visible={modal} setVisible={setModal}/>
+                            <Survey eventId={props.id} visible={modal} setVisible={setModal} type={props.type} targetEmail={props.targetEmail}/>
                         </Modal>
 
                         <div className="eventcard">
@@ -116,7 +114,7 @@ const Eventcard = (props) => {
                                         ?
                                         <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
                                         :
-                                        <button disabled className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                        <button disabled className="eventcard__button-agree-disabled" onClick={changeVisible}>Начать</button>
                                     }
                                 </div>
                             </div>
@@ -144,7 +142,7 @@ const Eventcard = (props) => {
                         </Modal>
 
                         <Modal visible={modal} setVisible={setModal}>
-                            <Survey eventId={props.id} visible={modal} type={1} setVisible={setModal}/>
+                            <Survey eventId={props.id} visible={modal} type={props.type} setVisible={setModal} targetEmail={props.targetEmail}/>
                         </Modal>
 
                         <div className="eventcard">
@@ -164,13 +162,13 @@ const Eventcard = (props) => {
                                         <i className="fas fa-info-circle fa-xs"></i>
                                     </button>
                                     <button className="eventcard__button-refuse"
-                                            onClick={changeConfirmVisibleTrue}>Заморозить
+                                            onClick={changeConfirmVisibleTrue}>Удалить
                                     </button>
                                     {props.Complete === false
                                         ?
                                         <button className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
                                         :
-                                        <button disabled className="eventcard__button-agree" onClick={changeVisible}>Начать</button>
+                                        <button disabled className="eventcard__button-agree-disabled" onClick={changeVisible}>Начать</button>
                                     }
                                 </div>
                             </div>

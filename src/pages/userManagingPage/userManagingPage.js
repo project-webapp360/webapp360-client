@@ -42,7 +42,7 @@ const UserManagingPage = observer(() => {
         console.log(users.users)
         // return users.users.map((item) => <h1>{item.email}</h1>)
         // let result = users.users.filter(item => item.email !== user.user.email)
-        return users.users.map((item) => <UserManagingCard userName={item.email} userRole={item.role} banned={item.isBanned}/>)
+        return users.users.map((item) => <UserManagingCard firstName={item.firstName} lastName={item.lastName} userName={item.email} userRole={item.role} banned={item.isBanned}/>)
       }
 
       default: {

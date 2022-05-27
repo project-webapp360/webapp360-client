@@ -1,13 +1,15 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import "./Survey.css"
 import Modal from "../modal/Modal";
 import {sendResultsUser} from "../../axios/API";
 import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
-const Survey = ({eventId, visible, setVisible, type}) => {
 
-  const {user} = useContext(Context)
+const Survey = observer(({eventId, visible, setVisible, type, targetEmail}) => {
+
+  const {user, events} = useContext(Context)
 
   const [questionsUser, setQuestionsUser] = useState([
     "На Ваш взгляд, развиваются ли профессиональные навыки сотрудника?",
@@ -60,10 +62,20 @@ const Survey = ({eventId, visible, setVisible, type}) => {
     setModal(false)
   }
 
-  const sendAnswers = async () => {
+  const sendAnswers = async (e) => {
+    e.preventDefault()
     setModal(false)
     setVisible(false)
-    await sendResultsUser(eventId ,answers)
+    await sendResultsUser(eventId, answers, user.user.id, targetEmail)
+    await events.updateData(user.user.id)
+  }
+
+  const testSendAnswers = async (e) => {
+    e.preventDefault()
+    setModal(false)
+    setVisible(false)
+    await sendResultsUser(eventId, ['4', '4', '4', '4', '4', '4', '4', '4', '4', '4',], user.user.id, targetEmail)
+    await events.updateData(user.user.id)
   }
 
   const changeAllVisible = () => {
@@ -81,6 +93,10 @@ const Survey = ({eventId, visible, setVisible, type}) => {
     const timed = answers[num]
     setValue(timed)
   };
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <div>
@@ -128,6 +144,7 @@ const Survey = ({eventId, visible, setVisible, type}) => {
         <div className="survey__navigation">
           <div className="survey__page">{page} из 10</div>
           <div className="button__group">
+            {/*<button onClick={testSendAnswers}>Test</button>*/}
             {page > 1
                 ?
                 <button className="survey__button" onClick={decrease}>Назад</button>
@@ -158,6 +175,6 @@ const Survey = ({eventId, visible, setVisible, type}) => {
       </div>
     </div>
   );
-};
+});
 
 export default Survey;

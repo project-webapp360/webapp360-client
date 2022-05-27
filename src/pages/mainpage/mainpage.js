@@ -17,6 +17,8 @@ const STATES = {
 
 const Mainpage = observer(() => {
 
+    let completedEvents = 0
+
     const {user} = useContext(Context)
     const {events} = useContext(Context)
     const [EventCardData, setEventCardData] = useState([
@@ -77,18 +79,53 @@ const Mainpage = observer(() => {
 
             case STATES.LOADED: {
                 // console.log(events.events[0].name)
-                return events.events.map((item) =>
+
+                completedEvents = (events.events.filter(event => event.needComplete === false)).length
+                let ce = 0
+                if (events.events.length >= 1) {
+                   ce = events.events[0].completedEvents
+                }
+                return <div className="mainPage">
+
+                    <div>
+                        {user.user.role === 'MANAGER' || user.user.role === 'ADMIN'
+                            ?
+                            <Progressbar_manage completedEvents={ce}/>
+                            :
+                            <div></div>
+                        }
+                        <Progressbar completedEvents={completedEvents} role={user.user.role}/>
+
+                    </div>
+
+                    {events.events.map((item) =>
+                    <div>
+                        {item.needComplete === true
+                            ?
+                            <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
+                                       dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={false}
+                                       type={item.type} targetEmail={item.targetEmail}/>
+                            :
+                            /*<div></div>*/
+                            <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
+                                       dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={true}
+                                       type={item.type} targetEmail={item.targetEmail}/>}
+                    </div>
+                )} </div>
 
 
-                    item.needCompete === undefined
+                /*return events.events.map((item) =>
+                    <div>
+                        {item.needComplete === true
                         ?
                         <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
-                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={false}/>
+                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={false} type={item.type}/>
                         :
-                        <div>none</div>
-                        /*<Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
-                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={true}/>*/
-                )
+                        /!*<div></div>*!/
+                        <Eventcard idUser={user.user.id} id={item._id} title={item.title} dateStart={item.dateStart}
+                                   dateEnd={item.dateEnd} name={item.name} creator={item.creator} Complete={true} type={item.type}/>}
+                    </div>
+                )*/
             }
 
             default: {
@@ -99,16 +136,8 @@ const Mainpage = observer(() => {
     }
 
     return (
-        <div className="mainPage">
-            {user.user.role === 'MANAGER' || user.user.role === 'ADMIN'
-              ?
-              <Progressbar_manage/>
-              :
-              <div></div>
-            }
-            <Progressbar/>
+        <div>
             {switchState(events.caseLoading)}
-
         </div>
 
     );

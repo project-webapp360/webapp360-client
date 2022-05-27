@@ -32,7 +32,7 @@ export const authRoutes = [
         Component: UserManagingPage
     },
     {
-        path: '/ProfilePage',
+        path: '/ProfilePage/*',
         Component: ProfilePage
     },
     {

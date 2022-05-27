@@ -3,11 +3,11 @@ import {LinearProgress} from "@mui/material";
 import {Context} from "../../index";
 import "./progressbar_manage.css"
 
-const Progressbar_manage = () => {
+const Progressbar_manage = (props) => {
 
     const {events} = useContext(Context)
     const allEvents = events.events.length
-    const completedEvents = 1
+    const completedEvents = props.completedEvents ?? 0
 
   return (
     <div className="progressbar">

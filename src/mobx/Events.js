@@ -68,7 +68,7 @@ export default class Events {
                 this.state = STATES.LOADED
             })
             console.log(data)
-            console.log(data[0].needCompete)
+            // console.log(data[0].needComplete)
         } catch (e) {
             runInAction(() => {
                 this.state = "error"
@@ -100,7 +100,7 @@ export default class Events {
             this.loading = false
     }*/
 
-    async updateData(data, idUser) {
+    async updateData(idUser) {
         this.loading = true
         await this.fetchData(idUser)
         this.loading = false

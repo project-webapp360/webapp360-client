@@ -26,6 +26,7 @@ const AddEvent = observer(({create, setVisible}) => {
     const [title, setTitle] = useState('')
     const [dateEnd, setDateEnd] = useState(' ')
     const [name, setName] = useState(' ')
+    const [emailName, emailSetName] = useState(' ')
     const [type, setType] = useState(' ')
 
     const newEventForm = async (e) => {
@@ -35,7 +36,8 @@ const AddEvent = observer(({create, setVisible}) => {
             dateStart: new Date().toLocaleDateString("fr-CA"),
             dateEnd,
             name,
-            creator: 'Менеджер'
+            creator: 'Менеджер',
+            type
         }
         create(newEvent)
         setVisible(false);
@@ -49,7 +51,9 @@ const AddEvent = observer(({create, setVisible}) => {
                 new Date().toLocaleDateString("fr-CA"),
                 dateEnd,
                 name,
-                user.user.email,
+                user.user.firstName + ' ' + user.user.lastName,
+                type,
+                users.users.length
                 // 'Менеджер'
             )
 
@@ -57,7 +61,7 @@ const AddEvent = observer(({create, setVisible}) => {
 
             const eventsFormDB = await getEventsUser(user.user.id)
             console.log(eventsFormDB)
-            await events.updateData(eventsFormDB, user.user.id)
+            await events.updateData(user.user.id)
             console.log(events.events)
             navigate('/mainpage')
         } catch (e) {
@@ -78,9 +82,9 @@ const AddEvent = observer(({create, setVisible}) => {
             }
 
             case STATES.LOADED: {
-                let result = users.users.filter(item => item.email !== user.user.email)
-                return result.map((e) =>
-                    <option value={e.email}>{e.email}</option>
+                let resultEmails = users.users.filter(item => item.email !== user.user.email)
+                return resultEmails.map((e) =>
+                    <option value={e.firstName + ' ' + e.lastName + '|' + e.email}>{e.firstName} {e.lastName}    [{e.role}]</option>
                 )
             }
 

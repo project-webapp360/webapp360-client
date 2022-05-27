@@ -4,14 +4,14 @@ import TokenService from "../service/tokenService"
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 const tokenService = new TokenService()
 
-export const registration = async (email, password, role) => {
+export const registration = async (email, password, role, nickName, firstName, lastName) => {
     const {data} = await $host.post('api/register', {
-        email, password, role
+        email, password, role, nickName, firstName, lastName
     })
     // localStorage.setItem('token', data.accessToken)
     tokenService.setToken('accessToken', data.accessToken)
     tokenService.setToken('refreshToken', data.refreshToken)
-    return jwtDecode(data.accessToken)
+    return data
 }
 
 export const login = async (email, password) => {
@@ -26,6 +26,15 @@ export const login = async (email, password) => {
     return data
 }
 
+export const getIdToProfile = async (email) => {
+    const {data} = await $host.post('api/user/profile', {
+        email
+        })
+    return data
+}
+
+
+
 export const deleteToken = async (id) => {
     await $host.post('api/token/delete', {
         id
@@ -35,9 +44,9 @@ export const deleteToken = async (id) => {
 
 
 
-export const createEvent = async (title, dateStart, dateEnd, name, creator) => {
+export const createEvent = async (title, dateStart, dateEnd, name, creator, type, needToComplete) => {
     const {data} = await $host.post('api/event/create', {
-        title, dateStart, dateEnd, name, creator
+        title, dateStart, dateEnd, name, creator, type, needToComplete
     })
     return data
 }
@@ -98,16 +107,28 @@ export const getUsers = async () => {
     return data
 }
 
-export const sendResultsUser = async (idUser, arrayResults) => {
-    await $host.post('api/results/set/user', {
-        id: idUser,
-        results: arrayResults
+export const sendResultsUser = async (evendId, eventsResults, userId, targetEmail) => {
+    console.log("START API sendResultsUser")
+    const {data} = await $host.post('api/results/set/user', {
+        id: evendId,
+        eventsResults: eventsResults,
+        userId,
+        targetEmail
     })
+    console.log("END API sendResultsUser")
+    return {data}
 }
 
 export const getResultsUser = async (eventId) => {
     const {data} = await $host.post('api/results/get/user', {
         eventId
+    })
+    return data
+}
+
+export const userGetResult = async (userId) => {
+    const {data} = await $host.post('api/user/get/results', {
+        userId
     })
     return data
 }

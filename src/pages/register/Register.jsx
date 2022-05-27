@@ -13,11 +13,14 @@ const Register = observer(() => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [userRole, setUserRole] = useState("")
+  const [nickName, setNickName] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
 
   const singUp = async (e) => {
     try {
       e.preventDefault()
-      const data = await registration(email, password, userRole)
+      const data = await registration(email, password, userRole, nickName, firstName, lastName)
 
       navigate('/UserManagingPage')
     } catch (e) {
@@ -47,22 +50,22 @@ const Register = observer(() => {
 
             <div className="input-label-div">
               <div>
-                <input type="text" className="inputsDiv"/>
-                <label className="labelDiv">Никнэйм</label>
+                <input value={nickName} onChange={e => setNickName(e.target.value)} id={nickName} name={nickName} type="text" className="inputsDiv"/>
+                <label className="labelDiv" htmlFor={nickName}>Никнэйм</label>
               </div>
             </div>
 
             <div className="input-label-div">
               <div>
-                <input type="text" className="inputsDiv"/>
-                <label className="labelDiv">Имя</label>
+                <input value={firstName} onChange={e => setFirstName(e.target.value)} id={firstName} name={firstName} type="text" className="inputsDiv"/>
+                <label className="labelDiv" htmlFor={firstName}>Имя</label>
               </div>
             </div>
 
             <div className="input-label-div">
               <div>
-                <input type="text" className="inputsDiv"/>
-                <label className="labelDiv">Фамилия</label>
+                <input value={lastName} onChange={e => setLastName(e.target.value)} id={lastName} name={lastName} type="text" className="inputsDiv"/>
+                <label className="labelDiv" htmlFor={lastName}>Фамилия</label>
               </div>
             </div>
 

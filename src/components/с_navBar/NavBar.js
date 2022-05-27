@@ -16,66 +16,6 @@ const NavBar = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
-    const [EventCardData, setEventCardData] = useState([
-        {
-            title: "Название",
-            dateStart: "2022-02-23",
-            dateEnd: "Конец",
-            name: 'Вася',
-            creator: 'Менеджер'
-        },
-        {
-            title: "Название",
-            dateStart: "2022-02-23",
-            dateEnd: "Конец",
-            name: 'Вася',
-            creator: 'Менеджер'
-        },
-        {
-            title: "Название",
-            dateStart: "2022-02-23",
-            dateEnd: "Конец",
-            name: 'Вася',
-            creator: 'Менеджер'
-        },
-        {
-            title: "Название",
-            dateStart: "2022-02-23",
-            dateEnd: "Конец",
-            name: 'Вася',
-            creator: 'Админ'
-        },
-        {
-            title: "Название",
-            dateStart: "2022-02-23",
-            dateEnd: "Конец",
-            name: 'Вася',
-            creator: 'Менеджер'
-        },])
-    const listLength = EventCardData.length
-
-
-    const [modal1, setModal1] = useState(false);
-    const [modal2, setModal2] = useState(false);
-    const [modal4, setModal3] = useState(false);
-
-
-    const changeVisible1 = () => {
-        setModal1(true)
-    }
-
-    const changeVisible2 = () => {
-        setModal2(true)
-    }
-
-    const changeVisible3 = () => {
-        setModal3(true)
-    }
-
-    const createEvent = (newEvent) => {
-        setEventCardData([...EventCardData, newEvent])
-    }
-
     const logout = async () => {
         deleteToken(user.user.id)
         user.setIsAuth(false)
@@ -93,7 +33,7 @@ const NavBar = observer(() => {
     }
 
     const userProfileNavigate = () => {
-        navigate("/profilePage")
+        navigate(`/ProfilePage/?id=${user.user.id}`)
     }
 
     const switchPermission = (role) => {
@@ -121,21 +61,17 @@ const NavBar = observer(() => {
 
             case 'MANAGER': {
                 return (<div>
-                    <Modal visible={modal1} setVisible={setModal1}>
-                        <AddEvent setVisible={setModal1} create={createEvent}/>
-                    </Modal>
                     <div className="line">
                         <div>
                             <button className="homebtn" onClick={() => {navigate('/mainpage')}}>
                                 <i className="fa fa-home"></i>
                             </button>
-                        </div>
-                        <div className="logo">Обзор-360</div>
-                        <div>
                             <button onClick={userProfileNavigate}>
                                 <i className="fa fa-user"></i>
                             </button>
-                            <button onClick={changeVisible1}>Создать опрос</button>
+                        </div>
+                        <div className="logo">Обзор-360</div>
+                        <div>
                             <button onClick={logout}>Выйти</button>
                         </div>
                     </div>
@@ -145,9 +81,6 @@ const NavBar = observer(() => {
             case 'ADMIN': {
                 return (
                 <div>
-                    <Modal visible={modal1} setVisible={setModal1}>
-                        <AddEvent setVisible={setModal1} create={createEvent}/>
-                    </Modal>
                     <div className="line">
                         <div>
                             <button className="homebtn" onClick={() => {
@@ -155,13 +88,12 @@ const NavBar = observer(() => {
                             }}>
                                 <i className="fa fa-home"></i>
                             </button>
-                        </div>
-                        <div className="logo">Обзор-360</div>
-                        <div>
                             <button onClick={userProfileNavigate}>
                                 <i className="fa fa-user"></i>
                             </button>
-                            <button onClick={changeVisible1}>Создать опрос</button>
+                        </div>
+                        <div className="logo">Обзор-360</div>
+                        <div>
                             <button onClick={userManagingNavigate}>Управление пользователями</button>
                             <button onClick={logout}>Выйти</button>
                         </div>
